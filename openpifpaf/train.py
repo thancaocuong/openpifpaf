@@ -69,6 +69,8 @@ def cli():
                         help='square edge of input images')
     parser.add_argument('--crop-fraction', default=0.5, type=float,
                         help='crop fraction versus rescale')
+    parser.add_argument('--data-distillation-after-epoch', default=None, type=int,
+                        help='apply data distillation after this epoch')
     parser.add_argument('--lambdas', default=[30.0, 2.0, 2.0, 50.0, 3.0, 3.0],
                         type=float, nargs='+',
                         help='prefactor for head losses')
@@ -203,13 +205,15 @@ def main():
         ema_decay=args.ema,
         encoder_visualizer=encoder_visualizer,
         train_profile=args.profile,
+        data_distillation_after_epoch=args.data_distillation_after_epoch,
         model_meta_data={
             'args': vars(args),
             'version': VERSION,
             'hostname': socket.gethostname(),
         },
     )
-    trainer.loop(train_loader, val_loader, args.epochs, start_epoch=start_epoch)
+    trainer.loop(train_loader, val_loader, args.epochs,
+                 start_epoch=start_epoch, train_dataset=train_data)
 
 
 if __name__ == '__main__':

@@ -5,6 +5,8 @@ import logging
 import time
 import torch
 
+from .. import datasets
+
 
 class Trainer(object):
     def __init__(self, model, losses, optimizer, out, lambdas, *,
@@ -16,6 +18,7 @@ class Trainer(object):
                  ema_decay=None,
                  encoder_visualizer=None,
                  train_profile=None,
+                 data_distillation_after_epoch=None,
                  model_meta_data=None):
         self.model = model
         self.losses = losses
@@ -32,6 +35,9 @@ class Trainer(object):
         self.ema_decay = ema_decay
         self.ema = None
         self.ema_restore_params = None
+        self.loss_indices = []
+
+        self.data_distillation_after_epoch = data_distillation_after_epoch
 
         self.encoder_visualizer = encoder_visualizer
         self.model_meta_data = model_meta_data
@@ -80,13 +86,30 @@ class Trainer(object):
             p.data.copy_(ema_p)
         self.ema_restore_params = None
 
-    def loop(self, train_scenes, val_scenes, epochs, start_epoch=0):
+    def loop(self, train_scenes, val_scenes, epochs, start_epoch=0, train_dataset=None):
         for _ in range(start_epoch):
             if self.lr_scheduler is not None:
                 self.lr_scheduler.step()
 
         for epoch in range(start_epoch, epochs):
-            self.train(train_scenes, epoch)
+            if epoch % 2 == 1 and \
+               self.data_distillation_after_epoch is not None and \
+               self.data_distillation_after_epoch <= epoch:
+                important_indices = sorted(self.loss_indices, reverse=True)
+                n_important = len(train_dataset) // 10
+                print('important_dataset length', n_important)
+                important_indices = [i[1] for i in important_indices[:n_important]]
+                important_data = torch.utils.data.Subset(train_dataset, important_indices)
+                important_data = torch.utils.data.ConcatDataset(
+                    [important_data for _ in range(10)])
+                important_scenes = torch.utils.data.DataLoader(
+                    important_data, batch_size=8, shuffle=True,
+                    pin_memory=True, num_workers=2, drop_last=True,
+                    collate_fn=datasets.collate_images_targets_meta)
+                self.train(important_scenes, epoch)
+            else:
+                self.train(train_scenes, epoch)
+
 
             self.write_model(epoch + 1, epoch == epochs - 1)
             self.val(val_scenes, epoch + 1)
@@ -171,6 +194,7 @@ class Trainer(object):
 
         epoch_loss = 0.0
         head_epoch_losses = [0.0 for _ in self.lambdas]
+        self.loss_indices = []
         last_batch_end = time.time()
         self.optimizer.zero_grad()
         for batch_idx, (data, target, meta) in enumerate(scenes):
@@ -181,6 +205,7 @@ class Trainer(object):
             loss, head_losses = self.train_batch(data, target, meta, apply_gradients)
             if loss is not None:
                 epoch_loss += loss
+                self.loss_indices += [(loss, m['dataset_index']) for m in meta]
             for i, head_loss in enumerate(head_losses):
                 if head_loss is None:
                     continue
