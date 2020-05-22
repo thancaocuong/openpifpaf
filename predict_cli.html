@@ -1,0 +1,568 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Prediction CLI &#8212; OpenPifPaf Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .secondtoggle, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Prediction API" href="predict_api.html" />
+    <link rel="prev" title="Datasets" href="datasets.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">OpenPifPaf Guide</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+  <ul class="nav sidenav_l1">
+  <li class="">
+    <a href="intro.html">Introduction</a>
+  </li>
+  <li class="">
+    <a href="datasets.html">Datasets</a>
+  </li>
+  <li class="active">
+    <a href="">Prediction CLI</a>
+  </li>
+<li class="navbar-special">
+<p class="margin-caption">API</p>
+</li>
+  <li class="">
+    <a href="predict_api.html">Prediction API</a>
+  </li>
+  <li class="">
+    <a href="moduledocs.html">Modules</a>
+  </li>
+<li class="navbar-special">
+<p class="margin-caption">Development</p>
+</li>
+  <li class="">
+    <a href="dev.html">Contribute</a>
+  </li>
+  <li class="">
+    <a href="https://github.com/vita-epfl/openpifpaf">GitHub<i class="fas fa-external-link-alt"></i></a>
+  </li>
+</ul>
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse" data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation" title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i class="fas fa-download"></i></button>
+
+            
+            <div class="dropdown-buttons">
+                <!-- ipynb file if we had a myst markdown file -->
+                
+                <!-- Download raw file -->
+                <a class="dropdown-buttons" href="_sources/predict_cli.ipynb.txt"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.ipynb</button></a>
+                <!-- Download PDF via print -->
+                <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+            </div>
+            
+        </div>
+
+        <!-- Edit this page -->
+        
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+        
+    </div>
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#optional-arguments" class="nav-link">Optional Arguments</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p><a class="reference external" href="https://www.svenkreiss.com/">Sven Kreiss</a>, 2020</p>
+<div class="section" id="prediction-cli">
+<h1>Prediction CLI<a class="headerlink" href="#prediction-cli" title="Permalink to this headline">¶</a></h1>
+<p>Use OpenPifPaf from the command line to run multi-person pose estimation on images.
+Run <code class="docutils literal notranslate"><span class="pre">openpifpaf.predict</span></code> on an Image:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!python -m openpifpaf.predict coco/000000081988.jpg --image-output --json-output
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>INFO:openpifpaf.decoder.generator.cifcaf:5 annotations: [14, 16, 17, 16, 15]
+INFO:__main__:batch 0: coco/000000081988.jpg
+</pre></div>
+</div>
+</div>
+</div>
+<p>This command produced two outputs: an image and a json file.
+You can provide file or folder arguments to the <code class="docutils literal notranslate"><span class="pre">--image-output</span></code> and <code class="docutils literal notranslate"><span class="pre">--json-output</span></code> flags.
+Here, we used the default which created these two files:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>coco/000000081988.jpg.predictions.png
+coco/000000081988.jpg.predictions.json
+</pre></div>
+</div>
+<p>Here is the image:</p>
+<p><img alt="predictions" src="_images/000000081988.jpg.predictions1.png" /></p>
+<p>And here is the json output:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!python -m json.tool coco/000000081988.jpg.predictions.json
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>[
+    {
+        &quot;keypoints&quot;: [
+            0.0,
+            -3.0,
+            0.0,
+            0.0,
+            -3.0,
+            0.0,
+            0.0,
+            -3.0,
+            0.0,
+            388.6,
+            149.4,
+            0.87,
+            410.08,
+            149.7,
+            0.73,
+            376.76,
+            176.22,
+            0.87,
+            425.65,
+            177.54,
+            0.87,
+            335.6,
+            192.22,
+            0.86,
+            463.58,
+            191.29,
+            0.85,
+            300.04,
+            194.49,
+            0.88,
+            494.45,
+            183.96,
+            0.87,
+            387.99,
+            254.67,
+            0.84,
+            414.94,
+            254.72,
+            0.92,
+            382.17,
+            315.62,
+            0.7,
+            410.01,
+            318.07,
+            1.0,
+            381.87,
+            362.75,
+            0.29,
+            405.22,
+            369.85,
+            0.76
+        ],
+        &quot;bbox&quot;: [
+            289.18,
+            142.4,
+            216.91,
+            243.23
+        ],
+        &quot;score&quot;: 0.735,
+        &quot;category_id&quot;: 1
+    },
+    {
+        &quot;keypoints&quot;: [
+            81.78,
+            317.29,
+            0.6,
+            85.3,
+            313.22,
+            0.77,
+            80.19,
+            312.1,
+            0.33,
+            99.85,
+            309.14,
+            0.78,
+            0.0,
+            -3.0,
+            0.0,
+            123.39,
+            317.32,
+            0.86,
+            78.56,
+            320.77,
+            0.77,
+            146.09,
+            348.52,
+            0.78,
+            58.28,
+            350.78,
+            0.77,
+            124.86,
+            354.53,
+            0.69,
+            52.18,
+            382.47,
+            0.77,
+            121.57,
+            363.04,
+            0.72,
+            94.3,
+            363.63,
+            0.73,
+            153.08,
+            362.21,
+            0.63,
+            73.61,
+            366.02,
+            0.68,
+            94.22,
+            380.86,
+            0.54,
+            116.73,
+            381.85,
+            0.42
+        ],
+        &quot;bbox&quot;: [
+            46.49,
+            306.15,
+            114.13,
+            83.72
+        ],
+        &quot;score&quot;: 0.682,
+        &quot;category_id&quot;: 1
+    },
+    {
+        &quot;keypoints&quot;: [
+            359.89,
+            299.08,
+            0.56,
+            363.57,
+            294.22,
+            0.59,
+            354.82,
+            294.77,
+            0.58,
+            370.09,
+            296.68,
+            0.55,
+            347.56,
+            297.82,
+            0.78,
+            380.37,
+            318.59,
+            0.72,
+            340.45,
+            322.22,
+            0.84,
+            384.69,
+            342.85,
+            0.6,
+            334.77,
+            347.95,
+            0.75,
+            372.99,
+            357.23,
+            0.52,
+            335.12,
+            362.72,
+            0.74,
+            375.05,
+            363.53,
+            0.67,
+            350.59,
+            363.54,
+            0.76,
+            388.25,
+            361.11,
+            0.34,
+            330.83,
+            371.03,
+            0.55,
+            334.89,
+            381.55,
+            0.31,
+            334.55,
+            384.24,
+            0.27
+        ],
+        &quot;bbox&quot;: [
+            324.2,
+            292.08,
+            70.77,
+            98.82
+        ],
+        &quot;score&quot;: 0.647,
+        &quot;category_id&quot;: 1
+    },
+    {
+        &quot;keypoints&quot;: [
+            493.2,
+            348.52,
+            0.25,
+            495.89,
+            345.12,
+            0.32,
+            489.55,
+            345.98,
+            0.2,
+            504.53,
+            334.61,
+            0.39,
+            0.0,
+            -3.0,
+            0.0,
+            522.68,
+            332.36,
+            0.57,
+            490.49,
+            333.07,
+            0.41,
+            549.31,
+            351.24,
+            0.49,
+            488.25,
+            352.99,
+            0.35,
+            561.04,
+            380.62,
+            0.31,
+            488.01,
+            376.64,
+            0.46,
+            540.84,
+            344.21,
+            0.57,
+            520.91,
+            346.19,
+            0.44,
+            521.27,
+            377.62,
+            0.75,
+            501.32,
+            379.69,
+            0.47,
+            565.13,
+            385.18,
+            0.43,
+            546.0,
+            383.56,
+            0.18
+        ],
+        &quot;bbox&quot;: [
+            483.62,
+            327.0,
+            87.72,
+            64.39
+        ],
+        &quot;score&quot;: 0.45,
+        &quot;category_id&quot;: 1
+    },
+    {
+        &quot;keypoints&quot;: [
+            237.64,
+            320.42,
+            0.25,
+            238.84,
+            316.65,
+            0.16,
+            234.91,
+            318.16,
+            0.29,
+            0.0,
+            -3.0,
+            0.0,
+            222.43,
+            315.36,
+            0.5,
+            240.26,
+            318.55,
+            0.71,
+            202.03,
+            319.22,
+            0.59,
+            240.3,
+            350.9,
+            0.6,
+            195.1,
+            352.77,
+            0.36,
+            240.05,
+            380.3,
+            0.48,
+            193.3,
+            376.3,
+            0.34,
+            221.76,
+            332.86,
+            0.56,
+            200.01,
+            331.03,
+            0.47,
+            223.93,
+            368.52,
+            0.36,
+            195.41,
+            371.26,
+            0.33,
+            0.0,
+            -3.0,
+            0.0,
+            194.78,
+            378.61,
+            0.21
+        ],
+        &quot;bbox&quot;: [
+            189.05,
+            313.07,
+            56.25,
+            71.28
+        ],
+        &quot;score&quot;: 0.435,
+        &quot;category_id&quot;: 1
+    }
+]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="optional-arguments">
+<h2>Optional Arguments<a class="headerlink" href="#optional-arguments" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--show</span></code>: show interactive matplotlib output</p></li>
+</ul>
+<p>Full list of arguments is available with <code class="xref any docutils literal notranslate"><span class="pre">--help</span></code>.</p>
+<p>Image credit: “<a class="reference external" href="https://www.flickr.com/photos/fotologic/6038911779/in/photostream/">Learning to surf</a>” by fotologic which is licensed under <a class="reference external" href="https://creativecommons.org/licenses/by/2.0/">CC-BY-2.0</a>.</p>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="datasets.html" title="previous page">Datasets</a>
+    <a class='right-next' id="next-link" href="predict_api.html" title="next page">Prediction API</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Sven Kreiss<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>

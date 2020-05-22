@@ -1,0 +1,466 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Introduction &#8212; OpenPifPaf Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .secondtoggle, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Datasets" href="datasets.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">OpenPifPaf Guide</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+  <ul class="nav sidenav_l1">
+  <li class="active">
+    <a href="#">Introduction</a>
+  </li>
+  <li class="">
+    <a href="datasets.html">Datasets</a>
+  </li>
+  <li class="">
+    <a href="predict_cli.html">Prediction CLI</a>
+  </li>
+<li class="navbar-special">
+<p class="margin-caption">API</p>
+</li>
+  <li class="">
+    <a href="predict_api.html">Prediction API</a>
+  </li>
+  <li class="">
+    <a href="moduledocs.html">Modules</a>
+  </li>
+<li class="navbar-special">
+<p class="margin-caption">Development</p>
+</li>
+  <li class="">
+    <a href="dev.html">Contribute</a>
+  </li>
+  <li class="">
+    <a href="https://github.com/vita-epfl/openpifpaf">GitHub<i class="fas fa-external-link-alt"></i></a>
+  </li>
+</ul>
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse" data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation" title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i class="fas fa-download"></i></button>
+
+            
+            <div class="dropdown-buttons">
+                <!-- ipynb file if we had a myst markdown file -->
+                
+                <!-- Download raw file -->
+                <a class="dropdown-buttons" href="_sources/intro.md.txt"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.md</button></a>
+                <!-- Download PDF via print -->
+                <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+            </div>
+            
+        </div>
+
+        <!-- Edit this page -->
+        
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+        
+    </div>
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+    </ul>
+</nav>
+
+
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<div class="alert alert-info">
+<p class="admonition-title">Note</p>
+<p>Experimental. At the moment, this guide is not much more than a placeholder.</p>
+</div>
+<p>Continuously tested on Linux, MacOS and Windows: <a class="reference external" href="https://travis-ci.org/vita-epfl/openpifpaf"><img alt="Build Status" src="https://travis-ci.org/vita-epfl/openpifpaf.svg?branch=master" /></a><br />
+<a class="reference external" href="http://openaccess.thecvf.com/content_CVPR_2019/html/Kreiss_PifPaf_Composite_Fields_for_Human_Pose_Estimation_CVPR_2019_paper.html">CVPR 2019 paper</a></p>
+<!-- [arxiv.org/abs/1903.06593](https://arxiv.org/abs/1903.06593) -->
+<blockquote>
+<div><p>PifPaf: Composite Fields for Human Pose Estimation</p>
+<p>We propose a new bottom-up method for multi-person 2D human pose
+estimation that is particularly well suited for urban mobility such as self-driving cars
+and delivery robots. The new method, PifPaf, uses a Part Intensity Field (PIF) to
+localize body parts and a Part Association Field (PAF) to associate body parts with each other to form
+full human poses.
+Our method outperforms previous methods at low resolution and in crowded,
+cluttered and occluded scenes
+thanks to (i) our new composite field PAF encoding fine-grained information and (ii) the choice of Laplace loss for regressions which incorporates a notion of uncertainty.
+Our architecture is based on a fully
+convolutional, single-shot, box-free design.
+We perform on par with the existing
+state-of-the-art bottom-up method on the standard COCO keypoint task
+and produce state-of-the-art results on a modified COCO keypoint task for
+the transportation domain.</p>
+</div></blockquote>
+</div>
+<div class="section" id="demo">
+<h1>Demo<a class="headerlink" href="#demo" title="Permalink to this headline">¶</a></h1>
+<p><img alt="example image with overlaid pose predictions" src="_images/000000081988.jpg.predictions.png" /></p>
+<p>Image credit: “<a class="reference external" href="https://www.flickr.com/photos/fotologic/6038911779/in/photostream/">Learning to surf</a>” by fotologic which is licensed under <a class="reference external" href="https://creativecommons.org/licenses/by/2.0/">CC-BY-2.0</a>.<br />
+Created with
+<code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">openpifpaf.predict</span> <span class="pre">docs/coco/000000081988.jpg</span> <span class="pre">--show</span> <span class="pre">--image-output</span> <span class="pre">--json-output</span></code>
+which also produces <code class="xref any docutils literal notranslate"><span class="pre">json</span> <span class="pre">output</span></code>.</p>
+<p>More demos:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/vita-epfl/openpifpafwebdemo">openpifpafwebdemo</a> project (best performance)</p></li>
+<li><p>OpenPifPaf running in your browser: https://vita-epfl.github.io/openpifpafwebdemo/ (experimental)</p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">openpifpaf.video</span></code> command (requires OpenCV)</p></li>
+<li><p><a class="reference external" href="https://colab.research.google.com/drive/1H8T4ZE6wc0A9xJE4oGnhgHpUpAH5HL7W">Google Colab demo</a></p></li>
+</ul>
+<img src="docs/wave3.gif" height=250 alt="example image" />
+</div>
+<div class="section" id="install">
+<h1>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h1>
+<p>Python 3 is required. Python 2 is not supported.
+Do not clone this repository
+and make sure there is no folder named <code class="docutils literal notranslate"><span class="pre">openpifpaf</span></code> in your current directory.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip3 install openpifpaf
+</pre></div>
+</div>
+<p>For a live demo, we recommend to try the
+<a class="reference external" href="https://github.com/vita-epfl/openpifpafwebdemo">openpifpafwebdemo</a> project.
+Alternatively, <code class="docutils literal notranslate"><span class="pre">openpifpaf.video</span></code> (requires OpenCV) provides a live demo as well.</p>
+<p>For development of the openpifpaf source code itself, you need to clone this repository and then:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip3 install numpy cython
+pip3 install --editable <span class="s1">&#39;.[train,test]&#39;</span>
+</pre></div>
+</div>
+<p>The last command installs the Python package in the current directory
+(signified by the dot) with the optional dependencies needed for training and
+testing. If you modify <code class="docutils literal notranslate"><span class="pre">functional.pyx</span></code>, run this last command again which
+recompiles the static code.</p>
+</div>
+<div class="section" id="interfaces">
+<h1>Interfaces<a class="headerlink" href="#interfaces" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">openpifpaf.predict</span> <span class="pre">--help</span></code>: <a class="reference download internal" download="" href="_downloads/b26f08c76113616c845eed0181e7630b/cli-help-predict.txt"><code class="xref download docutils literal notranslate"><span class="pre">help</span> <span class="pre">screen</span></code></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">openpifpaf.video</span> <span class="pre">--help</span></code>: <a class="reference download internal" download="" href="_downloads/b897aeeb4ce5c8a341db8761e7c65d6d/cli-help-video.txt"><code class="xref download docutils literal notranslate"><span class="pre">help</span> <span class="pre">screen</span></code></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">openpifpaf.train</span> <span class="pre">--help</span></code>: <a class="reference download internal" download="" href="_downloads/50e3b506b80c2d2422b8433e0e3cfdf0/cli-help-train.txt"><code class="xref download docutils literal notranslate"><span class="pre">help</span> <span class="pre">screen</span></code></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">openpifpaf.eval_coco</span> <span class="pre">--help</span></code>: <a class="reference download internal" download="" href="_downloads/79ee6030ea1df68f1d9e171458d86bf3/cli-help-eval_coco.txt"><code class="xref download docutils literal notranslate"><span class="pre">help</span> <span class="pre">screen</span></code></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">openpifpaf.logs</span> <span class="pre">--help</span></code>: <a class="reference download internal" download="" href="_downloads/0654cd71d774403dc442fa52c1622cc6/cli-help-logs.txt"><code class="xref download docutils literal notranslate"><span class="pre">help</span> <span class="pre">screen</span></code></a></p></li>
+</ul>
+<p>Tools to work with models:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">openpifpaf.migrate</span> <span class="pre">--help</span></code>: <a class="reference download internal" download="" href="_downloads/d5b4884b168f03d9ca858115301adbf2/cli-help-migrate.txt"><code class="xref download docutils literal notranslate"><span class="pre">help</span> <span class="pre">screen</span></code></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">openpifpaf.export_onnx</span> <span class="pre">--help</span></code>: <a class="reference download internal" download="" href="_downloads/e8ca9ecbf650bb60370d03859d01e084/cli-help-export_onnx.txt"><code class="xref download docutils literal notranslate"><span class="pre">help</span> <span class="pre">screen</span></code></a></p></li>
+</ul>
+</div>
+<div class="section" id="pre-trained-models">
+<h1>Pre-trained Models<a class="headerlink" href="#pre-trained-models" title="Permalink to this headline">¶</a></h1>
+<p>Performance metrics with version 0.11 on the COCO val set obtained with a GTX1080Ti:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:right head"><p>Backbone</p></th>
+<th class="text-align:center head"><p>AP</p></th>
+<th class="text-align:center head"><p>APᴹ</p></th>
+<th class="text-align:center head"><p>APᴸ</p></th>
+<th class="text-align:center head"><p>t_{total} [ms]</p></th>
+<th class="text-align:center head"><p>t_{dec} [ms]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:right"><p><a class="reference external" href="https://github.com/vita-epfl/openpifpaf-torchhub/releases/download/v0.11.0/shufflenetv2k16w-200510-221334-cif-caf-caf25-o10s-604c5956.pkl">shufflenetv2k16w</a></p></td>
+<td class="text-align:center"><p><strong>67.1</strong></p></td>
+<td class="text-align:center"><p>62.0</p></td>
+<td class="text-align:center"><p>75.3</p></td>
+<td class="text-align:center"><p>54</p></td>
+<td class="text-align:center"><p>25</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:right"><p><a class="reference external" href="https://github.com/vita-epfl/openpifpaf-torchhub/releases/download/v0.11.0/shufflenetv2k30w-200510-104256-cif-caf-caf25-o10s-0b5ba06f.pkl">shufflenetv2k30w</a></p></td>
+<td class="text-align:center"><p><strong>71.1</strong></p></td>
+<td class="text-align:center"><p>65.9</p></td>
+<td class="text-align:center"><p>79.1</p></td>
+<td class="text-align:center"><p>94</p></td>
+<td class="text-align:center"><p>22</p></td>
+</tr>
+</tbody>
+</table>
+<p>Command to reproduce this table: <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">openpifpaf.benchmark</span> <span class="pre">--backbones</span> <span class="pre">shufflenetv2k16w</span> <span class="pre">shufflenetv2k30w</span></code>.</p>
+<p>Pretrained model files are shared in the
+<strong><a class="reference external" href="https://github.com/vita-epfl/openpifpaf-torchhub/releases">openpifpaf-torchhub</a></strong>
+repository and linked from the backbone names in the table above.
+The pretrained models are downloaded automatically when
+using the command line option <code class="docutils literal notranslate"><span class="pre">--checkpoint</span> <span class="pre">backbonenameasintableabove</span></code>.</p>
+<p>For comparison, old v0.10:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:right head"><p>Backbone</p></th>
+<th class="text-align:center head"><p>AP</p></th>
+<th class="text-align:center head"><p>APᴹ</p></th>
+<th class="text-align:center head"><p>APᴸ</p></th>
+<th class="text-align:center head"><p>t_{total} [ms]</p></th>
+<th class="text-align:center head"><p>t_{dec} [ms]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:right"><p>shufflenetv2x2 v0.10</p></td>
+<td class="text-align:center"><p><strong>60.4</strong></p></td>
+<td class="text-align:center"><p>55.5</p></td>
+<td class="text-align:center"><p>67.8</p></td>
+<td class="text-align:center"><p>56</p></td>
+<td class="text-align:center"><p>33</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:right"><p>resnet50 v0.10</p></td>
+<td class="text-align:center"><p><strong>64.4</strong></p></td>
+<td class="text-align:center"><p>61.1</p></td>
+<td class="text-align:center"><p>69.9</p></td>
+<td class="text-align:center"><p>76</p></td>
+<td class="text-align:center"><p>32</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:right"><p>resnet101 v0.10</p></td>
+<td class="text-align:center"><p><strong>67.8</strong></p></td>
+<td class="text-align:center"><p>63.6</p></td>
+<td class="text-align:center"><p>74.3</p></td>
+<td class="text-align:center"><p>97</p></td>
+<td class="text-align:center"><p>28</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="train">
+<h1>Train<a class="headerlink" href="#train" title="Permalink to this headline">¶</a></h1>
+<p>See <code class="xref any docutils literal notranslate"><span class="pre">datasets</span></code> for setup instructions.</p>
+<p>The exact training command that was used for a model is in the first
+line of the training log file.</p>
+<p>ShuffleNet models are trained without ImageNet pretraining:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">time</span> <span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">0</span>,1 python3 -m openpifpaf.train <span class="se">\</span>
+  --lr<span class="o">=</span><span class="m">0</span>.1 <span class="se">\</span>
+  --momentum<span class="o">=</span><span class="m">0</span>.9 <span class="se">\</span>
+  --epochs<span class="o">=</span><span class="m">150</span> <span class="se">\</span>
+  --lr-warm-up-epochs<span class="o">=</span><span class="m">1</span> <span class="se">\</span>
+  --lr-decay <span class="m">120</span> <span class="se">\</span>
+  --lr-decay-epochs<span class="o">=</span><span class="m">20</span> <span class="se">\</span>
+  --lr-decay-factor<span class="o">=</span><span class="m">0</span>.1 <span class="se">\</span>
+  --batch-size<span class="o">=</span><span class="m">32</span> <span class="se">\</span>
+  --square-edge<span class="o">=</span><span class="m">385</span> <span class="se">\</span>
+  --lambdas <span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.2   <span class="m">1</span> <span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.2 <span class="m">0</span>.2    <span class="m">1</span> <span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.2 <span class="m">0</span>.2 <span class="se">\</span>
+  --auto-tune-mtl <span class="se">\</span>
+  --weight-decay<span class="o">=</span>1e-5 <span class="se">\</span>
+  --update-batchnorm-runningstatistics <span class="se">\</span>
+  --ema<span class="o">=</span><span class="m">0</span>.01 <span class="se">\</span>
+  --basenet<span class="o">=</span>shufflenetv2k16w <span class="se">\</span>
+  --headnets cif caf caf25
+
+<span class="c1"># for improved performance, take the epoch150 checkpoint and train with</span>
+<span class="c1"># extended-scale and 10% orientation invariance:</span>
+<span class="nb">time</span> <span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">0</span>,1 python3 -m openpifpaf.train <span class="se">\</span>
+  --lr<span class="o">=</span><span class="m">0</span>.05 <span class="se">\</span>
+  --momentum<span class="o">=</span><span class="m">0</span>.9 <span class="se">\</span>
+  --epochs<span class="o">=</span><span class="m">250</span> <span class="se">\</span>
+  --lr-warm-up-epochs<span class="o">=</span><span class="m">1</span> <span class="se">\</span>
+  --lr-decay <span class="m">220</span> <span class="se">\</span>
+  --lr-decay-epochs<span class="o">=</span><span class="m">30</span> <span class="se">\</span>
+  --lr-decay-factor<span class="o">=</span><span class="m">0</span>.01 <span class="se">\</span>
+  --batch-size<span class="o">=</span><span class="m">32</span> <span class="se">\</span>
+  --square-edge<span class="o">=</span><span class="m">385</span> <span class="se">\</span>
+  --lambdas <span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.2   <span class="m">1</span> <span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.2 <span class="m">0</span>.2    <span class="m">1</span> <span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.2 <span class="m">0</span>.2 <span class="se">\</span>
+  --auto-tune-mtl <span class="se">\</span>
+  --weight-decay<span class="o">=</span>1e-5 <span class="se">\</span>
+  --update-batchnorm-runningstatistics <span class="se">\</span>
+  --ema<span class="o">=</span><span class="m">0</span>.01 <span class="se">\</span>
+  --checkpoint outputs/shufflenetv2k16w-200504-145520-cif-caf-caf25-d05e5520.pkl --extended-scale --orientation-invariant<span class="o">=</span><span class="m">0</span>.1
+</pre></div>
+</div>
+<p>You can refine an existing model with the <code class="docutils literal notranslate"><span class="pre">--checkpoint</span></code> option.</p>
+<p>To visualize logs:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python3 -m openpifpaf.logs <span class="se">\</span>
+  outputs/resnet50block5-pif-paf-edge401-190424-122009.pkl.log <span class="se">\</span>
+  outputs/resnet101block5-pif-paf-edge401-190412-151013.pkl.log <span class="se">\</span>
+  outputs/resnet152block5-pif-paf-edge401-190412-121848.pkl.log
+</pre></div>
+</div>
+<p>To produce evaluation metrics every five epochs and check the directory for new
+checkpoints every 5 minutes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="n">true</span><span class="p">;</span> <span class="n">do</span> \
+  <span class="n">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="mi">0</span> <span class="n">find</span> <span class="n">outputs</span><span class="o">/</span> <span class="o">-</span><span class="n">name</span> <span class="s2">&quot;shufflenetv2k16w-200504-145520-cif-caf-caf25.pkl.epoch??[0,5]&quot;</span> <span class="o">-</span><span class="n">exec</span> \
+    <span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">openpifpaf</span><span class="o">.</span><span class="n">eval_coco</span> <span class="o">--</span><span class="n">checkpoint</span> <span class="p">{}</span> <span class="o">-</span><span class="n">n</span> <span class="mi">500</span> <span class="o">--</span><span class="n">long</span><span class="o">-</span><span class="n">edge</span><span class="o">=</span><span class="mi">641</span> <span class="o">--</span><span class="n">skip</span><span class="o">-</span><span class="n">existing</span> \<span class="p">;</span> \
+  <span class="p">;</span> \
+  <span class="n">sleep</span> <span class="mi">300</span><span class="p">;</span> \
+<span class="n">done</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="person-skeletons">
+<h1>Person Skeletons<a class="headerlink" href="#person-skeletons" title="Permalink to this headline">¶</a></h1>
+<p>COCO / kinematic tree / dense:</p>
+<a class="reference internal image-reference" href="_images/skeleton_coco.png"><img alt="_images/skeleton_coco.png" src="_images/skeleton_coco.png" style="height: 250px;" /></a>
+<a class="reference internal image-reference" href="_images/skeleton_kinematic_tree.png"><img alt="_images/skeleton_kinematic_tree.png" src="_images/skeleton_kinematic_tree.png" style="height: 250px;" /></a>
+<a class="reference internal image-reference" href="_images/skeleton_dense.png"><img alt="_images/skeleton_dense.png" src="_images/skeleton_dense.png" style="height: 250px;" /></a>
+<p>Created with <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">openpifpaf.datasets.constants</span></code>.</p>
+</div>
+<div class="section" id="video">
+<h1>Video<a class="headerlink" href="#video" title="Permalink to this headline">¶</a></h1>
+<p>Requires OpenCV.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python3 -m openpifpaf.video --checkpoint shufflenetv2k16w myvideotoprocess.mp4 --video-output --json-output
+</pre></div>
+</div>
+<p>Replace <code class="docutils literal notranslate"><span class="pre">myvideotoprocess.mp4</span></code> with <code class="docutils literal notranslate"><span class="pre">0</span></code> for webcam0 or other OpenCV compatible sources.</p>
+</div>
+<div class="section" id="documentation-pages">
+<h1>Documentation Pages<a class="headerlink" href="#documentation-pages" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><code class="xref any docutils literal notranslate"><span class="pre">datasets</span></code></p></li>
+<li><p><code class="xref any docutils literal notranslate"><span class="pre">predict.ipynb</span></code>, on <a class="reference external" href="https://colab.research.google.com/drive/1H8T4ZE6wc0A9xJE4oGnhgHpUpAH5HL7W">Google Colab</a></p></li>
+<li><p><code class="xref any docutils literal notranslate"><span class="pre">evaluation</span> <span class="pre">logs</span></code></p></li>
+<li><p><code class="xref any docutils literal notranslate"><span class="pre">history</span></code></p></li>
+<li><p><code class="xref any docutils literal notranslate"><span class="pre">contributing</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="related-projects">
+<h1>Related Projects<a class="headerlink" href="#related-projects" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/vita-epfl/monoloco">monoloco</a>: “Monocular 3D Pedestrian Localization and Uncertainty Estimation” which uses OpenPifPaf for poses.</p></li>
+<li><p><a class="reference external" href="https://github.com/vita-epfl/openpifpafwebdemo">openpifpafwebdemo</a>: web front-end.</p></li>
+</ul>
+</div>
+<div class="section" id="citation">
+<h1>Citation<a class="headerlink" href="#citation" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@InProceedings</span><span class="p">{</span><span class="n">kreiss2019pifpaf</span><span class="p">,</span>
+  <span class="n">author</span> <span class="o">=</span> <span class="p">{</span><span class="n">Kreiss</span><span class="p">,</span> <span class="n">Sven</span> <span class="ow">and</span> <span class="n">Bertoni</span><span class="p">,</span> <span class="n">Lorenzo</span> <span class="ow">and</span> <span class="n">Alahi</span><span class="p">,</span> <span class="n">Alexandre</span><span class="p">},</span>
+  <span class="n">title</span> <span class="o">=</span> <span class="p">{{</span><span class="n">PifPaf</span><span class="p">:</span> <span class="n">Composite</span> <span class="n">Fields</span> <span class="k">for</span> <span class="n">Human</span> <span class="n">Pose</span> <span class="n">Estimation</span><span class="p">}},</span>
+  <span class="n">booktitle</span> <span class="o">=</span> <span class="p">{</span><span class="n">The</span> <span class="n">IEEE</span> <span class="n">Conference</span> <span class="n">on</span> <span class="n">Computer</span> <span class="n">Vision</span> <span class="ow">and</span> <span class="n">Pattern</span> <span class="n">Recognition</span> <span class="p">(</span><span class="n">CVPR</span><span class="p">)},</span>
+  <span class="n">month</span> <span class="o">=</span> <span class="p">{</span><span class="n">June</span><span class="p">},</span>
+  <span class="n">year</span> <span class="o">=</span> <span class="p">{</span><span class="mi">2019</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Reference: <a class="bibtex reference internal" href="#kreiss2019pifpaf" id="id1">[KBA19]</a></p>
+<p id="bibtex-bibliography-intro-0"><dl class="citation">
+<dt class="bibtex label" id="kreiss2019pifpaf"><span class="brackets"><a class="fn-backref" href="#id1">KBA19</a></span></dt>
+<dd><p>Sven Kreiss, Lorenzo Bertoni, and Alexandre Alahi. PifPaf: Composite Fields for Human Pose Estimation. In <em>The IEEE Conference on Computer Vision and Pattern Recognition (CVPR)</em>. June 2019.</p>
+</dd>
+</dl>
+</p>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='right-next' id="next-link" href="datasets.html" title="next page">Datasets</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Sven Kreiss<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>
