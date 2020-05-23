@@ -161,6 +161,15 @@
                 
   <div class="section" id="contribute">
 <h1>Contribute<a class="headerlink" href="#contribute" title="Permalink to this headline">¶</a></h1>
+<p>For development of the openpifpaf source code itself, you need to clone this repository and then:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip3 install numpy cython
+pip3 install --editable <span class="s1">&#39;.[train,test]&#39;</span>
+</pre></div>
+</div>
+<p>The last command installs the Python package in the current directory
+(signified by the dot) with the optional dependencies needed for training and
+testing. If you modify <code class="docutils literal notranslate"><span class="pre">functional.pyx</span></code>, run this last command again which
+recompiles the static code.</p>
 </div>
 <div class="section" id="scratch">
 <h1>Scratch<a class="headerlink" href="#scratch" title="Permalink to this headline">¶</a></h1>
