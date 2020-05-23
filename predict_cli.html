@@ -31,7 +31,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Prediction API" href="predict_api.html" />
-    <link rel="prev" title="Datasets" href="datasets.html" />
+    <link rel="prev" title="Training" href="train.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -69,6 +69,9 @@
   </li>
   <li class="">
     <a href="datasets.html">Datasets</a>
+  </li>
+  <li class="">
+    <a href="train.html">Training</a>
   </li>
   <li class="active">
     <a href="">Prediction CLI</a>
@@ -156,6 +159,10 @@
             <a href="#optional-arguments" class="nav-link">Optional Arguments</a>
         </li>
     
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#video" class="nav-link">Video</a>
+        </li>
+    
     </ul>
 </nav>
 
@@ -171,7 +178,8 @@
 <div class="section" id="prediction-cli">
 <h1>Prediction CLI<a class="headerlink" href="#prediction-cli" title="Permalink to this headline">¶</a></h1>
 <p>Use OpenPifPaf from the command line to run multi-person pose estimation on images.
-Run <code class="docutils literal notranslate"><span class="pre">openpifpaf.predict</span></code> on an Image:</p>
+Below is also a short intro to running prediction on videos.</p>
+<p>Run <code class="docutils literal notranslate"><span class="pre">openpifpaf.predict</span></code> on an image:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!python -m openpifpaf.predict coco/000000081988.jpg --image-output --json-output
@@ -687,6 +695,34 @@ logging:
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="video">
+<h2>Video<a class="headerlink" href="#video" title="Permalink to this headline">¶</a></h2>
+<p>Requires OpenCV.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python3 -m openpifpaf.video --checkpoint shufflenetv2k16w myvideotoprocess.mp4 --video-output --json-output
+</pre></div>
+</div>
+<p>Replace <code class="docutils literal notranslate"><span class="pre">myvideotoprocess.mp4</span></code> with <code class="docutils literal notranslate"><span class="pre">0</span></code> for webcam0 or other OpenCV compatible sources.</p>
+<p>All possible arguments:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!python -m openpifpaf.video --help
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
+  File &quot;/opt/hostedtoolcache/Python/3.7.7/x64/lib/python3.7/runpy.py&quot;, line 193, in _run_module_as_main
+    &quot;__main__&quot;, mod_spec)
+  File &quot;/opt/hostedtoolcache/Python/3.7.7/x64/lib/python3.7/runpy.py&quot;, line 85, in _run_code
+    exec(code, run_globals)
+  File &quot;/opt/hostedtoolcache/Python/3.7.7/x64/lib/python3.7/site-packages/openpifpaf/video.py&quot;, line 30, in &lt;module&gt;
+    import cv2  # pylint: disable=import-error
+ModuleNotFoundError: No module named &#39;cv2&#39;
+</pre></div>
+</div>
+</div>
+</div>
 <p>Image credit: “<a class="reference external" href="https://www.flickr.com/photos/fotologic/6038911779/in/photostream/">Learning to surf</a>” by fotologic which is licensed under <a class="reference external" href="https://creativecommons.org/licenses/by/2.0/">CC-BY-2.0</a>.</p>
 </div>
 </div>
@@ -700,7 +736,7 @@ logging:
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="datasets.html" title="previous page">Datasets</a>
+    <a class='left-prev' id="prev-link" href="train.html" title="previous page">Training</a>
     <a class='right-next' id="next-link" href="predict_api.html" title="next page">Prediction API</a>
 
     </div>

@@ -1,0 +1,298 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Training &#8212; OpenPifPaf Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .secondtoggle, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Prediction CLI" href="predict_cli.html" />
+    <link rel="prev" title="Datasets" href="datasets.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">OpenPifPaf Guide</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+  <ul class="nav sidenav_l1">
+  <li class="">
+    <a href="intro.html">Introduction</a>
+  </li>
+  <li class="">
+    <a href="datasets.html">Datasets</a>
+  </li>
+  <li class="active">
+    <a href="">Training</a>
+  </li>
+  <li class="">
+    <a href="predict_cli.html">Prediction CLI</a>
+  </li>
+<li class="navbar-special">
+<p class="margin-caption">API</p>
+</li>
+  <li class="">
+    <a href="predict_api.html">Prediction API</a>
+  </li>
+  <li class="">
+    <a href="moduledocs.html">Modules</a>
+  </li>
+<li class="navbar-special">
+<p class="margin-caption">Development</p>
+</li>
+  <li class="">
+    <a href="dev.html">Contribute</a>
+  </li>
+  <li class="">
+    <a href="https://github.com/vita-epfl/openpifpaf">GitHub<i class="fas fa-external-link-alt"></i></a>
+  </li>
+</ul>
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse" data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation" title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i class="fas fa-download"></i></button>
+
+            
+            <div class="dropdown-buttons">
+                <!-- ipynb file if we had a myst markdown file -->
+                
+                <!-- Download raw file -->
+                <a class="dropdown-buttons" href="_sources/train.ipynb.txt"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.ipynb</button></a>
+                <!-- Download PDF via print -->
+                <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+            </div>
+            
+        </div>
+
+        <!-- Edit this page -->
+        
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+        
+    </div>
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#shufflenet" class="nav-link">ShuffleNet</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#resnet" class="nav-link">ResNet</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="training">
+<h1>Training<a class="headerlink" href="#training" title="Permalink to this headline">¶</a></h1>
+<p>See :doc:<code class="docutils literal notranslate"><span class="pre">datasets</span></code> for instructions about the datasets.</p>
+<p>The exact training command that was used for a model is in the first
+line of the training log file.</p>
+<div class="section" id="shufflenet">
+<h2>ShuffleNet<a class="headerlink" href="#shufflenet" title="Permalink to this headline">¶</a></h2>
+<p>ShuffleNet models are trained without ImageNet pretraining:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">time</span> <span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">0</span>,1 python3 -m openpifpaf.train <span class="se">\</span>
+  --lr<span class="o">=</span><span class="m">0</span>.1 <span class="se">\</span>
+  --momentum<span class="o">=</span><span class="m">0</span>.9 <span class="se">\</span>
+  --epochs<span class="o">=</span><span class="m">150</span> <span class="se">\</span>
+  --lr-warm-up-epochs<span class="o">=</span><span class="m">1</span> <span class="se">\</span>
+  --lr-decay <span class="m">120</span> <span class="se">\</span>
+  --lr-decay-epochs<span class="o">=</span><span class="m">20</span> <span class="se">\</span>
+  --lr-decay-factor<span class="o">=</span><span class="m">0</span>.1 <span class="se">\</span>
+  --batch-size<span class="o">=</span><span class="m">32</span> <span class="se">\</span>
+  --square-edge<span class="o">=</span><span class="m">385</span> <span class="se">\</span>
+  --lambdas <span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.2   <span class="m">1</span> <span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.2 <span class="m">0</span>.2    <span class="m">1</span> <span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.2 <span class="m">0</span>.2 <span class="se">\</span>
+  --auto-tune-mtl <span class="se">\</span>
+  --weight-decay<span class="o">=</span>1e-5 <span class="se">\</span>
+  --update-batchnorm-runningstatistics <span class="se">\</span>
+  --ema<span class="o">=</span><span class="m">0</span>.01 <span class="se">\</span>
+  --basenet<span class="o">=</span>shufflenetv2k16w <span class="se">\</span>
+  --headnets cif caf caf25
+
+<span class="c1"># for improved performance, take the epoch150 checkpoint and train with</span>
+<span class="c1"># extended-scale and 10% orientation invariance:</span>
+<span class="nb">time</span> <span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">0</span>,1 python3 -m openpifpaf.train <span class="se">\</span>
+  --lr<span class="o">=</span><span class="m">0</span>.05 <span class="se">\</span>
+  --momentum<span class="o">=</span><span class="m">0</span>.9 <span class="se">\</span>
+  --epochs<span class="o">=</span><span class="m">250</span> <span class="se">\</span>
+  --lr-warm-up-epochs<span class="o">=</span><span class="m">1</span> <span class="se">\</span>
+  --lr-decay <span class="m">220</span> <span class="se">\</span>
+  --lr-decay-epochs<span class="o">=</span><span class="m">30</span> <span class="se">\</span>
+  --lr-decay-factor<span class="o">=</span><span class="m">0</span>.01 <span class="se">\</span>
+  --batch-size<span class="o">=</span><span class="m">32</span> <span class="se">\</span>
+  --square-edge<span class="o">=</span><span class="m">385</span> <span class="se">\</span>
+  --lambdas <span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.2   <span class="m">1</span> <span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.2 <span class="m">0</span>.2    <span class="m">1</span> <span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.2 <span class="m">0</span>.2 <span class="se">\</span>
+  --auto-tune-mtl <span class="se">\</span>
+  --weight-decay<span class="o">=</span>1e-5 <span class="se">\</span>
+  --update-batchnorm-runningstatistics <span class="se">\</span>
+  --ema<span class="o">=</span><span class="m">0</span>.01 <span class="se">\</span>
+  --checkpoint outputs/shufflenetv2k16w-200504-145520-cif-caf-caf25-d05e5520.pkl --extended-scale --orientation-invariant<span class="o">=</span><span class="m">0</span>.1
+</pre></div>
+</div>
+<p>You can refine an existing model with the <code class="docutils literal notranslate"><span class="pre">--checkpoint</span></code> option.</p>
+<p>To visualize logs:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python3 -m openpifpaf.logs <span class="se">\</span>
+  outputs/resnet50block5-pif-paf-edge401-190424-122009.pkl.log <span class="se">\</span>
+  outputs/resnet101block5-pif-paf-edge401-190412-151013.pkl.log <span class="se">\</span>
+  outputs/resnet152block5-pif-paf-edge401-190412-121848.pkl.log
+</pre></div>
+</div>
+<p>To produce evaluation metrics every five epochs and check the directory for new
+checkpoints every 5 minutes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="n">true</span><span class="p">;</span> <span class="n">do</span> \
+  <span class="n">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="mi">0</span> <span class="n">find</span> <span class="n">outputs</span><span class="o">/</span> <span class="o">-</span><span class="n">name</span> <span class="s2">&quot;shufflenetv2k16w-200504-145520-cif-caf-caf25.pkl.epoch??[0,5]&quot;</span> <span class="o">-</span><span class="n">exec</span> \
+    <span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">openpifpaf</span><span class="o">.</span><span class="n">eval_coco</span> <span class="o">--</span><span class="n">checkpoint</span> <span class="p">{}</span> <span class="o">-</span><span class="n">n</span> <span class="mi">500</span> <span class="o">--</span><span class="n">long</span><span class="o">-</span><span class="n">edge</span><span class="o">=</span><span class="mi">641</span> <span class="o">--</span><span class="n">skip</span><span class="o">-</span><span class="n">existing</span> \<span class="p">;</span> \
+  <span class="p">;</span> \
+  <span class="n">sleep</span> <span class="mi">300</span><span class="p">;</span> \
+<span class="n">done</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="resnet">
+<h2>ResNet<a class="headerlink" href="#resnet" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">time</span> <span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">0</span>,1 python3 -m openpifpaf.train <span class="se">\</span>
+  --lr<span class="o">=</span><span class="m">0</span>.05 <span class="se">\</span>
+  --momentum<span class="o">=</span><span class="m">0</span>.9 <span class="se">\</span>
+  --epochs<span class="o">=</span><span class="m">150</span> <span class="se">\</span>
+  --lr-warm-up-epochs<span class="o">=</span><span class="m">1</span> <span class="se">\</span>
+  --lr-decay <span class="m">120</span> <span class="se">\</span>
+  --lr-decay-epochs<span class="o">=</span><span class="m">20</span> <span class="se">\</span>
+  --lr-decay-factor<span class="o">=</span><span class="m">0</span>.1 <span class="se">\</span>
+  --batch-size<span class="o">=</span><span class="m">16</span> <span class="se">\</span>
+  --square-edge<span class="o">=</span><span class="m">385</span> <span class="se">\</span>
+  --lambdas <span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.2   <span class="m">1</span> <span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.2 <span class="m">0</span>.2    <span class="m">1</span> <span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.2 <span class="m">0</span>.2 <span class="se">\</span>
+  --auto-tune-mtl <span class="se">\</span>
+  --weight-decay<span class="o">=</span>1e-5 <span class="se">\</span>
+  --update-batchnorm-runningstatistics <span class="se">\</span>
+  --ema<span class="o">=</span><span class="m">0</span>.01 <span class="se">\</span>
+  --basenet<span class="o">=</span>resnet50 <span class="se">\</span>
+  --headnets cif caf caf25
+</pre></div>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="datasets.html" title="previous page">Datasets</a>
+    <a class='right-next' id="next-link" href="predict_cli.html" title="next page">Prediction CLI</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Sven Kreiss<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>

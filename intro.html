@@ -70,6 +70,9 @@
     <a href="datasets.html">Datasets</a>
   </li>
   <li class="">
+    <a href="train.html">Training</a>
+  </li>
+  <li class="">
     <a href="predict_cli.html">Prediction CLI</a>
   </li>
 <li class="navbar-special">
@@ -200,7 +203,7 @@ which also produces <code class="xref any docutils literal notranslate"><span cl
 <li><p>the <code class="docutils literal notranslate"><span class="pre">openpifpaf.video</span></code> command (requires OpenCV)</p></li>
 <li><p><a class="reference external" href="https://colab.research.google.com/drive/1H8T4ZE6wc0A9xJE4oGnhgHpUpAH5HL7W">Google Colab demo</a></p></li>
 </ul>
-<img src="docs/wave3.gif" height=250 alt="example image" />
+<a class="reference internal image-reference" href="_images/wave3.gif"><img alt="_images/wave3.gif" src="_images/wave3.gif" style="height: 250px;" /></a>
 </div>
 <div class="section" id="install">
 <h1>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h1>
@@ -300,95 +303,6 @@ using the command line option <code class="docutils literal notranslate"><span c
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="train">
-<h1>Train<a class="headerlink" href="#train" title="Permalink to this headline">¶</a></h1>
-<p>See <code class="xref any docutils literal notranslate"><span class="pre">datasets</span></code> for setup instructions.</p>
-<p>The exact training command that was used for a model is in the first
-line of the training log file.</p>
-<p>ShuffleNet models are trained without ImageNet pretraining:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">time</span> <span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">0</span>,1 python3 -m openpifpaf.train <span class="se">\</span>
-  --lr<span class="o">=</span><span class="m">0</span>.1 <span class="se">\</span>
-  --momentum<span class="o">=</span><span class="m">0</span>.9 <span class="se">\</span>
-  --epochs<span class="o">=</span><span class="m">150</span> <span class="se">\</span>
-  --lr-warm-up-epochs<span class="o">=</span><span class="m">1</span> <span class="se">\</span>
-  --lr-decay <span class="m">120</span> <span class="se">\</span>
-  --lr-decay-epochs<span class="o">=</span><span class="m">20</span> <span class="se">\</span>
-  --lr-decay-factor<span class="o">=</span><span class="m">0</span>.1 <span class="se">\</span>
-  --batch-size<span class="o">=</span><span class="m">32</span> <span class="se">\</span>
-  --square-edge<span class="o">=</span><span class="m">385</span> <span class="se">\</span>
-  --lambdas <span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.2   <span class="m">1</span> <span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.2 <span class="m">0</span>.2    <span class="m">1</span> <span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.2 <span class="m">0</span>.2 <span class="se">\</span>
-  --auto-tune-mtl <span class="se">\</span>
-  --weight-decay<span class="o">=</span>1e-5 <span class="se">\</span>
-  --update-batchnorm-runningstatistics <span class="se">\</span>
-  --ema<span class="o">=</span><span class="m">0</span>.01 <span class="se">\</span>
-  --basenet<span class="o">=</span>shufflenetv2k16w <span class="se">\</span>
-  --headnets cif caf caf25
-
-<span class="c1"># for improved performance, take the epoch150 checkpoint and train with</span>
-<span class="c1"># extended-scale and 10% orientation invariance:</span>
-<span class="nb">time</span> <span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">0</span>,1 python3 -m openpifpaf.train <span class="se">\</span>
-  --lr<span class="o">=</span><span class="m">0</span>.05 <span class="se">\</span>
-  --momentum<span class="o">=</span><span class="m">0</span>.9 <span class="se">\</span>
-  --epochs<span class="o">=</span><span class="m">250</span> <span class="se">\</span>
-  --lr-warm-up-epochs<span class="o">=</span><span class="m">1</span> <span class="se">\</span>
-  --lr-decay <span class="m">220</span> <span class="se">\</span>
-  --lr-decay-epochs<span class="o">=</span><span class="m">30</span> <span class="se">\</span>
-  --lr-decay-factor<span class="o">=</span><span class="m">0</span>.01 <span class="se">\</span>
-  --batch-size<span class="o">=</span><span class="m">32</span> <span class="se">\</span>
-  --square-edge<span class="o">=</span><span class="m">385</span> <span class="se">\</span>
-  --lambdas <span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.2   <span class="m">1</span> <span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.2 <span class="m">0</span>.2    <span class="m">1</span> <span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.2 <span class="m">0</span>.2 <span class="se">\</span>
-  --auto-tune-mtl <span class="se">\</span>
-  --weight-decay<span class="o">=</span>1e-5 <span class="se">\</span>
-  --update-batchnorm-runningstatistics <span class="se">\</span>
-  --ema<span class="o">=</span><span class="m">0</span>.01 <span class="se">\</span>
-  --checkpoint outputs/shufflenetv2k16w-200504-145520-cif-caf-caf25-d05e5520.pkl --extended-scale --orientation-invariant<span class="o">=</span><span class="m">0</span>.1
-</pre></div>
-</div>
-<p>You can refine an existing model with the <code class="docutils literal notranslate"><span class="pre">--checkpoint</span></code> option.</p>
-<p>To visualize logs:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python3 -m openpifpaf.logs <span class="se">\</span>
-  outputs/resnet50block5-pif-paf-edge401-190424-122009.pkl.log <span class="se">\</span>
-  outputs/resnet101block5-pif-paf-edge401-190412-151013.pkl.log <span class="se">\</span>
-  outputs/resnet152block5-pif-paf-edge401-190412-121848.pkl.log
-</pre></div>
-</div>
-<p>To produce evaluation metrics every five epochs and check the directory for new
-checkpoints every 5 minutes:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="n">true</span><span class="p">;</span> <span class="n">do</span> \
-  <span class="n">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="mi">0</span> <span class="n">find</span> <span class="n">outputs</span><span class="o">/</span> <span class="o">-</span><span class="n">name</span> <span class="s2">&quot;shufflenetv2k16w-200504-145520-cif-caf-caf25.pkl.epoch??[0,5]&quot;</span> <span class="o">-</span><span class="n">exec</span> \
-    <span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">openpifpaf</span><span class="o">.</span><span class="n">eval_coco</span> <span class="o">--</span><span class="n">checkpoint</span> <span class="p">{}</span> <span class="o">-</span><span class="n">n</span> <span class="mi">500</span> <span class="o">--</span><span class="n">long</span><span class="o">-</span><span class="n">edge</span><span class="o">=</span><span class="mi">641</span> <span class="o">--</span><span class="n">skip</span><span class="o">-</span><span class="n">existing</span> \<span class="p">;</span> \
-  <span class="p">;</span> \
-  <span class="n">sleep</span> <span class="mi">300</span><span class="p">;</span> \
-<span class="n">done</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="person-skeletons">
-<h1>Person Skeletons<a class="headerlink" href="#person-skeletons" title="Permalink to this headline">¶</a></h1>
-<p>COCO / kinematic tree / dense:</p>
-<a class="reference internal image-reference" href="_images/skeleton_coco.png"><img alt="_images/skeleton_coco.png" src="_images/skeleton_coco.png" style="height: 250px;" /></a>
-<a class="reference internal image-reference" href="_images/skeleton_kinematic_tree.png"><img alt="_images/skeleton_kinematic_tree.png" src="_images/skeleton_kinematic_tree.png" style="height: 250px;" /></a>
-<a class="reference internal image-reference" href="_images/skeleton_dense.png"><img alt="_images/skeleton_dense.png" src="_images/skeleton_dense.png" style="height: 250px;" /></a>
-<p>Created with <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">openpifpaf.datasets.constants</span></code>.</p>
-</div>
-<div class="section" id="video">
-<h1>Video<a class="headerlink" href="#video" title="Permalink to this headline">¶</a></h1>
-<p>Requires OpenCV.</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python3 -m openpifpaf.video --checkpoint shufflenetv2k16w myvideotoprocess.mp4 --video-output --json-output
-</pre></div>
-</div>
-<p>Replace <code class="docutils literal notranslate"><span class="pre">myvideotoprocess.mp4</span></code> with <code class="docutils literal notranslate"><span class="pre">0</span></code> for webcam0 or other OpenCV compatible sources.</p>
-</div>
-<div class="section" id="documentation-pages">
-<h1>Documentation Pages<a class="headerlink" href="#documentation-pages" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><p><code class="xref any docutils literal notranslate"><span class="pre">datasets</span></code></p></li>
-<li><p><code class="xref any docutils literal notranslate"><span class="pre">predict.ipynb</span></code>, on <a class="reference external" href="https://colab.research.google.com/drive/1H8T4ZE6wc0A9xJE4oGnhgHpUpAH5HL7W">Google Colab</a></p></li>
-<li><p><code class="xref any docutils literal notranslate"><span class="pre">evaluation</span> <span class="pre">logs</span></code></p></li>
-<li><p><code class="xref any docutils literal notranslate"><span class="pre">history</span></code></p></li>
-<li><p><code class="xref any docutils literal notranslate"><span class="pre">contributing</span></code></p></li>
-</ul>
 </div>
 <div class="section" id="related-projects">
 <h1>Related Projects<a class="headerlink" href="#related-projects" title="Permalink to this headline">¶</a></h1>
