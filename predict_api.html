@@ -167,6 +167,10 @@
             <a href="#dataset-dataloader-visualizer-prediction" class="nav-link">Dataset, Dataloader, Visualizer, Prediction</a>
         </li>
     
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#fields" class="nav-link">Fields</a>
+        </li>
+    
     </ul>
 </nav>
 
@@ -269,6 +273,28 @@
 </div>
 <div class="cell_output docutils container">
 <img alt="_images/predict_api_7_0.png" src="_images/predict_api_7_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="fields">
+<h2>Fields<a class="headerlink" href="#fields" title="Permalink to this headline">¶</a></h2>
+<p>Below are visualizations of the fields.
+When using the API here, the visualization types are individually enabled.
+Then, the index for every field to visualize must be specified. In the example below, the fifth CIF (the left shoulder) and the fifth CAF (the left should to left hip association) are activated.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">openpifpaf</span><span class="o">.</span><span class="n">visualizer</span><span class="o">.</span><span class="n">Cif</span><span class="o">.</span><span class="n">show_regressions</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">openpifpaf</span><span class="o">.</span><span class="n">visualizer</span><span class="o">.</span><span class="n">Caf</span><span class="o">.</span><span class="n">show_regressions</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">openpifpaf</span><span class="o">.</span><span class="n">visualizer</span><span class="o">.</span><span class="n">BaseVisualizer</span><span class="o">.</span><span class="n">all_indices</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;cif&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;caf&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)]</span>
+
+<span class="k">for</span> <span class="n">images_batch</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">__</span> <span class="ow">in</span> <span class="n">loader</span><span class="p">:</span>
+  <span class="n">predictions</span> <span class="o">=</span> <span class="n">processor</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">images_batch</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/predict_api_9_0.png" src="_images/predict_api_9_0.png" />
+<img alt="_images/predict_api_9_1.png" src="_images/predict_api_9_1.png" />
 </div>
 </div>
 </div>
