@@ -147,9 +147,36 @@
         
     </div>
     <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
 
 <nav id="bd-toc-nav">
     <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#demo" class="nav-link">Demo</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#install" class="nav-link">Install</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#interfaces" class="nav-link">Interfaces</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#pre-trained-models" class="nav-link">Pre-trained Models</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#related-projects" class="nav-link">Related Projects</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#citation" class="nav-link">Citation</a>
+        </li>
     
     </ul>
 </nav>
@@ -188,9 +215,8 @@ state-of-the-art bottom-up method on the standard COCO keypoint task
 and produce state-of-the-art results on a modified COCO keypoint task for
 the transportation domain.</p>
 </div></blockquote>
-</div>
 <div class="section" id="demo">
-<h1>Demo<a class="headerlink" href="#demo" title="Permalink to this headline">¶</a></h1>
+<h2>Demo<a class="headerlink" href="#demo" title="Permalink to this headline">¶</a></h2>
 <p><img alt="example image with overlaid pose predictions" src="_images/000000081988.jpg.predictions.png" /></p>
 <p>Image credit: “<a class="reference external" href="https://www.flickr.com/photos/fotologic/6038911779/in/photostream/">Learning to surf</a>” by fotologic which is licensed under <a class="reference external" href="https://creativecommons.org/licenses/by/2.0/">CC-BY-2.0</a>.<br />
 Created with
@@ -205,7 +231,7 @@ Created with
 <a class="reference internal image-reference" href="_images/wave3.gif"><img alt="_images/wave3.gif" src="_images/wave3.gif" style="height: 250px;" /></a>
 </div>
 <div class="section" id="install">
-<h1>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h1>
+<h2>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
 <p>Python 3 is required. Python 2 is not supported.
 Do not clone this repository
 and make sure there is no folder named <code class="docutils literal notranslate"><span class="pre">openpifpaf</span></code> in your current directory.</p>
@@ -217,7 +243,7 @@ and make sure there is no folder named <code class="docutils literal notranslate
 Alternatively, <code class="docutils literal notranslate"><span class="pre">openpifpaf.video</span></code> (requires OpenCV) provides a live demo as well.</p>
 </div>
 <div class="section" id="interfaces">
-<h1>Interfaces<a class="headerlink" href="#interfaces" title="Permalink to this headline">¶</a></h1>
+<h2>Interfaces<a class="headerlink" href="#interfaces" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">openpifpaf.predict</span> <span class="pre">--help</span></code>: <a class="reference download internal" download="" href="_downloads/b26f08c76113616c845eed0181e7630b/cli-help-predict.txt"><code class="xref download docutils literal notranslate"><span class="pre">help</span> <span class="pre">screen</span></code></a></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">openpifpaf.video</span> <span class="pre">--help</span></code>: <a class="reference download internal" download="" href="_downloads/b897aeeb4ce5c8a341db8761e7c65d6d/cli-help-video.txt"><code class="xref download docutils literal notranslate"><span class="pre">help</span> <span class="pre">screen</span></code></a></p></li>
@@ -232,7 +258,7 @@ Alternatively, <code class="docutils literal notranslate"><span class="pre">open
 </ul>
 </div>
 <div class="section" id="pre-trained-models">
-<h1>Pre-trained Models<a class="headerlink" href="#pre-trained-models" title="Permalink to this headline">¶</a></h1>
+<h2>Pre-trained Models<a class="headerlink" href="#pre-trained-models" title="Permalink to this headline">¶</a></h2>
 <p>Performance metrics with version 0.11 on the COCO val set obtained with a GTX1080Ti:</p>
 <table class="colwidths-auto table">
 <thead>
@@ -304,14 +330,14 @@ using the command line option <code class="docutils literal notranslate"><span c
 </table>
 </div>
 <div class="section" id="related-projects">
-<h1>Related Projects<a class="headerlink" href="#related-projects" title="Permalink to this headline">¶</a></h1>
+<h2>Related Projects<a class="headerlink" href="#related-projects" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/vita-epfl/monoloco">monoloco</a>: “Monocular 3D Pedestrian Localization and Uncertainty Estimation” which uses OpenPifPaf for poses.</p></li>
 <li><p><a class="reference external" href="https://github.com/vita-epfl/openpifpafwebdemo">openpifpafwebdemo</a>: web front-end.</p></li>
 </ul>
 </div>
 <div class="section" id="citation">
-<h1>Citation<a class="headerlink" href="#citation" title="Permalink to this headline">¶</a></h1>
+<h2>Citation<a class="headerlink" href="#citation" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@InProceedings</span><span class="p">{</span><span class="n">kreiss2019pifpaf</span><span class="p">,</span>
   <span class="n">author</span> <span class="o">=</span> <span class="p">{</span><span class="n">Kreiss</span><span class="p">,</span> <span class="n">Sven</span> <span class="ow">and</span> <span class="n">Bertoni</span><span class="p">,</span> <span class="n">Lorenzo</span> <span class="ow">and</span> <span class="n">Alahi</span><span class="p">,</span> <span class="n">Alexandre</span><span class="p">},</span>
   <span class="n">title</span> <span class="o">=</span> <span class="p">{{</span><span class="n">PifPaf</span><span class="p">:</span> <span class="n">Composite</span> <span class="n">Fields</span> <span class="k">for</span> <span class="n">Human</span> <span class="n">Pose</span> <span class="n">Estimation</span><span class="p">}},</span>
@@ -333,6 +359,7 @@ using the command line option <code class="docutils literal notranslate"><span c
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
+</div>
 </div>
 </div>
 
