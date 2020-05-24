@@ -163,6 +163,10 @@
             <a href="#resnet" class="nav-link">ResNet</a>
         </li>
     
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#logs" class="nav-link">Logs</a>
+        </li>
+    
     </ul>
 </nav>
 
@@ -176,7 +180,7 @@
                 
   <div class="section" id="training">
 <h1>Training<a class="headerlink" href="#training" title="Permalink to this headline">¶</a></h1>
-<p>See :doc:<code class="docutils literal notranslate"><span class="pre">datasets</span></code> for instructions about the datasets.</p>
+<p>See <a class="reference internal" href="datasets.html"><span class="doc">Datasets</span></a> for instructions about the datasets.</p>
 <p>The exact training command that was used for a model is in the first
 line of the training log file.</p>
 <div class="section" id="shufflenet">
@@ -221,26 +225,11 @@ line of the training log file.</p>
 </pre></div>
 </div>
 <p>You can refine an existing model with the <code class="docutils literal notranslate"><span class="pre">--checkpoint</span></code> option.</p>
-<p>To visualize logs:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python3 -m openpifpaf.logs <span class="se">\</span>
-  outputs/resnet50block5-pif-paf-edge401-190424-122009.pkl.log <span class="se">\</span>
-  outputs/resnet101block5-pif-paf-edge401-190412-151013.pkl.log <span class="se">\</span>
-  outputs/resnet152block5-pif-paf-edge401-190412-121848.pkl.log
-</pre></div>
-</div>
-<p>To produce evaluation metrics every five epochs and check the directory for new
-checkpoints every 5 minutes:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="n">true</span><span class="p">;</span> <span class="n">do</span> \
-  <span class="n">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="mi">0</span> <span class="n">find</span> <span class="n">outputs</span><span class="o">/</span> <span class="o">-</span><span class="n">name</span> <span class="s2">&quot;shufflenetv2k16w-200504-145520-cif-caf-caf25.pkl.epoch??[0,5]&quot;</span> <span class="o">-</span><span class="n">exec</span> \
-    <span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">openpifpaf</span><span class="o">.</span><span class="n">eval_coco</span> <span class="o">--</span><span class="n">checkpoint</span> <span class="p">{}</span> <span class="o">-</span><span class="n">n</span> <span class="mi">500</span> <span class="o">--</span><span class="n">long</span><span class="o">-</span><span class="n">edge</span><span class="o">=</span><span class="mi">641</span> <span class="o">--</span><span class="n">skip</span><span class="o">-</span><span class="n">existing</span> \<span class="p">;</span> \
-  <span class="p">;</span> \
-  <span class="n">sleep</span> <span class="mi">300</span><span class="p">;</span> \
-<span class="n">done</span>
-</pre></div>
-</div>
 </div>
 <div class="section" id="resnet">
 <h2>ResNet<a class="headerlink" href="#resnet" title="Permalink to this headline">¶</a></h2>
+<p>ResNet models are initialized with weights pre-trained on ImageNet.
+That makes their training characteristics different from ShuffleNet (i.e. they look great at the beginning of training).</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">time</span> <span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">0</span>,1 python3 -m openpifpaf.train <span class="se">\</span>
   --lr<span class="o">=</span><span class="m">0</span>.05 <span class="se">\</span>
   --momentum<span class="o">=</span><span class="m">0</span>.9 <span class="se">\</span>
@@ -258,6 +247,26 @@ checkpoints every 5 minutes:</p>
   --ema<span class="o">=</span><span class="m">0</span>.01 <span class="se">\</span>
   --basenet<span class="o">=</span>resnet50 <span class="se">\</span>
   --headnets cif caf caf25
+</pre></div>
+</div>
+</div>
+<div class="section" id="logs">
+<h2>Logs<a class="headerlink" href="#logs" title="Permalink to this headline">¶</a></h2>
+<p>To visualize logs:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python3 -m openpifpaf.logs <span class="se">\</span>
+  outputs/resnet50block5-pif-paf-edge401-190424-122009.pkl.log <span class="se">\</span>
+  outputs/resnet101block5-pif-paf-edge401-190412-151013.pkl.log <span class="se">\</span>
+  outputs/resnet152block5-pif-paf-edge401-190412-121848.pkl.log
+</pre></div>
+</div>
+<p>To produce evaluation metrics every five epochs and check the directory for new
+checkpoints every 5 minutes:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> true<span class="p">;</span> <span class="k">do</span> <span class="se">\</span>
+  <span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">0</span> find outputs/ -name <span class="s2">&quot;shufflenetv2k16w-200504-145520-cif-caf-caf25.pkl.epoch??[0,5]&quot;</span> -exec <span class="se">\</span>
+    python3 -m openpifpaf.eval_coco --checkpoint <span class="o">{}</span> --long-edge<span class="o">=</span><span class="m">641</span> --skip-existing <span class="se">\;</span> <span class="se">\</span>
+  <span class="p">;</span> <span class="se">\</span>
+  sleep <span class="m">300</span><span class="p">;</span> <span class="se">\</span>
+<span class="k">done</span>
 </pre></div>
 </div>
 </div>
