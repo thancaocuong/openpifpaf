@@ -28,6 +28,7 @@
     <script >var togglebuttonSelector = '.toggle, .secondtoggle, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="Modules" href="moduledocs.html" />
@@ -48,6 +49,8 @@
     
         <div class="navbar-brand-box">
 <a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
   
   
   <h1 class="site-logo" id="site-title">OpenPifPaf Guide</h1>
@@ -158,9 +161,16 @@
         
     </div>
     <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
 
 <nav id="bd-toc-nav">
     <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#logo-and-favicon" class="nav-link">Logo and Favicon</a>
+        </li>
     
     </ul>
 </nav>
@@ -184,6 +194,41 @@ pip3 install --editable <span class="s1">&#39;.[train,test]&#39;</span>
 (signified by the dot) with the optional dependencies needed for training and
 testing. If you modify <code class="docutils literal notranslate"><span class="pre">functional.pyx</span></code>, run this last command again which
 recompiles the static code.</p>
+<div class="section" id="logo-and-favicon">
+<h2>Logo and Favicon<a class="headerlink" href="#logo-and-favicon" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="kn">import</span> <span class="nn">openpifpaf</span>
+<span class="kn">from</span> <span class="nn">openpifpaf.datasets.constants</span> <span class="kn">import</span> <span class="n">COCO_KEYPOINTS</span><span class="p">,</span> <span class="n">COCO_PERSON_SKELETON</span><span class="p">,</span> <span class="n">COCO_PERSON_SIGMAS</span><span class="p">,</span> <span class="n">COCO_UPRIGHT_POSE</span>
+
+<span class="n">ann</span> <span class="o">=</span> <span class="n">openpifpaf</span><span class="o">.</span><span class="n">Annotation</span><span class="p">(</span><span class="n">keypoints</span><span class="o">=</span><span class="n">COCO_KEYPOINTS</span><span class="p">,</span> <span class="n">skeleton</span><span class="o">=</span><span class="n">COCO_PERSON_SKELETON</span><span class="p">)</span>
+<span class="n">ann</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">COCO_UPRIGHT_POSE</span><span class="p">)</span>
+
+<span class="n">keypoint_painter</span> <span class="o">=</span> <span class="n">openpifpaf</span><span class="o">.</span><span class="n">show</span><span class="o">.</span><span class="n">KeypointPainter</span><span class="p">(</span><span class="n">color_connections</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">48</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">openpifpaf</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">draw_ann</span><span class="p">(</span><span class="n">ann</span><span class="p">,</span> <span class="n">keypoint_painter</span><span class="o">=</span><span class="n">keypoint_painter</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;equal&#39;</span><span class="p">,</span> <span class="n">margin</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;favicon.png&#39;</span><span class="p">)</span>
+
+<span class="n">keypoint_painter</span> <span class="o">=</span> <span class="n">openpifpaf</span><span class="o">.</span><span class="n">show</span><span class="o">.</span><span class="n">KeypointPainter</span><span class="p">(</span><span class="n">color_connections</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">openpifpaf</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">draw_ann</span><span class="p">(</span><span class="n">ann</span><span class="p">,</span> <span class="n">keypoint_painter</span><span class="o">=</span><span class="n">keypoint_painter</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;logo.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="stderr docutils container">
+<pre class="stderr literal-block">/opt/hostedtoolcache/Python/3.7.7/x64/lib/python3.7/site-packages/openpifpaf/show/canvas.py:33: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+  fig.savefig(fig_file, dpi=dpi)  # , bbox_inches='tight')
+</pre>
+</div>
+<div class="stderr docutils container">
+<pre class="stderr literal-block">/opt/hostedtoolcache/Python/3.7.7/x64/lib/python3.7/site-packages/IPython/core/pylabtools.py:132: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+  fig.canvas.print_figure(bytes_io, **kw)
+</pre>
+</div>
+<img alt="_images/dev_2_2.png" src="_images/dev_2_2.png" />
+<img alt="_images/dev_2_3.png" src="_images/dev_2_3.png" />
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="history">
 <h1>History<a class="headerlink" href="#history" title="Permalink to this headline">¶</a></h1>
