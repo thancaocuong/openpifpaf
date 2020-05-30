@@ -196,13 +196,47 @@ Below is also a short intro to running prediction on videos.</p>
 <p>Run <code class="docutils literal notranslate"><span class="pre">openpifpaf.predict</span></code> on an image:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!python -m openpifpaf.predict coco/000000081988.jpg --image-output --json-output
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!python -m openpifpaf.predict coco/000000081988.jpg --image-output --json-output --debug
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>INFO:openpifpaf.decoder.generator.cifcaf:5 annotations: [14, 16, 17, 16, 15]
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>DEBUG:__main__:neural network device: cpu
+DEBUG:openpifpaf.network.heads:cif = [0], caf = [1]
+DEBUG:openpifpaf.visualizer.base:(&#39;cif&#39;, &#39;cifdet&#39;): indices = []
+DEBUG:openpifpaf.visualizer.base:seeds: indices = []
+DEBUG:openpifpaf.visualizer.base:occupancy: indices = []
+DEBUG:openpifpaf.visualizer.base:occupancy: indices = []
+DEBUG:openpifpaf.decoder.factory:head names = (&#39;cif&#39;, &#39;caf&#39;, &#39;caf25&#39;)
+DEBUG:openpifpaf.visualizer.base:cif: indices = []
+DEBUG:openpifpaf.show.painters:color connections = False, lw = 2, marker = 6
+DEBUG:openpifpaf.visualizer.base:caf: indices = []
+DEBUG:openpifpaf.show.painters:color connections = False, lw = 2, marker = 6
+DEBUG:openpifpaf.show.painters:color connections = True, lw = 6, marker = 3
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.transforms.pad:valid area before pad: [  0.   0. 639. 426.], image size = (640, 427)
+DEBUG:openpifpaf.transforms.pad:pad with (0, 3, 1, 3)
+DEBUG:openpifpaf.transforms.pad:valid area after pad: [  0.   3. 639. 426.], image size = (641, 433)
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.decoder.generator.generator:nn processing time: 0.931s
+DEBUG:openpifpaf.decoder.generator.generator:parallel execution with worker &lt;openpifpaf.decoder.generator.generator.DummyPool object at 0x7fcf590b9650&gt;
+DEBUG:openpifpaf.decoder.generator.cifcaf:initial annotations = 0
+DEBUG:openpifpaf.decoder.cif_hr:target_intensities 0.008s
+DEBUG:openpifpaf.decoder.cif_seeds:seeds 771, 0.002s (C++ 0.000s)
+DEBUG:openpifpaf.decoder.caf_scored:scored caf (1339, 1296) in 0.003s
+DEBUG:openpifpaf.decoder.occupancy:shape = (17, 216, 320), min_scale = 2
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.decoder.generator.cifcaf:annotations 5, 0.042s
+DEBUG:openpifpaf.decoder.occupancy:shape = (17, 194, 283), min_scale = 2
+DEBUG:openpifpaf.decoder.nms:nms = 0.003
+INFO:openpifpaf.decoder.generator.cifcaf:5 annotations: [14, 16, 17, 16, 15]
+DEBUG:openpifpaf.decoder.generator.generator:time: nn = 0.932s, dec = 0.048s
 INFO:__main__:batch 0: coco/000000081988.jpg
+DEBUG:__main__:json output = coco/000000081988.jpg.predictions.json
+DEBUG:__main__:image output = coco/000000081988.jpg.predictions.png
 </pre></div>
 </div>
 </div>
@@ -549,6 +583,7 @@ coco/000000081988.jpg.predictions.json
 <h2>Optional Arguments<a class="headerlink" href="#optional-arguments" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">--show</span></code>: show interactive matplotlib output</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--debug-images</span></code>: enable debug messages and debug plots</p></li>
 </ul>
 <p>Full list of arguments is available with <code class="docutils literal notranslate"><span class="pre">--help</span></code>:</p>
 <div class="cell docutils container">
@@ -599,6 +634,7 @@ coco/000000081988.jpg.predictions.json
                                      [--monocolor-connections]
                                      [--figure-width FIGURE_WIDTH]
                                      [--dpi-factor DPI_FACTOR] [-q] [--debug]
+                                     [--debug-images]
                                      [images [images ...]]
 
 Predict poses for given images.
@@ -705,6 +741,8 @@ pose visualizer:
 logging:
   -q, --quiet           only show warning messages or above (default: False)
   --debug               print debug messages (default: False)
+  --debug-images        print debug messages and enable all debug images
+                        (default: False)
 </pre></div>
 </div>
 </div>

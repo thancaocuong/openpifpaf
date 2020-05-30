@@ -169,7 +169,19 @@
     <ul class="nav section-nav flex-column">
     
         <li class="nav-item toc-entry toc-h2">
+            <a href="#modify-code" class="nav-link">Modify Code</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
             <a href="#logo-and-favicon" class="nav-link">Logo and Favicon</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#history" class="nav-link">History</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#scratch" class="nav-link">Scratch</a>
         </li>
     
     </ul>
@@ -185,6 +197,14 @@
                 
   <div class="section" id="contribute">
 <h1>Contribute<a class="headerlink" href="#contribute" title="Permalink to this headline">¶</a></h1>
+<p>Before we can accept contributions, you need to become a CLAed contributor.
+E-mail a signed copy of the
+<a class="reference external" href="https://github.com/vita-epfl/openpifpaf/blob/master/CLAI.txt">CLAI</a>
+(and if applicable the
+<a class="reference external" href="https://github.com/vita-epfl/openpifpaf/blob/master/CLAC.txt">CLAC</a>)
+as PDF file to research&#64;svenkreiss.com.</p>
+<div class="section" id="modify-code">
+<h2>Modify Code<a class="headerlink" href="#modify-code" title="Permalink to this headline">¶</a></h2>
 <p>For development of the openpifpaf source code itself, you need to clone this repository and then:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip3 install numpy cython
 pip3 install --editable <span class="s1">&#39;.[train,test]&#39;</span>
@@ -194,6 +214,10 @@ pip3 install --editable <span class="s1">&#39;.[train,test]&#39;</span>
 (signified by the dot) with the optional dependencies needed for training and
 testing. If you modify <code class="docutils literal notranslate"><span class="pre">functional.pyx</span></code>, run this last command again which
 recompiles the static code.</p>
+<p>Develop your features in separate feature branches.
+Create a pull request with your suggested changes. Make sure your code passes
+<code class="docutils literal notranslate"><span class="pre">pytest</span></code> and <code class="docutils literal notranslate"><span class="pre">pylint</span></code> checks.</p>
+</div>
 <div class="section" id="logo-and-favicon">
 <h2>Logo and Favicon<a class="headerlink" href="#logo-and-favicon" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
@@ -214,25 +238,17 @@ recompiles the static code.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="stderr docutils container">
-<pre class="stderr literal-block">/opt/hostedtoolcache/Python/3.7.7/x64/lib/python3.7/site-packages/openpifpaf/show/canvas.py:33: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
-  fig.savefig(fig_file, dpi=dpi)  # , bbox_inches='tight')
-/opt/hostedtoolcache/Python/3.7.7/x64/lib/python3.7/site-packages/IPython/core/pylabtools.py:132: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
-  fig.canvas.print_figure(bytes_io, **kw)
-</pre>
-</div>
+<img alt="_images/dev_2_0.png" src="_images/dev_2_0.png" />
 <img alt="_images/dev_2_1.png" src="_images/dev_2_1.png" />
-<img alt="_images/dev_2_2.png" src="_images/dev_2_2.png" />
-</div>
 </div>
 </div>
 </div>
 <div class="section" id="history">
-<h1>History<a class="headerlink" href="#history" title="Permalink to this headline">¶</a></h1>
+<h2>History<a class="headerlink" href="#history" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://github.com/vita-epfl/openpifpaf/blob/master/HISTORY.md">history</a></p>
 </div>
 <div class="section" id="scratch">
-<h1>Scratch<a class="headerlink" href="#scratch" title="Permalink to this headline">¶</a></h1>
+<h2>Scratch<a class="headerlink" href="#scratch" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Uncomment when using on Google Colab:</span>
@@ -250,6 +266,7 @@ recompiles the static code.</p>
 <div class="cell_output docutils container">
 <div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>OpenPifPaf 0.11.2
 </pre></div>
+</div>
 </div>
 </div>
 </div>
