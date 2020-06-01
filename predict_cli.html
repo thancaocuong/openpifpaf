@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Prediction CLI &#8212; OpenPifPaf Guide</title>
+    <title>Prediction &#8212; OpenPifPaf Guide</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="_static/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
@@ -31,7 +31,7 @@
     <link rel="shortcut icon" href="_static/favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Prediction API" href="predict_api.html" />
+    <link rel="next" title="CLI --help" href="cli_help.html" />
     <link rel="prev" title="Training" href="train.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -77,7 +77,10 @@
     <a href="train.html">Training</a>
   </li>
   <li class="active">
-    <a href="">Prediction CLI</a>
+    <a href="">Prediction</a>
+  </li>
+  <li class="">
+    <a href="cli_help.html">CLI --help</a>
   </li>
 <li class="navbar-special">
 <p class="margin-caption">API</p>
@@ -189,8 +192,8 @@
               <div>
                 
   <p><a class="reference external" href="https://www.svenkreiss.com/">Sven Kreiss</a>, 2020</p>
-<div class="section" id="prediction-cli">
-<h1>Prediction CLI<a class="headerlink" href="#prediction-cli" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="prediction">
+<h1>Prediction<a class="headerlink" href="#prediction" title="Permalink to this headline">¶</a></h1>
 <p>Use OpenPifPaf from the command line to run multi-person pose estimation on images.
 Below is also a short intro to running prediction on videos.</p>
 <p>Run <code class="docutils literal notranslate"><span class="pre">openpifpaf.predict</span></code> on an image:</p>
@@ -211,31 +214,27 @@ DEBUG:openpifpaf.show.painters:color connections = False, lw = 2, marker = 6
 DEBUG:openpifpaf.visualizer.base:caf: indices = []
 DEBUG:openpifpaf.show.painters:color connections = False, lw = 2, marker = 6
 DEBUG:openpifpaf.show.painters:color connections = True, lw = 6, marker = 3
-</pre></div>
-</div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.transforms.pad:valid area before pad: [  0.   0. 639. 426.], image size = (640, 427)
+DEBUG:openpifpaf.transforms.pad:valid area before pad: [  0.   0. 639. 426.], image size = (640, 427)
 DEBUG:openpifpaf.transforms.pad:pad with (0, 3, 1, 3)
 DEBUG:openpifpaf.transforms.pad:valid area after pad: [  0.   3. 639. 426.], image size = (641, 433)
 </pre></div>
 </div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.decoder.generator.generator:nn processing time: 0.667s
-DEBUG:openpifpaf.decoder.generator.generator:parallel execution with worker &lt;openpifpaf.decoder.generator.generator.DummyPool object at 0x7f9ef20a2450&gt;
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.decoder.generator.generator:nn processing time: 0.587s
+DEBUG:openpifpaf.decoder.generator.generator:parallel execution with worker &lt;openpifpaf.decoder.generator.generator.DummyPool object at 0x7fb27c628650&gt;
 DEBUG:openpifpaf.decoder.generator.cifcaf:initial annotations = 0
+DEBUG:openpifpaf.decoder.cif_hr:target_intensities 0.007s
 </pre></div>
 </div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.decoder.cif_hr:target_intensities 0.008s
-DEBUG:openpifpaf.decoder.cif_seeds:seeds 771, 0.002s (C++ 0.000s)
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.decoder.cif_seeds:seeds 771, 0.002s (C++ 0.000s)
 DEBUG:openpifpaf.decoder.caf_scored:scored caf (1339, 1296) in 0.003s
 DEBUG:openpifpaf.decoder.occupancy:shape = (17, 216, 320), min_scale = 2
-DEBUG:openpifpaf.decoder.generator.cifcaf:annotations 5, 0.039s
+DEBUG:openpifpaf.decoder.generator.cifcaf:annotations 5, 0.037s
 DEBUG:openpifpaf.decoder.occupancy:shape = (17, 194, 283), min_scale = 2
 DEBUG:openpifpaf.decoder.nms:nms = 0.003
 INFO:openpifpaf.decoder.generator.cifcaf:5 annotations: [14, 16, 17, 16, 15]
-DEBUG:openpifpaf.decoder.generator.generator:time: nn = 0.667s, dec = 0.045s
+DEBUG:openpifpaf.decoder.generator.generator:time: nn = 0.587s, dec = 0.043s
 INFO:__main__:batch 0: coco/000000081988.jpg
-</pre></div>
-</div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>DEBUG:__main__:json output = coco/000000081988.jpg.predictions.json
+DEBUG:__main__:json output = coco/000000081988.jpg.predictions.json
 DEBUG:__main__:image output = coco/000000081988.jpg.predictions.png
 </pre></div>
 </div>
@@ -585,168 +584,7 @@ coco/000000081988.jpg.predictions.json
 <li><p><code class="docutils literal notranslate"><span class="pre">--show</span></code>: show interactive matplotlib output</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--debug-images</span></code>: enable debug messages and debug plots</p></li>
 </ul>
-<p>Full list of arguments is available with <code class="docutils literal notranslate"><span class="pre">--help</span></code>:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!python -m openpifpaf.predict --help
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>usage: python3 -m openpifpaf.predict [-h] [--version]
-                                     [--checkpoint CHECKPOINT]
-                                     [--basenet BASENET]
-                                     [--headnets HEADNETS [HEADNETS ...]]
-                                     [--no-pretrain] [--two-scale]
-                                     [--multi-scale] [--no-multi-scale-hflip]
-                                     [--cross-talk CROSS_TALK]
-                                     [--head-dropout HEAD_DROPOUT]
-                                     [--head-quad HEAD_QUAD]
-                                     [--seed-threshold SEED_THRESHOLD]
-                                     [--instance-threshold INSTANCE_THRESHOLD]
-                                     [--keypoint-threshold KEYPOINT_THRESHOLD]
-                                     [--decoder-workers DECODER_WORKERS]
-                                     [--dense-connections]
-                                     [--dense-coupling DENSE_COUPLING]
-                                     [--caf-seeds] [--force-complete-pose]
-                                     [--profile-decoder PROFILE_DECODER]
-                                     [--cif-th CIF_TH] [--caf-th CAF_TH]
-                                     [--connection-method {max,blend}]
-                                     [--greedy] [--show-box]
-                                     [--show-joint-scales]
-                                     [--show-joint-confidences]
-                                     [--show-decoding-order]
-                                     [--show-frontier-order]
-                                     [--show-only-decoded-connections]
-                                     [--debug-cifhr] [--debug-cif-c]
-                                     [--debug-cif-v] [--debug-cifdet-c]
-                                     [--debug-cifdet-v] [--debug-caf-c]
-                                     [--debug-caf-v]
-                                     [--debug-indices DEBUG_INDICES [DEBUG_INDICES ...]]
-                                     [--glob GLOB] [--show]
-                                     [--image-output [IMAGE_OUTPUT [IMAGE_OUTPUT ...]]]
-                                     [--json-output [JSON_OUTPUT [JSON_OUTPUT ...]]]
-                                     [--batch-size BATCH_SIZE]
-                                     [--long-edge LONG_EDGE]
-                                     [--loader-workers LOADER_WORKERS]
-                                     [--disable-cuda]
-                                     [--line-width LINE_WIDTH]
-                                     [--monocolor-connections]
-                                     [--figure-width FIGURE_WIDTH]
-                                     [--dpi-factor DPI_FACTOR] [-q] [--debug]
-                                     [--debug-images]
-                                     [images [images ...]]
-
-Predict poses for given images.
-
-positional arguments:
-  images                input images (default: None)
-
-optional arguments:
-  -h, --help            show this help message and exit
-  --version             show program&#39;s version number and exit
-  --glob GLOB           glob expression for input images (for many images)
-                        (default: None)
-  --show                show image of output overlay (default: False)
-  --image-output [IMAGE_OUTPUT [IMAGE_OUTPUT ...]]
-                        image output file or directory (default: None)
-  --json-output [JSON_OUTPUT [JSON_OUTPUT ...]]
-                        json output file or directory (default: None)
-  --batch-size BATCH_SIZE
-                        processing batch size (default: 1)
-  --long-edge LONG_EDGE
-                        apply preprocessing to batch images (default: None)
-  --loader-workers LOADER_WORKERS
-                        number of workers for data loading (default: None)
-  --disable-cuda        disable CUDA (default: False)
-  --line-width LINE_WIDTH
-                        line width for skeleton (default: 6)
-  --monocolor-connections
-  --figure-width FIGURE_WIDTH
-                        figure width (default: 10.0)
-  --dpi-factor DPI_FACTOR
-                        increase dpi of output image by this factor (default:
-                        1.0)
-
-network configuration:
-  --checkpoint CHECKPOINT
-                        Load a model from a checkpoint. Use &quot;resnet50&quot;,
-                        &quot;resnet101&quot; or &quot;resnet152&quot; for pretrained OpenPifPaf
-                        models. (default: None)
-  --basenet BASENET     base network, e.g. resnet50 (default: None)
-  --headnets HEADNETS [HEADNETS ...]
-                        head networks (default: None)
-  --no-pretrain         create model without ImageNet pretraining (default:
-                        True)
-  --two-scale           [experimental] (default: False)
-  --multi-scale         [experimental] (default: False)
-  --no-multi-scale-hflip
-                        [experimental] (default: True)
-  --cross-talk CROSS_TALK
-                        [experimental] (default: 0.0)
-
-head:
-  --head-dropout HEAD_DROPOUT
-                        [experimental] zeroing probability of feature in head
-                        input (default: 0.0)
-  --head-quad HEAD_QUAD
-                        number of times to apply quad (subpixel conv) to heads
-                        (default: 1)
-
-decoder configuration:
-  --seed-threshold SEED_THRESHOLD
-                        minimum threshold for seeds (default: 0.5)
-  --instance-threshold INSTANCE_THRESHOLD
-                        filter instances by score (default: 0.1)
-  --keypoint-threshold KEYPOINT_THRESHOLD
-                        filter keypoints by score (default: None)
-  --decoder-workers DECODER_WORKERS
-                        number of workers for pose decoding (default: None)
-  --dense-connections   use dense connections (default: False)
-  --dense-coupling DENSE_COUPLING
-                        dense coupling (default: 0.01)
-  --caf-seeds           [experimental] (default: False)
-  --force-complete-pose
-  --profile-decoder PROFILE_DECODER
-                        specify out .prof file or empty string (default: None)
-
-CifCaf decoders:
-  --cif-th CIF_TH       cif threshold (default: 0.1)
-  --caf-th CAF_TH       caf threshold (default: 0.1)
-  --connection-method {max,blend}
-                        connection method to use, max is faster (default:
-                        blend)
-  --greedy              greedy decoding (default: False)
-
-show:
-  --show-box
-  --show-joint-scales
-  --show-joint-confidences
-  --show-decoding-order
-  --show-frontier-order
-  --show-only-decoded-connections
-
-pose visualizer:
-  --debug-cifhr
-  --debug-cif-c
-  --debug-cif-v
-  --debug-cifdet-c
-  --debug-cifdet-v
-  --debug-caf-c
-  --debug-caf-v
-  --debug-indices DEBUG_INDICES [DEBUG_INDICES ...]
-                        indices of fields to create debug plots for of the
-                        form headname:fieldindex, e.g. cif:5 (default: [])
-
-logging:
-  -q, --quiet           only show warning messages or above (default: False)
-  --debug               print debug messages (default: False)
-  --debug-images        print debug messages and enable all debug images
-                        (default: False)
-</pre></div>
-</div>
-</div>
-</div>
+<p>Full list of arguments is available with <code class="docutils literal notranslate"><span class="pre">--help</span></code>: <a class="reference internal" href="cli_help.html#cli-help-predict"><span class="std std-ref">CLI help for predict</span></a>.</p>
 </div>
 <div class="section" id="video">
 <h2>Video<a class="headerlink" href="#video" title="Permalink to this headline">¶</a></h2>
@@ -755,170 +593,7 @@ logging:
 </pre></div>
 </div>
 <p>Replace <code class="docutils literal notranslate"><span class="pre">myvideotoprocess.mp4</span></code> with <code class="docutils literal notranslate"><span class="pre">0</span></code> for webcam0 or other OpenCV compatible sources.</p>
-<p>All possible arguments:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!python -m openpifpaf.video --help
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>usage: python3 -m openpifpaf.video [-h] [--version] [--checkpoint CHECKPOINT]
-                                   [--basenet BASENET]
-                                   [--headnets HEADNETS [HEADNETS ...]]
-                                   [--no-pretrain] [--two-scale]
-                                   [--multi-scale] [--no-multi-scale-hflip]
-                                   [--cross-talk CROSS_TALK]
-                                   [--head-dropout HEAD_DROPOUT]
-                                   [--head-quad HEAD_QUAD]
-                                   [--seed-threshold SEED_THRESHOLD]
-                                   [--instance-threshold INSTANCE_THRESHOLD]
-                                   [--keypoint-threshold KEYPOINT_THRESHOLD]
-                                   [--decoder-workers DECODER_WORKERS]
-                                   [--dense-connections]
-                                   [--dense-coupling DENSE_COUPLING]
-                                   [--caf-seeds] [--force-complete-pose]
-                                   [--profile-decoder PROFILE_DECODER]
-                                   [--cif-th CIF_TH] [--caf-th CAF_TH]
-                                   [--connection-method {max,blend}]
-                                   [--greedy] [--show-box]
-                                   [--show-joint-scales]
-                                   [--show-joint-confidences]
-                                   [--show-decoding-order]
-                                   [--show-frontier-order]
-                                   [--show-only-decoded-connections]
-                                   [--debug-cifhr] [--debug-cif-c]
-                                   [--debug-cif-v] [--debug-cifdet-c]
-                                   [--debug-cifdet-v] [--debug-caf-c]
-                                   [--debug-caf-v]
-                                   [--debug-indices DEBUG_INDICES [DEBUG_INDICES ...]]
-                                   [--source SOURCE]
-                                   [--video-output [VIDEO_OUTPUT [VIDEO_OUTPUT ...]]]
-                                   [--video-fps VIDEO_FPS] [--show]
-                                   [--horizontal-flip]
-                                   [--no-colored-connections] [--disable-cuda]
-                                   [--scale SCALE] [--start-frame START_FRAME]
-                                   [--skip-frames SKIP_FRAMES]
-                                   [--max-frames MAX_FRAMES]
-                                   [--json-output [JSON_OUTPUT [JSON_OUTPUT ...]]]
-                                   [-q] [--debug]
-
-Video demo application.
-
-Use --scale=0.2 to reduce the input image size to 20%.
-Use --json-output for headless processing.
-
-Example commands:
-    python3 -m pifpaf.video --source=0  # default webcam
-    python3 -m pifpaf.video --source=1  # another webcam
-
-    # streaming source
-    python3 -m pifpaf.video --source=http://127.0.0.1:8080/video
-
-    # file system source (any valid OpenCV source)
-    python3 -m pifpaf.video --source=docs/coco/000000081988.jpg
-
-Trouble shooting:
-* MacOSX: try to prefix the command with &quot;MPLBACKEND=MACOSX&quot;.
-
-optional arguments:
-  -h, --help            show this help message and exit
-  --version             show program&#39;s version number and exit
-  --source SOURCE       OpenCV source url. Integer for webcams. Supports rtmp
-                        streams. (default: None)
-  --video-output [VIDEO_OUTPUT [VIDEO_OUTPUT ...]]
-                        video output file (default: None)
-  --video-fps VIDEO_FPS
-  --show
-  --horizontal-flip
-  --no-colored-connections
-                        do not use colored connections to draw poses (default:
-                        True)
-  --disable-cuda        disable CUDA (default: False)
-  --scale SCALE         input image scale factor (default: 1.0)
-  --start-frame START_FRAME
-  --skip-frames SKIP_FRAMES
-  --max-frames MAX_FRAMES
-  --json-output [JSON_OUTPUT [JSON_OUTPUT ...]]
-                        json output file (default: None)
-
-network configuration:
-  --checkpoint CHECKPOINT
-                        Load a model from a checkpoint. Use &quot;resnet50&quot;,
-                        &quot;resnet101&quot; or &quot;resnet152&quot; for pretrained OpenPifPaf
-                        models. (default: None)
-  --basenet BASENET     base network, e.g. resnet50 (default: None)
-  --headnets HEADNETS [HEADNETS ...]
-                        head networks (default: None)
-  --no-pretrain         create model without ImageNet pretraining (default:
-                        True)
-  --two-scale           [experimental] (default: False)
-  --multi-scale         [experimental] (default: False)
-  --no-multi-scale-hflip
-                        [experimental] (default: True)
-  --cross-talk CROSS_TALK
-                        [experimental] (default: 0.0)
-
-head:
-  --head-dropout HEAD_DROPOUT
-                        [experimental] zeroing probability of feature in head
-                        input (default: 0.0)
-  --head-quad HEAD_QUAD
-                        number of times to apply quad (subpixel conv) to heads
-                        (default: 1)
-
-decoder configuration:
-  --seed-threshold SEED_THRESHOLD
-                        minimum threshold for seeds (default: 0.5)
-  --instance-threshold INSTANCE_THRESHOLD
-                        filter instances by score (default: 0.1)
-  --keypoint-threshold KEYPOINT_THRESHOLD
-                        filter keypoints by score (default: None)
-  --decoder-workers DECODER_WORKERS
-                        number of workers for pose decoding (default: None)
-  --dense-connections   use dense connections (default: False)
-  --dense-coupling DENSE_COUPLING
-                        dense coupling (default: 0.01)
-  --caf-seeds           [experimental] (default: False)
-  --force-complete-pose
-  --profile-decoder PROFILE_DECODER
-                        specify out .prof file or empty string (default: None)
-
-CifCaf decoders:
-  --cif-th CIF_TH       cif threshold (default: 0.1)
-  --caf-th CAF_TH       caf threshold (default: 0.1)
-  --connection-method {max,blend}
-                        connection method to use, max is faster (default:
-                        blend)
-  --greedy              greedy decoding (default: False)
-
-show:
-  --show-box
-  --show-joint-scales
-  --show-joint-confidences
-  --show-decoding-order
-  --show-frontier-order
-  --show-only-decoded-connections
-
-pose visualizer:
-  --debug-cifhr
-  --debug-cif-c
-  --debug-cif-v
-  --debug-cifdet-c
-  --debug-cifdet-v
-  --debug-caf-c
-  --debug-caf-v
-  --debug-indices DEBUG_INDICES [DEBUG_INDICES ...]
-                        indices of fields to create debug plots for of the
-                        form headname:fieldindex, e.g. cif:5 (default: [])
-
-logging:
-  -q, --quiet           only show warning messages or above (default: False)
-  --debug               print debug messages (default: False)
-</pre></div>
-</div>
-</div>
-</div>
+<p>Full list of arguments is available with <code class="docutils literal notranslate"><span class="pre">--help</span></code>: <a class="reference internal" href="cli_help.html#cli-help-video"><span class="std std-ref">CLI help for video</span></a>.</p>
 <p>Image credit: “<a class="reference external" href="https://www.flickr.com/photos/fotologic/6038911779/in/photostream/">Learning to surf</a>” by fotologic which is licensed under <a class="reference external" href="https://creativecommons.org/licenses/by/2.0/">CC-BY-2.0</a>.</p>
 </div>
 </div>
@@ -933,7 +608,7 @@ logging:
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="train.html" title="previous page">Training</a>
-    <a class='right-next' id="next-link" href="predict_api.html" title="next page">Prediction API</a>
+    <a class='right-next' id="next-link" href="cli_help.html" title="next page">CLI <code class="docutils literal notranslate"><span class="pre">--help</span></code></a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
