@@ -202,11 +202,9 @@ Below is also a short intro to running prediction on videos.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>DEBUG:__main__:neural network device: cpu
-DEBUG:openpifpaf.network.heads:cif = [0], caf = [1]
-DEBUG:openpifpaf.visualizer.base:(&#39;cif&#39;, &#39;cifdet&#39;): indices = []
-DEBUG:openpifpaf.visualizer.base:seeds: indices = []
-DEBUG:openpifpaf.visualizer.base:occupancy: indices = []
-DEBUG:openpifpaf.visualizer.base:occupancy: indices = []
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.network.heads:cif = [0], caf = [1]
 DEBUG:openpifpaf.decoder.factory:head names = (&#39;cif&#39;, &#39;caf&#39;, &#39;caf25&#39;)
 DEBUG:openpifpaf.visualizer.base:cif: indices = []
 DEBUG:openpifpaf.show.painters:color connections = False, lw = 2, marker = 6
@@ -220,22 +218,24 @@ DEBUG:openpifpaf.transforms.pad:pad with (0, 3, 1, 3)
 DEBUG:openpifpaf.transforms.pad:valid area after pad: [  0.   3. 639. 426.], image size = (641, 433)
 </pre></div>
 </div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.decoder.generator.generator:nn processing time: 0.654s
-DEBUG:openpifpaf.decoder.generator.generator:parallel execution with worker &lt;openpifpaf.decoder.generator.generator.DummyPool object at 0x7fc77c79ec50&gt;
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.decoder.generator.generator:nn processing time: 0.966s
+DEBUG:openpifpaf.decoder.generator.generator:parallel execution with worker &lt;openpifpaf.decoder.generator.generator.DummyPool object at 0x7f083bf46290&gt;
 DEBUG:openpifpaf.decoder.generator.cifcaf:initial annotations = 0
-DEBUG:openpifpaf.decoder.cif_hr:target_intensities 0.006s
-DEBUG:openpifpaf.decoder.cif_seeds:seeds 771, 0.002s (C++ 0.000s)
-DEBUG:openpifpaf.decoder.caf_scored:scored caf (1339, 1296) in 0.003s
-DEBUG:openpifpaf.decoder.occupancy:shape = (17, 216, 320), min_scale = 2
+DEBUG:openpifpaf.decoder.cif_hr:target_intensities 0.009s
+DEBUG:openpifpaf.decoder.cif_seeds:seeds 771, 0.002s (C++ 0.001s)
 </pre></div>
 </div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.decoder.generator.cifcaf:annotations 5, 0.038s
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.decoder.caf_scored:scored caf (1339, 1296) in 0.004s
+DEBUG:openpifpaf.decoder.occupancy:shape = (17, 216, 320), min_scale = 2
+DEBUG:openpifpaf.decoder.generator.cifcaf:annotations 5, 0.055s
 DEBUG:openpifpaf.decoder.occupancy:shape = (17, 194, 283), min_scale = 2
-DEBUG:openpifpaf.decoder.nms:nms = 0.003
+DEBUG:openpifpaf.decoder.nms:nms = 0.004
 INFO:openpifpaf.decoder.generator.cifcaf:5 annotations: [14, 16, 17, 16, 15]
-DEBUG:openpifpaf.decoder.generator.generator:time: nn = 0.655s, dec = 0.044s
+DEBUG:openpifpaf.decoder.generator.generator:time: nn = 0.966s, dec = 0.063s
 INFO:__main__:batch 0: coco/000000081988.jpg
-DEBUG:__main__:json output = coco/000000081988.jpg.predictions.json
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>DEBUG:__main__:json output = coco/000000081988.jpg.predictions.json
 DEBUG:__main__:image output = coco/000000081988.jpg.predictions.png
 </pre></div>
 </div>
@@ -312,9 +312,6 @@ coco/000000081988.jpg.predictions.json
             405.22,
             369.85,
             0.76
-</pre></div>
-</div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>
         ],
         &quot;bbox&quot;: [
             289.18,
