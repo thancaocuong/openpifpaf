@@ -243,7 +243,7 @@
                                      [--dense-connections]
                                      [--dense-coupling DENSE_COUPLING]
                                      [--caf-seeds] [--force-complete-pose]
-                                     [--profile-decoder PROFILE_DECODER]
+                                     [--profile-decoder [PROFILE_DECODER]]
                                      [--cif-th CIF_TH] [--caf-th CAF_TH]
                                      [--connection-method {max,blend}]
                                      [--greedy] [--show-box]
@@ -258,8 +258,8 @@
                                      [--debug-caf-v]
                                      [--debug-indices DEBUG_INDICES [DEBUG_INDICES ...]]
                                      [--glob GLOB] [--show]
-                                     [--image-output [IMAGE_OUTPUT [IMAGE_OUTPUT ...]]]
-                                     [--json-output [JSON_OUTPUT [JSON_OUTPUT ...]]]
+                                     [--image-output [IMAGE_OUTPUT]]
+                                     [--json-output [JSON_OUTPUT]]
                                      [--batch-size BATCH_SIZE]
                                      [--long-edge LONG_EDGE]
                                      [--loader-workers LOADER_WORKERS]
@@ -282,9 +282,9 @@ optional arguments:
   --glob GLOB           glob expression for input images (for many images)
                         (default: None)
   --show                show image of output overlay (default: False)
-  --image-output [IMAGE_OUTPUT [IMAGE_OUTPUT ...]]
+  --image-output [IMAGE_OUTPUT]
                         image output file or directory (default: None)
-  --json-output [JSON_OUTPUT [JSON_OUTPUT ...]]
+  --json-output [JSON_OUTPUT]
                         json output file or directory (default: None)
   --batch-size BATCH_SIZE
                         processing batch size (default: 1)
@@ -341,8 +341,9 @@ decoder configuration:
                         dense coupling (default: 0.01)
   --caf-seeds           [experimental] (default: False)
   --force-complete-pose
-  --profile-decoder PROFILE_DECODER
-                        specify out .prof file or empty string (default: None)
+  --profile-decoder [PROFILE_DECODER]
+                        specify out .prof file or nothing for default file
+                        name (default: None)
 
 CifCaf decoders:
   --cif-th CIF_TH       cif threshold (default: 0.1)
@@ -406,7 +407,7 @@ logging:
                                    [--dense-connections]
                                    [--dense-coupling DENSE_COUPLING]
                                    [--caf-seeds] [--force-complete-pose]
-                                   [--profile-decoder PROFILE_DECODER]
+                                   [--profile-decoder [PROFILE_DECODER]]
                                    [--cif-th CIF_TH] [--caf-th CAF_TH]
                                    [--connection-method {max,blend}]
                                    [--greedy] [--show-box]
@@ -421,15 +422,15 @@ logging:
                                    [--debug-caf-v]
                                    [--debug-indices DEBUG_INDICES [DEBUG_INDICES ...]]
                                    [--source SOURCE]
-                                   [--video-output [VIDEO_OUTPUT [VIDEO_OUTPUT ...]]]
+                                   [--video-output [VIDEO_OUTPUT]]
                                    [--video-fps VIDEO_FPS] [--show]
                                    [--horizontal-flip]
                                    [--no-colored-connections] [--disable-cuda]
                                    [--scale SCALE] [--start-frame START_FRAME]
                                    [--skip-frames SKIP_FRAMES]
                                    [--max-frames MAX_FRAMES]
-                                   [--json-output [JSON_OUTPUT [JSON_OUTPUT ...]]]
-                                   [-q] [--debug]
+                                   [--json-output [JSON_OUTPUT]] [-q]
+                                   [--debug]
 
 Video demo application.
 
@@ -454,7 +455,7 @@ optional arguments:
   --version             show program&#39;s version number and exit
   --source SOURCE       OpenCV source url. Integer for webcams. Supports rtmp
                         streams. (default: None)
-  --video-output [VIDEO_OUTPUT [VIDEO_OUTPUT ...]]
+  --video-output [VIDEO_OUTPUT]
                         video output file (default: None)
   --video-fps VIDEO_FPS
   --show
@@ -467,7 +468,7 @@ optional arguments:
   --start-frame START_FRAME
   --skip-frames SKIP_FRAMES
   --max-frames MAX_FRAMES
-  --json-output [JSON_OUTPUT [JSON_OUTPUT ...]]
+  --json-output [JSON_OUTPUT]
                         json output file (default: None)
 
 network configuration:
@@ -509,8 +510,9 @@ decoder configuration:
                         dense coupling (default: 0.01)
   --caf-seeds           [experimental] (default: False)
   --force-complete-pose
-  --profile-decoder PROFILE_DECODER
-                        specify out .prof file or empty string (default: None)
+  --profile-decoder [PROFILE_DECODER]
+                        specify out .prof file or nothing for default file
+                        name (default: None)
 
 CifCaf decoders:
   --cif-th CIF_TH       cif threshold (default: 0.1)
@@ -616,10 +618,7 @@ logging:
 Train a pifpaf network.
 
 optional arguments:
-  -h, --help       
-</pre></div>
-</div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>     show this help message and exit
+  -h, --help            show this help message and exit
   --version             show program&#39;s version number and exit
   -o OUTPUT, --output OUTPUT
                         output file (default: None)
@@ -793,7 +792,7 @@ debug:
                                        [--dense-coupling DENSE_COUPLING]
                                        [--caf-seeds]
                                        [--no-force-complete-pose]
-                                       [--profile-decoder PROFILE_DECODER]
+                                       [--profile-decoder [PROFILE_DECODER]]
                                        [--cif-th CIF_TH] [--caf-th CAF_TH]
                                        [--connection-method {max,blend}]
                                        [--greedy] [--show-box]
@@ -889,8 +888,9 @@ decoder configuration:
                         dense coupling (default: 0.01)
   --caf-seeds           [experimental] (default: False)
   --no-force-complete-pose
-  --profile-decoder PROFILE_DECODER
-                        specify out .prof file or empty string (default: None)
+  --profile-decoder [PROFILE_DECODER]
+                        specify out .prof file or nothing for default file
+                        name (default: None)
 
 CifCaf decoders:
   --cif-th CIF_TH       cif threshold (default: 0.1)
