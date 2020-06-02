@@ -179,6 +179,10 @@
         </li>
     
         <li class="nav-item toc-entry toc-h2">
+            <a href="#profile-decoder" class="nav-link">Profile Decoder</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
             <a href="#logo-and-favicon" class="nav-link">Logo and Favicon</a>
         </li>
     
@@ -229,6 +233,99 @@ recompiles the static code.</p>
 Create a pull request with your suggested changes. Make sure your code passes
 <code class="docutils literal notranslate"><span class="pre">pytest</span></code> and <code class="docutils literal notranslate"><span class="pre">pylint</span></code> checks.</p>
 </div>
+<div class="section" id="profile-decoder">
+<h2>Profile Decoder<a class="headerlink" href="#profile-decoder" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!python -m openpifpaf.predict coco/000000081988.jpg --debug --profile-decoder
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>usage: python3 -m openpifpaf.predict [-h] [--version]
+                                     [--checkpoint CHECKPOINT]
+                                     [--basenet BASENET]
+                                     [--headnets HEADNETS [HEADNETS ...]]
+                                     [--no-pretrain] [--two-scale]
+                                     [--multi-scale] [--no-multi-scale-hflip]
+                                     [--cross-talk CROSS_TALK]
+                                     [--head-dropout HEAD_DROPOUT]
+                                     [--head-quad HEAD_QUAD]
+                                     [--seed-threshold SEED_THRESHOLD]
+                                     [--instance-threshold INSTANCE_THRESHOLD]
+                                     [--keypoint-threshold KEYPOINT_THRESHOLD]
+                                     [--decoder-workers DECODER_WORKERS]
+                                     [--dense-connections]
+                                     [--dense-coupling DENSE_COUPLING]
+                                     [--caf-seeds] [--force-complete-pose]
+                                     [--profile-decoder PROFILE_DECODER]
+                                     [--cif-th CIF_TH] [--caf-th CAF_TH]
+                                     [--connection-method {max,blend}]
+                                     [--greedy] [--show-box]
+                                     [--show-joint-scales]
+                                     [--show-joint-confidences]
+                                     [--show-decoding-order]
+                                     [--show-frontier-order]
+                                     [--show-only-decoded-connections]
+                                     [--debug-cifhr] [--debug-cif-c]
+                                     [--debug-cif-v] [--debug-cifdet-c]
+                                     [--debug-cifdet-v] [--debug-caf-c]
+                                     [--debug-caf-v]
+                    
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>                 [--debug-indices DEBUG_INDICES [DEBUG_INDICES ...]]
+                                     [--glob GLOB] [--show]
+                                     [--image-output [IMAGE_OUTPUT [IMAGE_OUTPUT ...]]]
+                                     [--json-output [JSON_OUTPUT [JSON_OUTPUT ...]]]
+                                     [--batch-size BATCH_SIZE]
+                                     [--long-edge LONG_EDGE]
+                                     [--loader-workers LOADER_WORKERS]
+                                     [--disable-cuda]
+                                     [--line-width LINE_WIDTH]
+                                     [--monocolor-connections]
+                                     [--figure-width FIGURE_WIDTH]
+                                     [--dpi-factor DPI_FACTOR] [-q] [--debug]
+                                     [--debug-images]
+                                     [images [images ...]]
+python3 -m openpifpaf.predict: error: argument --profile-decoder: expected one argument
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!flameprof profile_decoder.prof &gt; profile_decoder_flame.svg
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
+  File &quot;/opt/hostedtoolcache/Python/3.7.7/x64/lib/python3.7/runpy.py&quot;, line 193, in _run_module_as_main
+    &quot;__main__&quot;, mod_spec)
+  File &quot;/opt/hostedtoolcache/Python/3.7.7/x64/lib/python3.7/runpy.py&quot;, line 85, in _run_code
+    exec(code, run_globals)
+  File &quot;/opt/hostedtoolcache/Python/3.7.7/x64/lib/python3.7/site-packages/flameprof.py&quot;, line 402, in &lt;module&gt;
+    s = pstats.Stats(args.stats)
+  File &quot;/opt/hostedtoolcache/Python/3.7.7/x64/lib/python3.7/pstats.py&quot;, line 96, in __init__
+    self.init(arg)
+  File &quot;/opt/hostedtoolcache/Python/3.7.7/x64/lib/python3.7/pstats.py&quot;, line 110, in init
+    self.load_stats(arg)
+  File &quot;/opt/hostedtoolcache/Python/3.7.7/x64/lib/python3.7/pstats.py&quot;, line 123, in load_stats
+    with open(arg, &#39;rb&#39;) as f:
+FileNotFoundError: [Errno 2] No such file or directory: &#39;profile_decoder.prof&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="decoder flame graph" src="_images/profile_decoder_flame.svg" /></p>
+<p>There is a second output that is generated from the Autograd Profiler. This can only be viewed in the Chrome browser:</p>
+<ul class="simple">
+<li><p>open <code class="docutils literal notranslate"><span class="pre">chrome://tracing</span></code></p></li>
+<li><p>click “Load” in the top left corner</p></li>
+<li><p>select <code class="docutils literal notranslate"><span class="pre">decoder_profile.1.json</span></code></p></li>
+</ul>
+</div>
 <div class="section" id="logo-and-favicon">
 <h2>Logo and Favicon<a class="headerlink" href="#logo-and-favicon" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
@@ -249,8 +346,8 @@ Create a pull request with your suggested changes. Make sure your code passes
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/dev_2_0.png" src="_images/dev_2_0.png" />
-<img alt="_images/dev_2_1.png" src="_images/dev_2_1.png" />
+<img alt="_images/dev_7_0.png" src="_images/dev_7_0.png" />
+<img alt="_images/dev_7_1.png" src="_images/dev_7_1.png" />
 </div>
 </div>
 </div>
@@ -285,6 +382,7 @@ decorator==4.4.2
 defusedxml==0.6.0
 docutils==0.16
 entrypoints==0.3
+flameprof==0.4
 future==0.18.2
 gitdb==4.0.5
 GitPython==3.1.3
@@ -320,13 +418,14 @@ nbclient==0.3.1
 nbconvert==5.6.1
 nbdime==2.0.0
 nbformat==5.0.6
+nbstripout==0.3.7
 nbval==0.9.5
 nest-asyncio==1.3.3
 notebook==6.0.3
 numpy==1.18.4
 onnx==1.7.0
 opencv-python==4.2.0.34
-openpifpaf @ file:///home/runner/work/openpifpaf/openpifpaf
+openpifpaf==0.11.3
 oset==0.1.3
 packaging==20.4
 pandocfilters==1.4.2
