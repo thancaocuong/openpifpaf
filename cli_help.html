@@ -101,6 +101,9 @@
     <a href="dev.html">Contribute</a>
   </li>
   <li class="">
+    <a href="https://github.com/vita-epfl/openpifpaf/blob/master/HISTORY.md">History<i class="fas fa-external-link-alt"></i></a>
+  </li>
+  <li class="">
     <a href="https://github.com/vita-epfl/openpifpaf">GitHub<i class="fas fa-external-link-alt"></i></a>
   </li>
 </ul>
@@ -147,7 +150,16 @@
             
         </div>
 
-        <!-- Edit this page -->
+        <!-- Source interaction buttons -->
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+            <div class="dropdown-buttons sourcebuttons">
+                <a class="repository-button" href="https://github.com/vita-epfl/openpifpaf"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Source repository"><i class="fab fa-github"></i>repository</button></a>
+                <a class="issues-button" href="https://github.com/vita-epfl/openpifpaf/issues/new?title=Issue%20on%20page%20%2Fcli_help.html&body=Your%20issue%20content%20here."><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+                
+            </div>
+        </div>
         
 
         <!-- Full screen (wrap in <a> to have style consistency -->
@@ -306,8 +318,8 @@ optional arguments:
 network configuration:
   --checkpoint CHECKPOINT
                         Load a model from a checkpoint. Use &quot;resnet50&quot;,
-                        &quot;resnet101&quot; or &quot;resnet152&quot; for pretrained OpenPifPaf
-                        models. (default: None)
+                        &quot;shufflenetv2k16w&quot; or &quot;shufflenetv2k30w&quot; for
+                        pretrained OpenPifPaf models. (default: None)
   --basenet BASENET     base network, e.g. resnet50 (default: None)
   --headnets HEADNETS [HEADNETS ...]
                         head networks (default: None)
@@ -458,7 +470,7 @@ optional arguments:
   -h, --help            show this help message and exit
   --version             show program&#39;s version number and exit
   --source SOURCE       OpenCV source url. Integer for webcams. Supports rtmp
-                        streams. (default: None)
+                        streams. (default: 0)
   --video-output [VIDEO_OUTPUT]
                         video output file (default: None)
   --video-fps VIDEO_FPS
@@ -478,8 +490,8 @@ optional arguments:
 network configuration:
   --checkpoint CHECKPOINT
                         Load a model from a checkpoint. Use &quot;resnet50&quot;,
-                        &quot;resnet101&quot; or &quot;resnet152&quot; for pretrained OpenPifPaf
-                        models. (default: None)
+                        &quot;shufflenetv2k16w&quot; or &quot;shufflenetv2k30w&quot; for
+                        pretrained OpenPifPaf models. (default: None)
   --basenet BASENET     base network, e.g. resnet50 (default: None)
   --headnets HEADNETS [HEADNETS ...]
                         head networks (default: None)
@@ -636,7 +648,7 @@ optional arguments:
                         overall image rescale factor (default: 1.0)
   --update-batchnorm-runningstatistics
                         update batch norm running statistics (default: False)
-  --ema EMA             ema decay constant (default: 0.001)
+  --ema EMA             ema decay constant (default: 0.01)
   --disable-cuda        disable CUDA (default: False)
 
 logging:
@@ -645,8 +657,8 @@ logging:
 network configuration:
   --checkpoint CHECKPOINT
                         Load a model from a checkpoint. Use &quot;resnet50&quot;,
-                        &quot;resnet101&quot; or &quot;resnet152&quot; for pretrained OpenPifPaf
-                        models. (default: None)
+                        &quot;shufflenetv2k16w&quot; or &quot;shufflenetv2k30w&quot; for
+                        pretrained OpenPifPaf models. (default: None)
   --basenet BASENET     base network, e.g. resnet50 (default: None)
   --headnets HEADNETS [HEADNETS ...]
                         head networks (default: None)
@@ -862,8 +874,8 @@ optional arguments:
 network configuration:
   --checkpoint CHECKPOINT
                         Load a model from a checkpoint. Use &quot;resnet50&quot;,
-                        &quot;resnet101&quot; or &quot;resnet152&quot; for pretrained OpenPifPaf
-                        models. (default: None)
+                        &quot;shufflenetv2k16w&quot; or &quot;shufflenetv2k30w&quot; for
+                        pretrained OpenPifPaf models. (default: None)
   --basenet BASENET     base network, e.g. resnet50 (default: None)
   --headnets HEADNETS [HEADNETS ...]
                         head networks (default: None)

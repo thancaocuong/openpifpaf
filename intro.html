@@ -100,6 +100,9 @@
     <a href="dev.html">Contribute</a>
   </li>
   <li class="">
+    <a href="https://github.com/vita-epfl/openpifpaf/blob/master/HISTORY.md">History<i class="fas fa-external-link-alt"></i></a>
+  </li>
+  <li class="">
     <a href="https://github.com/vita-epfl/openpifpaf">GitHub<i class="fas fa-external-link-alt"></i></a>
   </li>
 </ul>
@@ -146,7 +149,16 @@
             
         </div>
 
-        <!-- Edit this page -->
+        <!-- Source interaction buttons -->
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+            <div class="dropdown-buttons sourcebuttons">
+                <a class="repository-button" href="https://github.com/vita-epfl/openpifpaf"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Source repository"><i class="fab fa-github"></i>repository</button></a>
+                <a class="issues-button" href="https://github.com/vita-epfl/openpifpaf/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here."><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+                
+            </div>
+        </div>
         
 
         <!-- Full screen (wrap in <a> to have style consistency -->
@@ -198,7 +210,7 @@
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Under construction. At the moment, this guide is not much more than a placeholder.</p>
+<p>Under construction.</p>
 </div>
 <p>Continuously tested on Linux, MacOS and Windows: <a class="reference external" href="https://travis-ci.org/vita-epfl/openpifpaf"><img alt="Build Status" src="https://travis-ci.org/vita-epfl/openpifpaf.svg?branch=master" /></a><br />
 <a class="reference external" href="http://openaccess.thecvf.com/content_CVPR_2019/html/Kreiss_PifPaf_Composite_Fields_for_Human_Pose_Estimation_CVPR_2019_paper.html">CVPR 2019 paper</a></p>
@@ -263,16 +275,16 @@ Alternatively, <code class="docutils literal notranslate"><span class="pre">open
 </thead>
 <tbody>
 <tr class="row-even"><td class="text-align:right"><p><a class="reference external" href="https://github.com/vita-epfl/openpifpaf-torchhub/releases/download/v0.11.2/resnet50-200527-171310-cif-caf-caf25-o10s-c0b7ae80.pkl">resnet50</a></p></td>
-<td class="text-align:center"><p><strong>67.7</strong></p></td>
-<td class="text-align:center"><p>65.1</p></td>
+<td class="text-align:center"><p><strong>67.8</strong></p></td>
+<td class="text-align:center"><p>65.3</p></td>
 <td class="text-align:center"><p>72.6</p></td>
-<td class="text-align:center"><p>69</p></td>
-<td class="text-align:center"><p>27</p></td>
+<td class="text-align:center"><p>70</p></td>
+<td class="text-align:center"><p>28</p></td>
 <td class="text-align:right"><p>105.0MB</p></td>
 </tr>
 <tr class="row-odd"><td class="text-align:right"><p><a class="reference external" href="https://github.com/vita-epfl/openpifpaf-torchhub/releases/download/v0.11.0/shufflenetv2k16w-200510-221334-cif-caf-caf25-o10s-604c5956.pkl">shufflenetv2k16w</a></p></td>
-<td class="text-align:center"><p><strong>67.1</strong></p></td>
-<td class="text-align:center"><p>62.0</p></td>
+<td class="text-align:center"><p><strong>67.3</strong></p></td>
+<td class="text-align:center"><p>62.2</p></td>
 <td class="text-align:center"><p>75.3</p></td>
 <td class="text-align:center"><p>54</p></td>
 <td class="text-align:center"><p>25</p></td>
@@ -280,8 +292,8 @@ Alternatively, <code class="docutils literal notranslate"><span class="pre">open
 </tr>
 <tr class="row-even"><td class="text-align:right"><p><a class="reference external" href="https://github.com/vita-epfl/openpifpaf-torchhub/releases/download/v0.11.0/shufflenetv2k30w-200510-104256-cif-caf-caf25-o10s-0b5ba06f.pkl">shufflenetv2k30w</a></p></td>
 <td class="text-align:center"><p><strong>71.1</strong></p></td>
-<td class="text-align:center"><p>65.9</p></td>
-<td class="text-align:center"><p>79.1</p></td>
+<td class="text-align:center"><p>66.0</p></td>
+<td class="text-align:center"><p>79.0</p></td>
 <td class="text-align:center"><p>94</p></td>
 <td class="text-align:center"><p>22</p></td>
 <td class="text-align:right"><p>122.3MB</p></td>

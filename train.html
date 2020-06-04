@@ -101,6 +101,9 @@
     <a href="dev.html">Contribute</a>
   </li>
   <li class="">
+    <a href="https://github.com/vita-epfl/openpifpaf/blob/master/HISTORY.md">History<i class="fas fa-external-link-alt"></i></a>
+  </li>
+  <li class="">
     <a href="https://github.com/vita-epfl/openpifpaf">GitHub<i class="fas fa-external-link-alt"></i></a>
   </li>
 </ul>
@@ -147,7 +150,16 @@
             
         </div>
 
-        <!-- Edit this page -->
+        <!-- Source interaction buttons -->
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+            <div class="dropdown-buttons sourcebuttons">
+                <a class="repository-button" href="https://github.com/vita-epfl/openpifpaf"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Source repository"><i class="fab fa-github"></i>repository</button></a>
+                <a class="issues-button" href="https://github.com/vita-epfl/openpifpaf/issues/new?title=Issue%20on%20page%20%2Ftrain.html&body=Your%20issue%20content%20here."><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+                
+            </div>
+        </div>
         
 
         <!-- Full screen (wrap in <a> to have style consistency -->
@@ -209,19 +221,15 @@ line of the training log file.</p>
 <p>ShuffleNet models are trained without ImageNet pretraining:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">time</span> <span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">0</span>,1 python3 -m openpifpaf.train <span class="se">\</span>
   --lr<span class="o">=</span><span class="m">0</span>.1 <span class="se">\</span>
-  --momentum<span class="o">=</span><span class="m">0</span>.9 <span class="se">\</span>
   --epochs<span class="o">=</span><span class="m">150</span> <span class="se">\</span>
-  --lr-warm-up-epochs<span class="o">=</span><span class="m">1</span> <span class="se">\</span>
   --lr-decay <span class="m">120</span> <span class="se">\</span>
   --lr-decay-epochs<span class="o">=</span><span class="m">20</span> <span class="se">\</span>
-  --lr-decay-factor<span class="o">=</span><span class="m">0</span>.1 <span class="se">\</span>
   --batch-size<span class="o">=</span><span class="m">32</span> <span class="se">\</span>
   --square-edge<span class="o">=</span><span class="m">385</span> <span class="se">\</span>
   --lambdas <span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.2   <span class="m">1</span> <span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.2 <span class="m">0</span>.2    <span class="m">1</span> <span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.2 <span class="m">0</span>.2 <span class="se">\</span>
   --auto-tune-mtl <span class="se">\</span>
   --weight-decay<span class="o">=</span>1e-5 <span class="se">\</span>
   --update-batchnorm-runningstatistics <span class="se">\</span>
-  --ema<span class="o">=</span><span class="m">0</span>.01 <span class="se">\</span>
   --basenet<span class="o">=</span>shufflenetv2k16w <span class="se">\</span>
   --headnets cif caf caf25
 
@@ -229,19 +237,15 @@ line of the training log file.</p>
 <span class="c1"># extended-scale and 10% orientation invariance:</span>
 <span class="nb">time</span> <span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">0</span>,1 python3 -m openpifpaf.train <span class="se">\</span>
   --lr<span class="o">=</span><span class="m">0</span>.05 <span class="se">\</span>
-  --momentum<span class="o">=</span><span class="m">0</span>.9 <span class="se">\</span>
   --epochs<span class="o">=</span><span class="m">250</span> <span class="se">\</span>
-  --lr-warm-up-epochs<span class="o">=</span><span class="m">1</span> <span class="se">\</span>
-  --lr-decay <span class="m">220</span> <span class="se">\</span>
-  --lr-decay-epochs<span class="o">=</span><span class="m">30</span> <span class="se">\</span>
-  --lr-decay-factor<span class="o">=</span><span class="m">0</span>.01 <span class="se">\</span>
+  --lr-decay <span class="m">220</span> <span class="m">235</span> <span class="se">\</span>
+  --lr-decay-epochs<span class="o">=</span><span class="m">15</span> <span class="se">\</span>
   --batch-size<span class="o">=</span><span class="m">32</span> <span class="se">\</span>
   --square-edge<span class="o">=</span><span class="m">385</span> <span class="se">\</span>
   --lambdas <span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.2   <span class="m">1</span> <span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.2 <span class="m">0</span>.2    <span class="m">1</span> <span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.2 <span class="m">0</span>.2 <span class="se">\</span>
   --auto-tune-mtl <span class="se">\</span>
   --weight-decay<span class="o">=</span>1e-5 <span class="se">\</span>
   --update-batchnorm-runningstatistics <span class="se">\</span>
-  --ema<span class="o">=</span><span class="m">0</span>.01 <span class="se">\</span>
   --checkpoint outputs/shufflenetv2k16w-200504-145520-cif-caf-caf25-d05e5520.pkl --extended-scale --orientation-invariant<span class="o">=</span><span class="m">0</span>.1
 </pre></div>
 </div>
@@ -249,19 +253,15 @@ line of the training log file.</p>
 <p>For large models, reduce the batch size and learning rate by the same factor:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">time</span> <span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">0</span>,1 python3 -m openpifpaf.train <span class="se">\</span>
   --lr<span class="o">=</span><span class="m">0</span>.025 <span class="se">\</span>
-  --momentum<span class="o">=</span><span class="m">0</span>.9 <span class="se">\</span>
   --epochs<span class="o">=</span><span class="m">200</span> <span class="se">\</span>
-  --lr-warm-up-epochs<span class="o">=</span><span class="m">1</span> <span class="se">\</span>
-  --lr-decay <span class="m">180</span> <span class="se">\</span>
-  --lr-decay-epochs<span class="o">=</span><span class="m">20</span> <span class="se">\</span>
-  --lr-decay-factor<span class="o">=</span><span class="m">0</span>.01 <span class="se">\</span>
+  --lr-decay <span class="m">180</span> <span class="m">190</span> <span class="se">\</span>
+  --lr-decay-epochs<span class="o">=</span><span class="m">10</span> <span class="se">\</span>
   --batch-size<span class="o">=</span><span class="m">16</span> <span class="se">\</span>
   --square-edge<span class="o">=</span><span class="m">385</span> <span class="se">\</span>
   --lambdas <span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.2   <span class="m">1</span> <span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.2 <span class="m">0</span>.2    <span class="m">1</span> <span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.2 <span class="m">0</span>.2 <span class="se">\</span>
   --auto-tune-mtl <span class="se">\</span>
   --weight-decay<span class="o">=</span>1e-5 <span class="se">\</span>
   --update-batchnorm-runningstatistics <span class="se">\</span>
-  --ema<span class="o">=</span><span class="m">0</span>.01 <span class="se">\</span>
   --checkpoint outputs/shufflenetv2k44w-200521-074105-cif-caf-caf25-a35c65dd.pkl --extended-scale --orientation-invariant<span class="o">=</span><span class="m">0</span>.1
 </pre></div>
 </div>
@@ -272,19 +272,15 @@ line of the training log file.</p>
 That makes their training characteristics different from ShuffleNet (i.e. they look great at the beginning of training).</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">time</span> <span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">0</span>,1 python3 -m openpifpaf.train <span class="se">\</span>
   --lr<span class="o">=</span><span class="m">0</span>.05 <span class="se">\</span>
-  --momentum<span class="o">=</span><span class="m">0</span>.9 <span class="se">\</span>
   --epochs<span class="o">=</span><span class="m">150</span> <span class="se">\</span>
-  --lr-warm-up-epochs<span class="o">=</span><span class="m">1</span> <span class="se">\</span>
   --lr-decay <span class="m">120</span> <span class="se">\</span>
   --lr-decay-epochs<span class="o">=</span><span class="m">20</span> <span class="se">\</span>
-  --lr-decay-factor<span class="o">=</span><span class="m">0</span>.1 <span class="se">\</span>
   --batch-size<span class="o">=</span><span class="m">16</span> <span class="se">\</span>
   --square-edge<span class="o">=</span><span class="m">385</span> <span class="se">\</span>
   --lambdas <span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.2   <span class="m">1</span> <span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.2 <span class="m">0</span>.2    <span class="m">1</span> <span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.2 <span class="m">0</span>.2 <span class="se">\</span>
   --auto-tune-mtl <span class="se">\</span>
   --weight-decay<span class="o">=</span>1e-5 <span class="se">\</span>
   --update-batchnorm-runningstatistics <span class="se">\</span>
-  --ema<span class="o">=</span><span class="m">0</span>.01 <span class="se">\</span>
   --basenet<span class="o">=</span>resnet50 <span class="se">\</span>
   --headnets cif caf caf25
 </pre></div>
