@@ -25,10 +25,10 @@
     <script src="_static/copybutton.js"></script>
     <script src="_static/mystnb.js"></script>
     <script src="_static/sphinx-book-theme.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .secondtoggle, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
-    <link rel="shortcut icon" href="_static/favicon.png"/>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Training" href="train.html" />
@@ -51,8 +51,6 @@
         <div class="navbar-brand-box">
 <a class="navbar-brand text-wrap" href="index.html">
   
-  <img src="_static/logo.png" class="logo" alt="logo">
-  
   
   <h1 class="site-logo" id="site-title">OpenPifPaf Guide</h1>
   
@@ -67,9 +65,6 @@
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
   
   <ul class="nav sidenav_l1">
-  <li class="">
-    <a href="intro.html">Introduction</a>
-  </li>
   <li class="active">
     <a href="">Datasets</a>
   </li>
@@ -81,6 +76,9 @@
   </li>
   <li class="">
     <a href="cli_help.html">CLI --help</a>
+  </li>
+  <li class="">
+    <a href="examples.html">Examples</a>
   </li>
   <li class="">
     <a href="faq.html">FAQ</a>
@@ -111,10 +109,6 @@
 
  <!-- To handle the deprecated key -->
 
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
 </div>
 
 
@@ -143,7 +137,7 @@
                 <!-- ipynb file if we had a myst markdown file -->
                 
                 <!-- Download raw file -->
-                <a class="dropdown-buttons" href="_sources/datasets.ipynb.txt"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.ipynb</button></a>
+                <a class="dropdown-buttons" href="_sources/datasets.ipynb"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.ipynb</button></a>
                 <!-- Download PDF via print -->
                 <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
             </div>
@@ -151,15 +145,6 @@
         </div>
 
         <!-- Source interaction buttons -->
-        
-        <div class="dropdown-buttons-trigger">
-            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-            <div class="dropdown-buttons sourcebuttons">
-                <a class="repository-button" href="https://github.com/vita-epfl/openpifpaf"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Source repository"><i class="fab fa-github"></i>repository</button></a>
-                <a class="issues-button" href="https://github.com/vita-epfl/openpifpaf/issues/new?title=Issue%20on%20page%20%2Fdatasets.html&body=Your%20issue%20content%20here."><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-                
-            </div>
-        </div>
         
 
         <!-- Full screen (wrap in <a> to have style consistency -->
@@ -188,11 +173,23 @@
     <ul class="nav section-nav flex-column">
     
         <li class="nav-item toc-entry toc-h2">
+            <a href="#download-coco-data" class="nav-link">Download COCO data</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
             <a href="#coco-person-skeletons" class="nav-link">COCO Person Skeletons</a>
         </li>
     
         <li class="nav-item toc-entry toc-h2">
             <a href="#coco-person-keypoints" class="nav-link">COCO Person Keypoints</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#download-mpii-data" class="nav-link">Download MPII data</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#download-nightowls-data" class="nav-link">Download NightOwls data</a>
         </li>
     
     </ul>
@@ -209,7 +206,12 @@
   <p><a class="reference external" href="https://www.svenkreiss.com/">Sven Kreiss</a>, 2020</p>
 <div class="section" id="datasets">
 <h1>Datasets<a class="headerlink" href="#datasets" title="Permalink to this headline">¶</a></h1>
-<p>Download MSCOCO data:</p>
+<p>This section describes how to install common datasets used for training new models and for computing evaluation scores for entire datasets. In general, these datasets are large and require a computer with a good GPU to train and evaluate in reasonable times.</p>
+<p>These datasets are not required to do pose predictions on your own images.</p>
+<p>You are unlikely to need all the datasets, so donwload only what you need.</p>
+<div class="section" id="download-coco-data">
+<h2>Download COCO data<a class="headerlink" href="#download-coco-data" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://cocodataset.org/">COCO</a> is a great datasets containing many types of annotations, including bounding boxes, 2D poses, etc.</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>mkdir data-mscoco
 <span class="nb">cd</span> data-mscoco
 gsutil ls gs://images.cocodataset.org  <span class="c1"># to list available directories</span>
@@ -232,20 +234,6 @@ wget http://images.cocodataset.org/zips/test2017.zip
 unzip test2017.zip
 </pre></div>
 </div>
-<p>Download MPII data:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>mkdir data-mpii
-<span class="nb">cd</span> data-mpii
-wget https://datasets.d2.mpi-inf.mpg.de/andriluka14cvpr/mpii_human_pose_v1.tar.gz
-wget https://datasets.d2.mpi-inf.mpg.de/andriluka14cvpr/mpii_human_pose_v1_u12_2.zip
-</pre></div>
-</div>
-<p>Download NightOwls:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>mkdir data-nightowls
-<span class="nb">cd</span> data-nightowls
-wget http://www.robots.ox.ac.uk/<span class="se">\~</span>vgg/data/nightowls/python/nightowls_validation.json
-wget http://www.robots.ox.ac.uk/<span class="se">\~</span>vgg/data/nightowls/python/nightowls_validation.zip
-unzip nightowls_validation.zip
-</pre></div>
 </div>
 <div class="section" id="coco-person-skeletons">
 <h2>COCO Person Skeletons<a class="headerlink" href="#coco-person-skeletons" title="Permalink to this headline">¶</a></h2>
@@ -256,7 +244,7 @@ unzip nightowls_validation.zip
 <p>Created with <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">openpifpaf.datasets.constants</span></code>.</p>
 </div>
 <div class="section" id="coco-person-keypoints">
-<h2>COCO Person Keypoints<a class="headerlink" href="#coco-person-keypoints" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h2>COCO Person Keypoints<a class="headerlink" href="#coco-person-keypoints" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">openpifpaf</span>
@@ -320,6 +308,26 @@ unzip nightowls_validation.zip
 </pre></div>
 </div>
 </div>
+</div>
+</div>
+<div class="section" id="download-mpii-data">
+<h2>Download MPII data<a class="headerlink" href="#download-mpii-data" title="Permalink to this headline">¶</a></h2>
+<p>This MPII data is currently not used anywhere.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>mkdir data-mpii
+<span class="nb">cd</span> data-mpii
+wget https://datasets.d2.mpi-inf.mpg.de/andriluka14cvpr/mpii_human_pose_v1.tar.gz
+wget https://datasets.d2.mpi-inf.mpg.de/andriluka14cvpr/mpii_human_pose_v1_u12_2.zip
+</pre></div>
+</div>
+</div>
+<div class="section" id="download-nightowls-data">
+<h2>Download NightOwls data<a class="headerlink" href="#download-nightowls-data" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>mkdir data-nightowls
+<span class="nb">cd</span> data-nightowls
+wget http://www.robots.ox.ac.uk/<span class="se">\~</span>vgg/data/nightowls/python/nightowls_validation.json
+wget http://www.robots.ox.ac.uk/<span class="se">\~</span>vgg/data/nightowls/python/nightowls_validation.zip
+unzip nightowls_validation.zip
+</pre></div>
 </div>
 </div>
 </div>

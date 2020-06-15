@@ -25,10 +25,10 @@
     <script src="_static/copybutton.js"></script>
     <script src="_static/mystnb.js"></script>
     <script src="_static/sphinx-book-theme.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .secondtoggle, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
-    <link rel="shortcut icon" href="_static/favicon.png"/>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Datasets" href="datasets.html" />
@@ -50,8 +50,6 @@
         <div class="navbar-brand-box">
 <a class="navbar-brand text-wrap" href="index.html">
   
-  <img src="_static/logo.png" class="logo" alt="logo">
-  
   
   <h1 class="site-logo" id="site-title">OpenPifPaf Guide</h1>
   
@@ -66,9 +64,6 @@
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
   
   <ul class="nav sidenav_l1">
-  <li class="active">
-    <a href="#">Introduction</a>
-  </li>
   <li class="">
     <a href="datasets.html">Datasets</a>
   </li>
@@ -80,6 +75,9 @@
   </li>
   <li class="">
     <a href="cli_help.html">CLI --help</a>
+  </li>
+  <li class="">
+    <a href="examples.html">Examples</a>
   </li>
   <li class="">
     <a href="faq.html">FAQ</a>
@@ -110,10 +108,6 @@
 
  <!-- To handle the deprecated key -->
 
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
 </div>
 
 
@@ -142,7 +136,7 @@
                 <!-- ipynb file if we had a myst markdown file -->
                 
                 <!-- Download raw file -->
-                <a class="dropdown-buttons" href="_sources/intro.md.txt"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.md</button></a>
+                <a class="dropdown-buttons" href="_sources/intro.md"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.md</button></a>
                 <!-- Download PDF via print -->
                 <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
             </div>
@@ -150,15 +144,6 @@
         </div>
 
         <!-- Source interaction buttons -->
-        
-        <div class="dropdown-buttons-trigger">
-            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-            <div class="dropdown-buttons sourcebuttons">
-                <a class="repository-button" href="https://github.com/vita-epfl/openpifpaf"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Source repository"><i class="fab fa-github"></i>repository</button></a>
-                <a class="issues-button" href="https://github.com/vita-epfl/openpifpaf/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here."><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-                
-            </div>
-        </div>
         
 
         <!-- Full screen (wrap in <a> to have style consistency -->
@@ -181,6 +166,10 @@
     
         <li class="nav-item toc-entry toc-h2">
             <a href="#install" class="nav-link">Install</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#about-this-guide" class="nav-link">About this Guide</a>
         </li>
     
         <li class="nav-item toc-entry toc-h2">
@@ -258,6 +247,19 @@ and make sure there is no folder named <code class="docutils literal notranslate
 <p>For a live demo, we recommend to try the
 <a class="reference external" href="https://github.com/vita-epfl/openpifpafwebdemo">openpifpafwebdemo</a> project.
 Alternatively, <code class="docutils literal notranslate"><span class="pre">openpifpaf.video</span></code> (requires OpenCV) provides a live demo as well.</p>
+</div>
+<div class="section" id="about-this-guide">
+<h2>About this Guide<a class="headerlink" href="#about-this-guide" title="Permalink to this headline">¶</a></h2>
+<p>This is an autogenerated book.
+Many sections of this book, like <a class="reference internal" href="predict_cli.html"><span class="doc">Prediction</span></a>, are interactive:
+they are based on Jupyter Notebooks
+that can be launched interactively in the cloud by clicking on the rocket
+at the top and selecting a cloud provider like <em>Binder</em>.
+This is also the reason why some pages contain quite a bit of code: this is
+all the code required for regenerating that particular page.</p>
+<p><strong>Syntax</strong>: Some code blocks start with an exclamation point “<code class="docutils literal notranslate"><span class="pre">!</span></code>”. It means
+that this command is executed on the command line. You can run the same command
+yourself without the exclamation point.</p>
 </div>
 <div class="section" id="pre-trained-models">
 <h2>Pre-trained Models<a class="headerlink" href="#pre-trained-models" title="Permalink to this headline">¶</a></h2>

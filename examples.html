@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>FAQ &#8212; OpenPifPaf Guide</title>
+    <title>Examples &#8212; OpenPifPaf Guide</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="_static/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
@@ -31,8 +31,8 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Prediction API" href="predict_api.html" />
-    <link rel="prev" title="Examples" href="examples.html" />
+    <link rel="next" title="FAQ" href="faq.html" />
+    <link rel="prev" title="CLI --help" href="cli_help.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -77,11 +77,11 @@
   <li class="">
     <a href="cli_help.html">CLI --help</a>
   </li>
-  <li class="">
-    <a href="examples.html">Examples</a>
-  </li>
   <li class="active">
-    <a href="">FAQ</a>
+    <a href="">Examples</a>
+  </li>
+  <li class="">
+    <a href="faq.html">FAQ</a>
   </li>
 <li class="navbar-special">
 <p class="margin-caption">API</p>
@@ -137,7 +137,7 @@
                 <!-- ipynb file if we had a myst markdown file -->
                 
                 <!-- Download raw file -->
-                <a class="dropdown-buttons" href="_sources/faq.ipynb"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.ipynb</button></a>
+                <a class="dropdown-buttons" href="_sources/examples.ipynb"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.ipynb</button></a>
                 <!-- Download PDF via print -->
                 <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
             </div>
@@ -156,7 +156,7 @@
             <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
             <div class="dropdown-buttons">
                 
-                <a class="binder-button" href="https://mybinder.org/v2/gh/vita-epfl/openpifpaf/stable?urlpath=tree/guide/faq.ipynb"><button type="button" class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip" data-placement="left"><img class="binder-button-logo" src="_static/images/logo_binder.svg" alt="Interact on binder">Binder</button></a>
+                <a class="binder-button" href="https://mybinder.org/v2/gh/vita-epfl/openpifpaf/stable?urlpath=tree/guide/examples.ipynb"><button type="button" class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip" data-placement="left"><img class="binder-button-logo" src="_static/images/logo_binder.svg" alt="Interact on binder">Binder</button></a>
                 
                 
                 
@@ -165,20 +165,9 @@
         
     </div>
     <div class="d-none d-md-block col-md-2 bd-toc show">
-<div class="tocsection onthispage pt-5 pb-3">
-    <i class="fas fa-list"></i> On this page
-</div>
 
 <nav id="bd-toc-nav">
     <ul class="nav section-nav flex-column">
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#why-evaluate-with-641px-instead-of-640px" class="nav-link">Why evaluate with 641px instead of 640px?</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#predict-is-slow" class="nav-link">Predict is slow</a>
-        </li>
     
     </ul>
 </nav>
@@ -191,34 +180,74 @@
         
               <div>
                 
-  <div class="section" id="faq">
-<h1>FAQ<a class="headerlink" href="#faq" title="Permalink to this headline">¶</a></h1>
-<p>Frequently Asked Questions (FAQ).</p>
-<div class="section" id="why-evaluate-with-641px-instead-of-640px">
-<h2>Why evaluate with 641px instead of 640px?<a class="headerlink" href="#why-evaluate-with-641px-instead-of-640px" title="Permalink to this headline">¶</a></h2>
-<p>OpenPifPaf uses the standard convention of PyTorch models to pad convolutions.
-Let’s start with an example: a single layer of a 3x3 conv with stride 2 that is padded with 1. For an output feature map of size 2x2, the input must be of size 3x3. This generalization holds: the input must be of size <code class="docutils literal notranslate"><span class="pre">(nx</span> <span class="pre">*</span> <span class="pre">stride</span> <span class="pre">+</span> <span class="pre">1,</span> <span class="pre">ny</span> <span class="pre">*</span> <span class="pre">stride</span> <span class="pre">+</span> <span class="pre">1)</span></code>.
-The models that OpenPifPaf uses have an intermediate layer with stride 16. Therefore, good input image sizes are multiples of 16 plus 1.</p>
-<p>It is usually not a problem if the input size is not perfect. There will just be a small margin on the right side and bottom of the image that is not “covered” by a feature map cell.</p>
-</div>
-<div class="section" id="predict-is-slow">
-<h2>Predict is slow<a class="headerlink" href="#predict-is-slow" title="Permalink to this headline">¶</a></h2>
-<p>Check whether your installation of PyTorch can access CUDA for GPU processing.
-If the output of the command below is False, then PyTorch cannot make use of your GPU and OpenPifPaf falls back to CPU processing.</p>
+  <div class="section" id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
+<p>Example predictions from the COCO val set.
+These are the first images with more than five person annotations that were shared with <a class="reference external" href="https://creativecommons.org/licenses/by/2.0/">CC-BY-2.0</a>.
+These examples are not cherry-picked.</p>
+<p>All examples are predicted with the fast model <code class="docutils literal notranslate"><span class="pre">shufflenetv2k16w</span></code>. <br />
+For more accurate results, try <code class="docutils literal notranslate"><span class="pre">--checkpoint=shufflenetv2k30w</span></code>.</p>
+<p>The examples below are generated with the shown command which is documented in <a class="reference internal" href="predict_cli.html"><span class="doc">Prediction</span></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!python -c &quot;import torch; print(torch.cuda.is_available())&quot;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!python -m openpifpaf.predict coco/000000188465.jpg --image-output --long-edge=1025
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>False
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>INFO:openpifpaf.decoder.generator.cifcaf:19 annotations: [14, 16, 17, 17, 10, 16, 10, 12, 13, 10, 13, 13, 12, 11, 13, 13, 9, 11, 9]
+INFO:__main__:batch 0: coco/000000188465.jpg
 </pre></div>
 </div>
 </div>
 </div>
-<p>You can also run <code class="docutils literal notranslate"><span class="pre">predict</span></code> with the <code class="docutils literal notranslate"><span class="pre">--debug</span></code> option. Compare your output with the output in <a class="reference internal" href="predict_cli.html"><span class="doc">Prediction</span></a> to understand which part of the process is slow for you. For a fair comparison, also use <code class="docutils literal notranslate"><span class="pre">--disable-cuda</span></code> because the reference in this documentation is created without CUDA.</p>
+<p><img alt="predicted" src="_images/000000188465.jpg.predictions.png" /><br />
+Image credit: <a class="reference external" href="https://www.flickr.com/photos/jelonekphotography/4593328722/">Photo</a> by Brian Jelonek shared under <a class="reference external" href="https://creativecommons.org/licenses/by/2.0/">CC-BY-2.0</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!python -m openpifpaf.predict coco/000000114907.jpg --image-output
+</pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>INFO:openpifpaf.decoder.generator.cifcaf:15 annotations: [14, 8, 9, 7, 6, 4, 5, 6, 3, 4, 4, 3, 3, 4, 3]
+INFO:__main__:batch 0: coco/000000114907.jpg
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="predicted" src="_images/000000114907.jpg.predictions.png" /><br />
+Image credit: <a class="reference external" href="https://www.flickr.com/photos/fortrucker/7825237468/">Photo</a> by Fort Rucker shared under <a class="reference external" href="https://creativecommons.org/licenses/by/2.0/">CC-BY-2.0</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!python -m openpifpaf.predict coco/000000147740.jpg --image-output
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>INFO:openpifpaf.decoder.generator.cifcaf:5 annotations: [13, 13, 10, 4, 2]
+INFO:__main__:batch 0: coco/000000147740.jpg
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="predicted" src="_images/000000147740.jpg.predictions.png" /><br />
+Image credit: <a class="reference external" href="https://www.flickr.com/photos/cumidanciki/8026451116/">Photo</a> by CCFoodTravel.com shared under <a class="reference external" href="https://creativecommons.org/licenses/by/2.0/">CC-BY-2.0</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!python -m openpifpaf.predict coco/000000541055.jpg --image-output
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>INFO:openpifpaf.decoder.generator.cifcaf:5 annotations: [17, 17, 15, 17, 10]
+INFO:__main__:batch 0: coco/000000541055.jpg
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="predicted" src="_images/000000541055.jpg.predictions.png" /><br />
+Image credit: <a class="reference external" href="https://www.flickr.com/photos/12407269&#64;N07/3465325303/">Photo</a> by Jarrod Doll shared under <a class="reference external" href="https://creativecommons.org/licenses/by/2.0/">CC-BY-2.0</a>.</p>
 </div>
 
 
@@ -230,8 +259,8 @@ If the output of the command below is False, then PyTorch cannot make use of you
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="examples.html" title="previous page">Examples</a>
-    <a class='right-next' id="next-link" href="predict_api.html" title="next page">Prediction API</a>
+    <a class='left-prev' id="prev-link" href="cli_help.html" title="previous page">CLI <code class="docutils literal notranslate"><span class="pre">--help</span></code></a>
+    <a class='right-next' id="next-link" href="faq.html" title="next page">FAQ</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

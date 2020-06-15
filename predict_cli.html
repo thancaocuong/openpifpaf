@@ -25,10 +25,10 @@
     <script src="_static/copybutton.js"></script>
     <script src="_static/mystnb.js"></script>
     <script src="_static/sphinx-book-theme.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .secondtoggle, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
-    <link rel="shortcut icon" href="_static/favicon.png"/>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="CLI --help" href="cli_help.html" />
@@ -51,8 +51,6 @@
         <div class="navbar-brand-box">
 <a class="navbar-brand text-wrap" href="index.html">
   
-  <img src="_static/logo.png" class="logo" alt="logo">
-  
   
   <h1 class="site-logo" id="site-title">OpenPifPaf Guide</h1>
   
@@ -68,9 +66,6 @@
   
   <ul class="nav sidenav_l1">
   <li class="">
-    <a href="intro.html">Introduction</a>
-  </li>
-  <li class="">
     <a href="datasets.html">Datasets</a>
   </li>
   <li class="">
@@ -81,6 +76,9 @@
   </li>
   <li class="">
     <a href="cli_help.html">CLI --help</a>
+  </li>
+  <li class="">
+    <a href="examples.html">Examples</a>
   </li>
   <li class="">
     <a href="faq.html">FAQ</a>
@@ -111,10 +109,6 @@
 
  <!-- To handle the deprecated key -->
 
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
 </div>
 
 
@@ -143,7 +137,7 @@
                 <!-- ipynb file if we had a myst markdown file -->
                 
                 <!-- Download raw file -->
-                <a class="dropdown-buttons" href="_sources/predict_cli.ipynb.txt"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.ipynb</button></a>
+                <a class="dropdown-buttons" href="_sources/predict_cli.ipynb"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.ipynb</button></a>
                 <!-- Download PDF via print -->
                 <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
             </div>
@@ -151,15 +145,6 @@
         </div>
 
         <!-- Source interaction buttons -->
-        
-        <div class="dropdown-buttons-trigger">
-            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-            <div class="dropdown-buttons sourcebuttons">
-                <a class="repository-button" href="https://github.com/vita-epfl/openpifpaf"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Source repository"><i class="fab fa-github"></i>repository</button></a>
-                <a class="issues-button" href="https://github.com/vita-epfl/openpifpaf/issues/new?title=Issue%20on%20page%20%2Fpredict_cli.html&body=Your%20issue%20content%20here."><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-                
-            </div>
-        </div>
         
 
         <!-- Full screen (wrap in <a> to have style consistency -->
@@ -210,7 +195,8 @@
 <div class="section" id="prediction">
 <h1>Prediction<a class="headerlink" href="#prediction" title="Permalink to this headline">¶</a></h1>
 <p>Use OpenPifPaf from the command line to run multi-person pose estimation on images.
-Below is also a short intro to running prediction on videos.</p>
+For programmatic predictions, please refer to <a class="reference internal" href="predict_api.html"><span class="doc">Prediction API</span></a>.
+Below is a short intro to running prediction on videos.</p>
 <p>Run <code class="docutils literal notranslate"><span class="pre">openpifpaf.predict</span></code> on an image:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -234,20 +220,20 @@ DEBUG:openpifpaf.transforms.pad:pad with (0, 3, 1, 3)
 DEBUG:openpifpaf.transforms.pad:valid area after pad: [  0.   3. 639. 426.], image size = (641, 433)
 </pre></div>
 </div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.decoder.generator.generator:nn processing time: 1.061s
-DEBUG:openpifpaf.decoder.generator.generator:parallel execution with worker &lt;openpifpaf.decoder.generator.generator.DummyPool object at 0x7f5bd696db10&gt;
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.decoder.generator.generator:nn processing time: 0.976s
+DEBUG:openpifpaf.decoder.generator.generator:parallel execution with worker &lt;openpifpaf.decoder.generator.generator.DummyPool object at 0x7f7b727f1450&gt;
 DEBUG:openpifpaf.decoder.generator.cifcaf:initial annotations = 0
 DEBUG:openpifpaf.decoder.cif_hr:target_intensities 0.008s
-DEBUG:openpifpaf.decoder.cif_seeds:seeds 709, 0.002s (C++ 0.001s)
-DEBUG:openpifpaf.decoder.caf_scored:scored caf (1339, 1296) in 0.004s
+DEBUG:openpifpaf.decoder.cif_seeds:seeds 722, 0.002s (C++ 0.001s)
+DEBUG:openpifpaf.decoder.caf_scored:scored caf (1332, 1267) in 0.003s
 DEBUG:openpifpaf.decoder.occupancy:shape = (17, 216, 320), min_scale = 2
 </pre></div>
 </div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.decoder.generator.cifcaf:annotations 5, 0.046s
-DEBUG:openpifpaf.decoder.occupancy:shape = (17, 194, 283), min_scale = 2
-DEBUG:openpifpaf.decoder.nms:nms = 0.003s
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.decoder.generator.cifcaf:annotations 5, 0.048s
+DEBUG:openpifpaf.decoder.occupancy:shape = (17, 195, 282), min_scale = 2
+DEBUG:openpifpaf.decoder.nms:nms = 0.004s
 INFO:openpifpaf.decoder.generator.cifcaf:5 annotations: [14, 16, 17, 16, 15]
-DEBUG:openpifpaf.decoder.generator.generator:time: nn = 1.061s, dec = 0.053s
+DEBUG:openpifpaf.decoder.generator.generator:time: nn = 0.977s, dec = 0.055s
 INFO:__main__:batch 0: coco/000000081988.jpg
 DEBUG:__main__:json output = coco/000000081988.jpg.predictions.json
 DEBUG:__main__:image output = coco/000000081988.jpg.predictions.png
@@ -264,7 +250,11 @@ coco/000000081988.jpg.predictions.json
 </div>
 <p>Here is the image:</p>
 <p><img alt="predictions" src="_images/000000081988.jpg.predictions1.png" /></p>
-<p>And here is the json output:</p>
+<p>And below is the json output. The json data is a list where each entry in the list corresponds to one pose annotation. In this case, there are five entries corresponding to the five people in the image. Each annotation contains information on <code class="docutils literal notranslate"><span class="pre">&quot;keypoints&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;bbox&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;score&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;category_id&quot;</span></code>.</p>
+<p>All coordinates are in pixel coordinates. The <code class="docutils literal notranslate"><span class="pre">&quot;keypoints&quot;</span></code> entry is in COCO format with triples of <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y,</span> <span class="pre">c)</span></code> (<code class="docutils literal notranslate"><span class="pre">c</span></code> for confidence) for every joint as listed under <a class="reference internal" href="datasets.html#coco-person-keypoints"><span class="std std-ref">COCO Person Keypoints</span></a>. The pixel coordinates have sub-pixel accuracy, i.e. 10.5 means the joint is between pixel 10 and 11.
+In rare cases, joints can be localized outside the field of view and then the pixel coordinates can be negative. When <code class="docutils literal notranslate"><span class="pre">c</span></code> is zero, the joint was not detected.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">&quot;bbox&quot;</span></code> (bounding box) format is <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y,</span> <span class="pre">w,</span> <span class="pre">h)</span></code>: the <span class="math notranslate nohighlight">\((x, y)\)</span> coordinate of the top-left corner followed by width and height.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">&quot;score&quot;</span></code> is a number between zero and one.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!python -m json.tool coco/000000081988.jpg.predictions.json
@@ -286,22 +276,22 @@ coco/000000081988.jpg.predictions.json
             0.0,
             388.6,
             149.4,
-            0.87,
+            0.86,
             410.08,
             149.7,
-            0.73,
-            376.76,
-            176.22,
-            0.87,
-            425.65,
-            177.54,
+            0.75,
+            376.55,
+            176.53,
+            0.86,
+            424.77,
+            178.65,
             0.87,
             335.6,
             192.22,
             0.86,
-            463.58,
+            463.57,
             191.29,
-            0.85,
+            0.86,
             300.04,
             194.49,
             0.88,
@@ -317,15 +307,15 @@ coco/000000081988.jpg.predictions.json
             382.17,
             315.62,
             0.7,
-            410.01,
-            318.07,
+            409.62,
+            318.3,
             0.99,
             381.87,
             362.75,
-            0.29,
+            0.27,
             405.22,
             369.85,
-            0.75
+            0.78
         ],
         &quot;bbox&quot;: [
             289.18,
@@ -338,254 +328,254 @@ coco/000000081988.jpg.predictions.json
     },
     {
         &quot;keypoints&quot;: [
-            81.78,
-            317.29,
-            0.6,
-            85.3,
-            313.22,
+            82.05,
+            317.73,
+            0.68,
+            85.4,
+            313.52,
             0.78,
-            80.19,
-            312.1,
-            0.33,
-            99.85,
-            309.14,
-            0.79,
+            80.18,
+            312.09,
+            0.36,
+            100.32,
+            309.68,
+            0.87,
             0.0,
             -3.0,
             0.0,
-            123.0,
-            317.18,
-            0.86,
-            78.91,
-            321.17,
-            0.78,
+            122.58,
+            316.82,
+            0.77,
+            79.5,
+            321.69,
+            0.73,
             146.09,
-            348.52,
+            348.99,
+            0.71,
+            58.46,
+            351.3,
             0.78,
-            58.28,
-            350.78,
-            0.78,
-            124.86,
-            354.53,
-            0.69,
+            124.98,
+            354.63,
+            0.66,
             52.18,
             382.47,
-            0.78,
+            0.76,
             121.57,
-            363.05,
-            0.73,
-            94.3,
-            363.63,
-            0.73,
+            363.06,
+            0.68,
+            94.77,
+            363.56,
+            0.68,
             153.08,
             362.21,
-            0.63,
+            0.62,
             73.61,
             366.02,
-            0.68,
-            94.22,
-            380.86,
-            0.54,
+            0.66,
+            94.83,
+            380.51,
+            0.52,
             116.73,
             381.85,
-            0.42
+            0.43
         ],
         &quot;bbox&quot;: [
             46.49,
-            306.15,
-            114.13,
-            83.72
+            306.56,
+            114.14,
+            83.32
         ],
-        &quot;score&quot;: 0.687,
+        &quot;score&quot;: 0.676,
         &quot;category_id&quot;: 1
     },
     {
         &quot;keypoints&quot;: [
-            359.89,
-            299.08,
-            0.56,
-            363.57,
-            294.22,
-            0.59,
-            354.82,
-            294.77,
-            0.58,
-            370.09,
-            296.68,
-            0.55,
-            347.56,
-            297.82,
-            0.78,
-            380.37,
-            318.59,
+            359.96,
+            299.05,
             0.72,
-            340.45,
-            322.22,
-            0.84,
-            384.69,
-            342.85,
-            0.6,
-            334.77,
-            347.95,
+            364.14,
+            294.85,
+            0.75,
+            355.15,
+            295.63,
+            0.91,
+            370.2,
+            296.41,
+            0.64,
+            347.39,
+            297.67,
             0.74,
+            381.55,
+            319.57,
+            0.65,
+            340.1,
+            322.71,
+            0.75,
+            384.77,
+            343.59,
+            0.56,
+            334.94,
+            347.54,
+            0.69,
             372.99,
             357.23,
-            0.52,
+            0.53,
             335.12,
             362.72,
-            0.74,
-            375.05,
-            363.53,
-            0.67,
+            0.72,
+            374.98,
+            364.01,
+            0.62,
             350.59,
             363.54,
-            0.75,
-            388.25,
-            361.11,
+            0.69,
+            388.23,
+            361.15,
             0.34,
             330.83,
-            371.03,
-            0.55,
-            334.89,
-            381.55,
-            0.31,
-            334.55,
-            384.24,
-            0.27
+            371.01,
+            0.51,
+            334.85,
+            381.57,
+            0.32,
+            334.57,
+            384.26,
+            0.26
         ],
         &quot;bbox&quot;: [
             324.2,
-            292.08,
-            70.77,
-            98.82
+            292.72,
+            70.75,
+            98.21
         ],
-        &quot;score&quot;: 0.645,
+        &quot;score&quot;: 0.661,
         &quot;category_id&quot;: 1
     },
     {
         &quot;keypoints&quot;: [
-            493.2,
-            348.52,
-            0.25,
+            493.22,
+            349.4,
+            0.39,
             495.89,
             345.12,
-            0.32,
-            489.55,
-            345.98,
-            0.2,
-            504.53,
-            334.61,
-            0.39,
+            0.37,
+            489.34,
+            346.13,
+            0.21,
+            504.26,
+            334.94,
+            0.38,
             0.0,
             -3.0,
             0.0,
-            522.68,
-            332.36,
-            0.57,
-            490.49,
-            333.07,
-            0.41,
+            523.35,
+            332.58,
+            0.43,
+            491.16,
+            334.5,
+            0.39,
             549.31,
-            351.24,
-            0.49,
-            488.25,
-            352.99,
-            0.35,
-            561.04,
-            380.62,
-            0.31,
-            488.01,
-            376.64,
-            0.46,
-            540.84,
-            344.21,
-            0.57,
-            520.91,
+            351.23,
+            0.41,
+            488.06,
+            352.72,
+            0.63,
+            561.05,
+            380.59,
+            0.26,
+            488.07,
+            376.45,
+            0.81,
+            541.25,
+            344.79,
+            0.45,
+            520.9,
             346.19,
-            0.44,
-            521.27,
-            377.62,
-            0.77,
+            0.4,
+            520.02,
+            377.86,
+            0.52,
             501.32,
             379.69,
-            0.47,
-            565.13,
-            385.18,
-            0.44,
+            0.42,
+            564.95,
+            386.02,
+            0.33,
             546.0,
             383.56,
-            0.18
+            0.17
         ],
         &quot;bbox&quot;: [
-            483.62,
-            327.0,
-            87.72,
-            64.39
+            483.48,
+            327.32,
+            87.66,
+            64.89
         ],
-        &quot;score&quot;: 0.454,
+        &quot;score&quot;: 0.456,
         &quot;category_id&quot;: 1
     },
     {
         &quot;keypoints&quot;: [
-            237.64,
-            320.42,
-            0.25,
-            238.84,
-            316.65,
-            0.16,
-            234.91,
-            318.16,
-            0.29,
+            238.19,
+            320.61,
+            0.35,
+            239.2,
+            316.59,
+            0.2,
+            235.13,
+            318.1,
+            0.41,
             0.0,
             -3.0,
             0.0,
             222.43,
             315.36,
-            0.51,
-            239.52,
-            317.26,
-            0.72,
-            201.85,
-            318.92,
-            0.6,
+            0.54,
+            240.26,
+            318.55,
+            0.7,
+            202.02,
+            319.22,
+            0.59,
             240.3,
             350.9,
-            0.59,
-            195.11,
-            352.75,
-            0.37,
+            0.6,
+            195.48,
+            352.07,
+            0.42,
             240.05,
             380.3,
-            0.48,
-            193.3,
-            376.3,
-            0.34,
+            0.5,
+            194.16,
+            376.5,
+            0.38,
             221.76,
             332.86,
-            0.56,
-            200.01,
-            331.03,
+            0.53,
+            200.54,
+            330.62,
             0.47,
             223.93,
             368.52,
-            0.36,
+            0.37,
             195.41,
-            371.26,
+            371.34,
             0.33,
             0.0,
             -3.0,
             0.0,
             194.78,
             378.61,
-            0.21
+            0.19
         ],
         &quot;bbox&quot;: [
             189.05,
-            312.15,
-            55.86,
-            72.19
+            313.07,
+            56.25,
+            71.28
         ],
-        &quot;score&quot;: 0.436,
+        &quot;score&quot;: 0.449,
         &quot;category_id&quot;: 1
     }
 ]
@@ -603,12 +593,12 @@ coco/000000081988.jpg.predictions.json
 </div>
 <div class="section" id="video">
 <h2>Video<a class="headerlink" href="#video" title="Permalink to this headline">¶</a></h2>
-<p>Requires OpenCV. The <code class="docutils literal notranslate"><span class="pre">--video-output</span></code> option also requires matplotlib.</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python3 -m openpifpaf.video --source myvideotoprocess.mp4 --video-output --json-output
 </pre></div>
 </div>
-<p>Replace <code class="docutils literal notranslate"><span class="pre">myvideotoprocess.mp4</span></code> with <code class="docutils literal notranslate"><span class="pre">0</span></code> for webcam0 or other OpenCV compatible sources.</p>
-<p>Full list of arguments is available with <code class="docutils literal notranslate"><span class="pre">--help</span></code>: <a class="reference internal" href="cli_help.html#cli-help-video"><span class="std std-ref">CLI help for video</span></a>.</p>
+<p>Requires OpenCV. The <code class="docutils literal notranslate"><span class="pre">--video-output</span></code> option also requires matplotlib.
+Replace <code class="docutils literal notranslate"><span class="pre">myvideotoprocess.mp4</span></code> with <code class="docutils literal notranslate"><span class="pre">0</span></code> for webcam0 or other OpenCV compatible sources.
+The full list of arguments is available with <code class="docutils literal notranslate"><span class="pre">--help</span></code>: <a class="reference internal" href="cli_help.html#cli-help-video"><span class="std std-ref">CLI help for video</span></a>.</p>
 <p>Image credit: “<a class="reference external" href="https://www.flickr.com/photos/fotologic/6038911779/in/photostream/">Learning to surf</a>” by fotologic which is licensed under <a class="reference external" href="https://creativecommons.org/licenses/by/2.0/">CC-BY-2.0</a>.</p>
 </div>
 </div>
