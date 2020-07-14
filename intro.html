@@ -125,35 +125,43 @@
     </div>
     <div class="col pl-2 topbar-main">
         
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse" data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation" title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
             <i class="fas fa-bars"></i>
             <i class="fas fa-arrow-left"></i>
             <i class="fas fa-arrow-up"></i>
         </button>
         
         <div class="dropdown-buttons-trigger">
-            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i class="fas fa-download"></i></button>
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
 
-            
-            <div class="dropdown-buttons">
-                <!-- ipynb file if we had a myst markdown file -->
-                
-                <!-- Download raw file -->
-                <a class="dropdown-buttons" href="_sources/intro.md"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.md</button></a>
-                <!-- Download PDF via print -->
-                <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-            </div>
-            
-        </div>
-
-        <!-- Source interaction buttons -->
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
         
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/intro.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
 
         <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i class="fas fa-expand"></i></button></a>
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
 
         <!-- Launch buttons -->
-        
+
     </div>
     <div class="d-none d-md-block col-md-2 bd-toc show">
 <div class="tocsection onthispage pt-5 pb-3">
@@ -185,6 +193,10 @@
     
         <li class="nav-item toc-entry toc-h2">
             <a href="#citation" class="nav-link">Citation</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#commercial-license" class="nav-link">Commercial License</a>
         </li>
     
     </ul>
@@ -247,6 +259,7 @@ and make sure there is no folder named <code class="docutils literal notranslate
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip3 install openpifpaf
 </pre></div>
 </div>
+<p>You need to install <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> to produce visual outputs.</p>
 <p>For a live demo, we recommend to try the
 <a class="reference external" href="https://github.com/vita-epfl/openpifpafwebdemo">openpifpafwebdemo</a> project.
 Alternatively, <code class="docutils literal notranslate"><span class="pre">openpifpaf.video</span></code> (requires OpenCV) provides a live demo as well.</p>
@@ -372,6 +385,11 @@ using the command line option <code class="docutils literal notranslate"><span c
 </dd>
 </dl>
 </p>
+</div>
+<div class="section" id="commercial-license">
+<h2>Commercial License<a class="headerlink" href="#commercial-license" title="Permalink to this headline">¶</a></h2>
+<p>This software is available for licensing via the EPFL Technology Transfer
+Office (https://tto.epfl.ch/, info.tto&#64;epfl.ch).</p>
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
