@@ -1,0 +1,599 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Profile &#8212; OpenPifPaf Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Contribute" href="dev.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">OpenPifPaf Guide</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <p class="caption">
+ <span class="caption-text">
+  Getting Started
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="datasets.html">
+   Datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="train.html">
+   Training
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="predict_cli.html">
+   Prediction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cli_help.html">
+   CLI
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     --help
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="examples.html">
+   Examples
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="faq.html">
+   FAQ
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  API
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="predict_api.html">
+   Prediction API
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="moduledocs.html">
+   Modules
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Development
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="dev.html">
+   Contribute
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Profile
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/vita-epfl/openpifpaf/blob/master/HISTORY.md">
+   History
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/vita-epfl/openpifpaf">
+   GitHub
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/profile.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/vita-epfl/openpifpaf/stable?urlpath=tree/guide/profile.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#profile-decoder">
+   Profile Decoder
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p><a class="reference external" href="https://www.svenkreiss.com/">Sven Kreiss</a>, 2020</p>
+<div class="section" id="profile">
+<h1>Profile<a class="headerlink" href="#profile" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="profile-decoder">
+<h2>Profile Decoder<a class="headerlink" href="#profile-decoder" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!python -m openpifpaf.predict coco/000000081988.jpg --no-download-progress --debug --profile-decoder
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/visualizer/base.py:12: MatplotlibDeprecationWarning: You are modifying the state of a globally registered colormap. In future versions, you will not be able to modify a registered colormap in-place. To remove this warning, you can make a copy of the colormap first. cmap = copy.copy(mpl.cm.get_cmap(&quot;Oranges&quot;))
+  matplotlib.cm.get_cmap(&#39;Oranges&#39;).set_bad(&#39;white&#39;, alpha=0.5)
+/opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/visualizer/base.py:13: MatplotlibDeprecationWarning: You are modifying the state of a globally registered colormap. In future versions, you will not be able to modify a registered colormap in-place. To remove this warning, you can make a copy of the colormap first. cmap = copy.copy(mpl.cm.get_cmap(&quot;Blues&quot;))
+  matplotlib.cm.get_cmap(&#39;Blues&#39;).set_bad(&#39;white&#39;, alpha=0.5)
+/opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/visualizer/base.py:14: MatplotlibDeprecationWarning: You are modifying the state of a globally registered colormap. In future versions, you will not be able to modify a registered colormap in-place. To remove this warning, you can make a copy of the colormap first. cmap = copy.copy(mpl.cm.get_cmap(&quot;Greens&quot;))
+  matplotlib.cm.get_cmap(&#39;Greens&#39;).set_bad(&#39;white&#39;, alpha=0.5)
+DEBUG:__main__:neural network device: cpu
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.network.heads:cif = [0], caf = [1]
+DEBUG:openpifpaf.decoder.factory:head names = (&#39;cif&#39;, &#39;caf&#39;, &#39;caf25&#39;)
+DEBUG:openpifpaf.visualizer.base:cif: indices = []
+DEBUG:openpifpaf.show.painters:color connections = False, lw = 2, marker = 6
+DEBUG:openpifpaf.visualizer.base:caf: indices = []
+DEBUG:openpifpaf.show.painters:color connections = False, lw = 2, marker = 6
+DEBUG:openpifpaf.show.painters:color connections = True, lw = 6, marker = 3
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.transforms.pad:valid area before pad: [  0.   0. 639. 426.], image size = (640, 427)
+DEBUG:openpifpaf.transforms.pad:pad with (0, 3, 1, 3)
+DEBUG:openpifpaf.transforms.pad:valid area after pad: [  0.   3. 639. 426.], image size = (641, 433)
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.decoder.generator.generator:nn processing time: 0.894s
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>--------------------------  ---------------  ---------------  ---------------  ---------------  ---------------  ---------------  
+Name                        Self CPU total %  Self CPU total   CPU total %      CPU total        CPU time avg     Number of Calls  
+--------------------------  ---------------  ---------------  ---------------  ---------------  ---------------  ---------------  
+to                          0.00%            10.900us         0.00%            10.900us         1.817us          6                
+model                       1.96%            17.530ms         99.99%           893.027ms        893.027ms        1                
+conv2d                      0.04%            364.407us        77.10%           688.578ms        11.671ms         59               
+convolution                 0.03%            277.506us        77.06%           688.214ms        11.665ms         59               
+_convolution                0.20%            1.743ms          77.03%           687.936ms        11.660ms         59               
+size                        0.05%            413.713us        0.05%            413.713us        0.458us          904              
+contiguous                  0.02%            197.205us        4.09%            36.517ms         266.546us        137              
+mkldnn_convolution          76.71%           685.119ms        76.80%           685.940ms        11.626ms         59               
+empty                       0.23%            2.064ms          0.23%            2.064ms          6.273us          329              
+as_strided_                 0.02%            151.909us        0.02%            151.909us        2.575us          59               
+batch_norm                  0.03%            297.806us        8.93%            79.763ms         1.424ms          56               
+_batch_norm_impl_index      0.04%            347.014us        8.90%            79.465ms         1.419ms          56               
+native_batch_norm           8.69%            77.591ms         8.83%            78.831ms         1.408ms          56               
+empty_like                  0.04%            400.112us        0.16%            1.431ms          7.655us          187              
+relu_                       0.03%            310.713us        1.85%            16.519ms         446.465us        37               
+threshold_                  1.81%            16.209ms         1.81%            16.209ms         438.068us        37               
+cat                         0.03%            238.010us        4.75%            42.453ms         2.358ms          18               
+_cat                        4.66%            41.584ms         4.73%            42.215ms         2.345ms          18               
+resize_                     0.02%            164.603us        0.02%            164.603us        6.858us          24               
+narrow                      0.02%            176.207us        0.05%            476.015us        7.556us          63               
+slice                       0.04%            379.008us        0.06%            517.013us        4.700us          110              
+as_strided                  0.02%            188.007us        0.02%            188.007us        1.424us          132              
+stride                      0.00%            5.200us          0.00%            5.200us          1.300us          4                
+view                        0.05%            474.617us        0.05%            474.617us        8.044us          59               
+transpose                   0.03%            230.406us        0.03%            266.608us        16.663us         16               
+copy_                       4.90%            43.793ms         4.90%            43.793ms         2.305ms          19               
+chunk                       0.01%            74.803us         0.04%            348.411us        26.801us         13               
+split                       0.01%            97.002us         0.03%            258.308us        19.870us         13               
+feature_dropout             0.00%            9.500us          0.00%            9.500us          3.167us          3                
+pixel_shuffle               0.00%            41.401us         0.89%            7.969ms          2.656ms          3                
+reshape                     0.01%            48.403us         0.88%            7.889ms          1.127ms          7                
+permute                     0.00%            28.801us         0.00%            37.801us         12.600us         3                
+clone                       0.00%            27.202us         0.87%            7.772ms          2.591ms          3                
+_unsafe_view                0.00%            14.601us         0.00%            24.802us         8.267us          3                
+sigmoid                     0.00%            33.001us         0.06%            516.715us        172.238us        3                
+sigmoid_out                 0.05%            461.914us        0.05%            475.414us        158.471us        3                
+exp                         0.00%            29.200us         0.16%            1.461ms          486.981us        3                
+exp_out                     0.16%            1.418ms          0.16%            1.425ms          475.115us        3                
+set_                        0.00%            2.500us          0.00%            2.500us          2.500us          1                
+unsqueeze                   0.00%            20.001us         0.00%            23.201us         11.601us         2                
+add_                        0.02%            142.405us        0.02%            142.405us        47.468us         3                
+index                       0.04%            323.009us        0.04%            336.710us        336.710us        1                
+tonumpy                     0.01%            61.702us         0.01%            63.602us         63.602us         1                
+--------------------------  ---------------  ---------------  ---------------  ---------------  ---------------  ---------------  
+Self CPU time total: 893.094ms
+
+INFO:openpifpaf.decoder.profiler_autograd:writing trace file profile_decoder.1.json
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.decoder.generator.generator:parallel execution with worker &lt;openpifpaf.decoder.generator.generator.DummyPool object at 0x7fa58dd39a50&gt;
+DEBUG:openpifpaf.decoder.generator.cifcaf:initial annotations = 0
+DEBUG:openpifpaf.decoder.cif_hr:target_intensities 0.007s
+DEBUG:openpifpaf.decoder.cif_seeds:seeds 722, 0.004s (C++ 0.002s)
+DEBUG:openpifpaf.decoder.caf_scored:scored caf (1332, 1267) in 0.004s
+DEBUG:openpifpaf.decoder.occupancy:shape = (17, 216, 320), min_scale = 2
+DEBUG:openpifpaf.decoder.generator.cifcaf:annotations 5, 0.029s
+DEBUG:openpifpaf.decoder.occupancy:shape = (17, 195, 282), min_scale = 2
+DEBUG:openpifpaf.decoder.nms:nms = 0.005s
+INFO:openpifpaf.decoder.generator.cifcaf:5 annotations: [14, 16, 17, 16, 15]
+INFO:openpifpaf.decoder.profiler:writing profile file profile_decoder.prof
+         9880 function calls (9847 primitive calls) in 0.035 seconds
+
+   Ordered by: internal time
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+       13    0.004    0.000    0.004    0.000 {built-in method numpy.zeros}
+      156    0.003    0.000    0.006    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/decoder/occupancy.py:31(set)
+        1    0.003    0.003    0.004    0.004 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/decoder/caf_scored.py:32(fill_caf)
+        1    0.003    0.003    0.004    0.004 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/decoder/cif_seeds.py:23(fill_cif)
+       17    0.002    0.000    0.002    0.000 {built-in method openpifpaf.functional.scalar_square_add_gauss_with_max}
+       92    0.002    0.000    0.003    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/decoder/generator/cifcaf.py:122(connection_value)
+      156    0.002    0.000    0.002    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/decoder/utils.py:61(scalar_square_add_single)
+      380    0.001    0.000    0.003    0.000 {built-in method numpy.core._multiarray_umath.implement_array_function}
+       78    0.001    0.000    0.002    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/decoder/generator/cifcaf.py:183(add_to_frontier)
+        5    0.001    0.000    0.007    0.001 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/decoder/generator/cifcaf.py:179(_grow)
+      468    0.001    0.000    0.001    0.000 {built-in method builtins.round}
+       17    0.001    0.000    0.003    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/decoder/cif_hr.py:26(accumulate)
+      800    0.001    0.000    0.001    0.000 {built-in method openpifpaf.functional.scalar_nonzero_clipped_with_reduction}
+      800    0.001    0.000    0.002    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/decoder/occupancy.py:41(get)
+        1    0.001    0.001    0.006    0.006 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/decoder/nms.py:17(annotations)
+      228    0.001    0.000    0.001    0.000 {built-in method numpy.array}
+       88    0.001    0.000    0.004    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/decoder/generator/cifcaf.py:197(frontier_get)
+      175    0.001    0.000    0.001    0.000 {built-in method _heapq.heappush}
+      957    0.001    0.000    0.001    0.000 {built-in method builtins.max}
+      175    0.001    0.000    0.001    0.000 {openpifpaf.functional.grow_connection_blend}
+       55    0.001    0.000    0.002    0.000 {openpifpaf.functional.scalar_values}
+        1    0.000    0.000    0.035    0.035 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/decoder/generator/cifcaf.py:65(__call__)
+        5    0.000    0.000    0.003    0.001 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/decoder/generator/cifcaf.py:85(mark_occupied)
+        3    0.000    0.000    0.001    0.000 {built-in method builtins.sorted}
+       59    0.000    0.000    0.000    0.000 {method &#39;reduce&#39; of &#39;numpy.ufunc&#39; objects}
+      203    0.000    0.000    0.001    0.000 &lt;__array_function__ internals&gt;:2(copy)
+      175    0.000    0.000    0.000    0.000 {built-in method _heapq.heappop}
+        9    0.000    0.000    0.000    0.000 {method &#39;write&#39; of &#39;_io.TextIOWrapper&#39; objects}
+        5    0.000    0.000    0.001    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/annotation.py:10(__init__)
+       59    0.000    0.000    0.001    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/numpy/core/fromnumeric.py:70(_wrapreduction)
+        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/logging/__init__.py:282(__init__)
+1058/1053    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+       20    0.000    0.000    0.001    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/annotation.py:62(score)
+      892    0.000    0.000    0.000    0.000 {method &#39;append&#39; of &#39;list&#39; objects}
+       98    0.000    0.000    0.000    0.000 {built-in method numpy.empty}
+       55    0.000    0.000    0.001    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/numpy/core/numeric.py:268(full)
+      312    0.000    0.000    0.000    0.000 {built-in method builtins.min}
+      203    0.000    0.000    0.001    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/numpy/lib/function_base.py:714(copy)
+        1    0.000    0.000    0.007    0.007 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/decoder/cif_hr.py:42(fill_multiple)
+       60    0.000    0.000    0.001    0.000 &lt;__array_function__ internals&gt;:2(copyto)
+       30    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/numpy/core/fromnumeric.py:2105(sum)
+        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/logging/__init__.py:360(getMessage)
+       38    0.000    0.000    0.000    0.000 &lt;__array_function__ internals&gt;:2(concatenate)
+       20    0.000    0.000    0.000    0.000 {method &#39;sort&#39; of &#39;numpy.ndarray&#39; objects}
+       92    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/decoder/caf_scored.py:26(directed)
+        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/logging/__init__.py:1614(isEnabledFor)
+        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/logging/__init__.py:1446(findCaller)
+       20    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/numpy/core/fromnumeric.py:839(sort)
+       19    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/numpy/core/fromnumeric.py:2249(any)
+       92    0.000    0.000    0.000    0.000 {method &#39;add&#39; of &#39;set&#39; objects}
+     15/1    0.000    0.000    0.000    0.000 {built-in method _abc._abc_subclasscheck}
+      203    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/numpy/lib/function_base.py:710(_copy_dispatcher)
+       59    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/numpy/core/fromnumeric.py:71(&lt;dictcomp&gt;)
+        8    0.000    0.000    0.001    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/logging/__init__.py:1356(debug)
+      137    0.000    0.000    0.000    0.000 {method &#39;items&#39; of &#39;dict&#39; objects}
+       60    0.000    0.000    0.000    0.000 {built-in method builtins.isinstance}
+        1    0.000    0.000    0.007    0.007 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/decoder/cif_hr.py:67(fill)
+       30    0.000    0.000    0.000    0.000 &lt;__array_function__ internals&gt;:2(sum)
+        9    0.000    0.000    0.001    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/logging/__init__.py:1491(_log)
+        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/logging/__init__.py:1570(callHandlers)
+       20    0.000    0.000    0.000    0.000 {method &#39;copy&#39; of &#39;numpy.ndarray&#39; objects}
+        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/logging/__init__.py:1002(flush)
+      166    0.000    0.000    0.000    0.000 {built-in method builtins.abs}
+        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/posixpath.py:144(basename)
+        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/decoder/generator/cifcaf.py:119(&lt;listcomp&gt;)
+       19    0.000    0.000    0.000    0.000 &lt;__array_function__ internals&gt;:2(any)
+        2    0.000    0.000    0.001    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/decoder/occupancy.py:11(__init__)
+        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/visualizer/cif.py:38(predicted)
+        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/logging/__init__.py:595(format)
+        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/logging/__init__.py:1013(emit)
+       20    0.000    0.000    0.000    0.000 &lt;__array_function__ internals&gt;:2(sort)
+        5    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/annotation.py:31(add)
+        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/logging/__init__.py:881(handle)
+        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/logging/__init__.py:1476(makeRecord)
+        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/logging/__init__.py:421(format)
+       44    0.000    0.000    0.000    0.000 {built-in method time.perf_counter}
+       25    0.000    0.000    0.000    0.000 {method &#39;acquire&#39; of &#39;_thread.RLock&#39; objects}
+        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/visualizer/caf.py:37(predicted)
+        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/decoder/caf_scored.py:36(&lt;listcomp&gt;)
+        5    0.000    0.000    0.000    0.000 {method &#39;tolist&#39; of &#39;numpy.ndarray&#39; objects}
+        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/genericpath.py:121(_splitext)
+       27    0.000    0.000    0.000    0.000 {method &#39;rfind&#39; of &#39;str&#39; objects}
+       18    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/logging/__init__.py:736(filter)
+        1    0.000    0.000    0.004    0.004 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/decoder/cif_seeds.py:56(fill)
+        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/decoder/nms.py:22(&lt;listcomp&gt;)
+        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/logging/__init__.py:1516(handle)
+       60    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/numpy/core/multiarray.py:1043(copyto)
+        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/posixpath.py:121(splitext)
+        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/decoder/cif_seeds.py:52(get)
+       10    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/numpy/core/fromnumeric.py:2589(amax)
+        9    0.000    0.000    0.000    0.000 {built-in method posix.getpid}
+        1    0.000    0.000    0.004    0.004 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/decoder/caf_scored.py:89(fill)
+        5    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/numpy/core/numeric.py:144(ones)
+        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/decoder/caf_scored.py:37(&lt;listcomp&gt;)
+        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/logging/__init__.py:117(getLevelName)
+       27    0.000    0.000    0.000    0.000 {built-in method posix.fspath}
+        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/decoder/caf_scored.py:16(__init__)
+       18    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/logging/__init__.py:845(release)
+        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/logging/__init__.py:858(format)
+       20    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/numpy/core/_asarray.py:86(asanyarray)
+       38    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/numpy/core/multiarray.py:143(concatenate)
+        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/threading.py:1225(current_thread)
+       27    0.000    0.000    0.000    0.000 {built-in method builtins.hasattr}
+        6    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/decoder/nms.py:29(&lt;genexpr&gt;)
+        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/decoder/nms.py:53(&lt;listcomp&gt;)
+        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/logging/__init__.py:418(usesTime)
+       18    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/logging/__init__.py:838(acquire)
+     15/1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/abc.py:141(__subclasscheck__)
+        9    0.000    0.000    0.000    0.000 {built-in method sys._getframe}
+        3    0.000    0.000    0.000    0.000 {built-in method _abc._abc_instancecheck}
+       10    0.000    0.000    0.000    0.000 &lt;__array_function__ internals&gt;:2(amax)
+       18    0.000    0.000    0.000    0.000 {method &#39;get&#39; of &#39;dict&#39; objects}
+        9    0.000    0.000    0.000    0.000 {method &#39;find&#39; of &#39;str&#39; objects}
+        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/visualizer/cif.py:45(_confidences)
+        6    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/decoder/nms.py:30(&lt;genexpr&gt;)
+        5    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/decoder/nms.py:54(&lt;lambda&gt;)
+       20    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/decoder/caf_scored.py:84(&lt;genexpr&gt;)
+        7    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/logging/__init__.py:212(_acquireLock)
+        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/posixpath.py:52(normcase)
+        2    0.000    0.000    0.000    0.000 {built-in method builtins.sum}
+        5    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/decoder/occupancy.py:28(__len__)
+       20    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/decoder/caf_scored.py:85(&lt;genexpr&gt;)
+        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/decoder/cif_hr.py:19(__init__)
+        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/logging/__init__.py:154(&lt;lambda&gt;)
+        7    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/logging/__init__.py:221(_releaseLock)
+        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/logging/__init__.py:579(formatMessage)
+        7    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/logging/__init__.py:1600(getEffectiveLevel)
+        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/visualizer/caf.py:58(_regressions)
+        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/logging/__init__.py:573(usesTime)
+       30    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/numpy/core/fromnumeric.py:2100(_sum_dispatcher)
+       19    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/numpy/core/fromnumeric.py:2245(_any_dispatcher)
+        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/threading.py:1064(name)
+        5    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/decoder/nms.py:33(&lt;lambda&gt;)
+        1    0.000    0.000    0.007    0.007 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/decoder/cif_hr.py:23(fill_cif)
+       20    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/numpy/core/fromnumeric.py:835(_sort_dispatcher)
+        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/posixpath.py:41(_get_sep)
+        3    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/abc.py:137(__instancecheck__)
+        9    0.000    0.000    0.000    0.000 {method &#39;flush&#39; of &#39;_io.TextIOWrapper&#39; objects}
+        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/visualizer/caf.py:44(_confidences)
+        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/multiprocessing/process.py:36(current_process)
+        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/multiprocessing/process.py:180(name)
+        5    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/numpy/core/_asarray.py:14(asarray)
+       10    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/numpy/core/fromnumeric.py:2584(_amax_dispatcher)
+        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/logging/__init__.py:1368(info)
+       15    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/_collections_abc.py:392(__subclasshook__)
+       18    0.000    0.000    0.000    0.000 {built-in method _thread.get_ident}
+       25    0.000    0.000    0.000    0.000 {method &#39;release&#39; of &#39;_thread.RLock&#39; objects}
+        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/visualizer/cif.py:57(_regressions)
+        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/decoder/cif_seeds.py:18(__init__)
+        9    0.000    0.000    0.000    0.000 {built-in method time.time}
+        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/visualizer/cifhr.py:17(predicted)
+        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/visualizer/occupancy.py:15(predicted)
+        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/visualizer/seeds.py:17(predicted)
+        1    0.000    0.000    0.000    0.000 {method &#39;disable&#39; of &#39;_lsprof.Profiler&#39; objects}
+
+
+
+DEBUG:openpifpaf.decoder.generator.generator:time: nn = 0.987s, dec = 0.044s
+INFO:__main__:batch 0: coco/000000081988.jpg
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!flameprof profile_decoder.prof &gt; profile_decoder_flame.svg
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="decoder flame graph" src="_images/profile_decoder_flame.svg" /></p>
+<p>There is a second output that is generated from the Autograd Profiler. This can only be viewed in the Chrome browser:</p>
+<ul class="simple">
+<li><p>open <code class="docutils literal notranslate"><span class="pre">chrome://tracing</span></code></p></li>
+<li><p>click “Load” in the top left corner</p></li>
+<li><p>select <code class="docutils literal notranslate"><span class="pre">decoder_profile.1.json</span></code></p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="dev.html" title="previous page">Contribute</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Sven Kreiss<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>

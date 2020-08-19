@@ -13,6 +13,7 @@
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/sphinx-book-theme.js"></script>
@@ -29,6 +30,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="shortcut icon" href="_static/favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -66,48 +74,97 @@
 </form>
 
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-  
-  <ul class="nav sidenav_l1">
-  <li class="">
-    <a href="datasets.html">Datasets</a>
-  </li>
-  <li class="active">
-    <a href="">Training</a>
-  </li>
-  <li class="">
-    <a href="predict_cli.html">Prediction</a>
-  </li>
-  <li class="">
-    <a href="cli_help.html">CLI --help</a>
-  </li>
-  <li class="">
-    <a href="examples.html">Examples</a>
-  </li>
-  <li class="">
-    <a href="faq.html">FAQ</a>
-  </li>
-<li class="navbar-special">
-<p class="margin-caption">API</p>
-</li>
-  <li class="">
-    <a href="predict_api.html">Prediction API</a>
-  </li>
-  <li class="">
-    <a href="moduledocs.html">Modules</a>
-  </li>
-<li class="navbar-special">
-<p class="margin-caption">Development</p>
-</li>
-  <li class="">
-    <a href="dev.html">Contribute</a>
-  </li>
-  <li class="">
-    <a href="https://github.com/vita-epfl/openpifpaf/blob/master/HISTORY.md">History<i class="fas fa-external-link-alt"></i></a>
-  </li>
-  <li class="">
-    <a href="https://github.com/vita-epfl/openpifpaf">GitHub<i class="fas fa-external-link-alt"></i></a>
-  </li>
+  <p class="caption">
+ <span class="caption-text">
+  Getting Started
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="datasets.html">
+   Datasets
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Training
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="predict_cli.html">
+   Prediction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cli_help.html">
+   CLI
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     --help
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="examples.html">
+   Examples
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="faq.html">
+   FAQ
+  </a>
+ </li>
 </ul>
+<p class="caption">
+ <span class="caption-text">
+  API
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="predict_api.html">
+   Prediction API
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="moduledocs.html">
+   Modules
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Development
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="dev.html">
+   Contribute
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="profile.html">
+   Profile
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/vita-epfl/openpifpaf/blob/master/HISTORY.md">
+   History
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/vita-epfl/openpifpaf">
+   GitHub
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+</ul>
+
 </nav>
 
  <!-- To handle the deprecated key -->
@@ -181,30 +238,32 @@
 </div>
 
     </div>
+
+    <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
-<div class="tocsection onthispage pt-5 pb-3">
-    <i class="fas fa-list"></i> On this page
-</div>
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#shufflenet">
+   ShuffleNet
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#resnet">
+   ResNet
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#logs">
+   Logs
+  </a>
+ </li>
+</ul>
 
-<nav id="bd-toc-nav">
-    <ul class="nav section-nav flex-column">
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#shufflenet" class="nav-link">ShuffleNet</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#resnet" class="nav-link">ResNet</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#logs" class="nav-link">Logs</a>
-        </li>
-    
-    </ul>
-</nav>
-
-
+        </nav>
     </div>
 </div>
     <div id="main-content" class="row">
@@ -225,72 +284,41 @@ line of the training log file. Below are a few examples for various backbones.</
 <div class="section" id="shufflenet">
 <h2>ShuffleNet<a class="headerlink" href="#shufflenet" title="Permalink to this headline">¶</a></h2>
 <p>ShuffleNet models are trained without ImageNet pretraining:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">time</span> <span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">0</span>,1 python3 -m openpifpaf.train <span class="se">\</span>
-  --lr<span class="o">=</span><span class="m">0</span>.1 <span class="se">\</span>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">time</span> <span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">0</span>,1 python3 -m openpifpaf.train <span class="se">\ </span> enaccluster001
+  --lr<span class="o">=</span><span class="m">0</span>.0001 --momentum<span class="o">=</span><span class="m">0</span>.98 --b-scale<span class="o">=</span><span class="m">10</span>.0 <span class="se">\</span>
   --epochs<span class="o">=</span><span class="m">150</span> <span class="se">\</span>
-  --lr-decay <span class="m">120</span> <span class="se">\</span>
-  --lr-decay-epochs<span class="o">=</span><span class="m">20</span> <span class="se">\</span>
+  --lr-decay <span class="m">130</span> <span class="m">140</span> <span class="se">\</span>
+  --lr-decay-epochs<span class="o">=</span><span class="m">10</span> <span class="se">\</span>
   --batch-size<span class="o">=</span><span class="m">32</span> <span class="se">\</span>
   --square-edge<span class="o">=</span><span class="m">385</span> <span class="se">\</span>
-  --lambdas <span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.2   <span class="m">1</span> <span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.2 <span class="m">0</span>.2    <span class="m">1</span> <span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.2 <span class="m">0</span>.2 <span class="se">\</span>
-  --auto-tune-mtl <span class="se">\</span>
   --weight-decay<span class="o">=</span>1e-5 <span class="se">\</span>
   --update-batchnorm-runningstatistics <span class="se">\</span>
   --basenet<span class="o">=</span>shufflenetv2k16w <span class="se">\</span>
   --headnets cif caf caf25
-
-<span class="c1"># for improved performance, take the epoch150 checkpoint and train with</span>
-<span class="c1"># extended-scale and 10% orientation invariance:</span>
-<span class="nb">time</span> <span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">0</span>,1 python3 -m openpifpaf.train <span class="se">\</span>
-  --lr<span class="o">=</span><span class="m">0</span>.05 <span class="se">\</span>
+</pre></div>
+</div>
+<p>For improved performance, take the epoch150 checkpoint and train with
+extended-scale and 10% orientation invariance:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">time</span> <span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">0</span>,1 python3 -m openpifpaf.train <span class="se">\ </span> enaccluster001
+  --lr<span class="o">=</span><span class="m">0</span>.00005 --momentum<span class="o">=</span><span class="m">0</span>.98 --b-scale<span class="o">=</span><span class="m">10</span>.0 <span class="se">\</span>
   --epochs<span class="o">=</span><span class="m">250</span> <span class="se">\</span>
-  --lr-decay <span class="m">220</span> <span class="m">235</span> <span class="se">\</span>
-  --lr-decay-epochs<span class="o">=</span><span class="m">15</span> <span class="se">\</span>
+  --lr-warm-up-start-epoch<span class="o">=</span><span class="m">150</span> <span class="se">\</span>
+  --lr-decay <span class="m">220</span> <span class="m">240</span> <span class="se">\</span>
+  --lr-decay-epochs<span class="o">=</span><span class="m">10</span> <span class="se">\</span>
   --batch-size<span class="o">=</span><span class="m">32</span> <span class="se">\</span>
   --square-edge<span class="o">=</span><span class="m">385</span> <span class="se">\</span>
-  --lambdas <span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.2   <span class="m">1</span> <span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.2 <span class="m">0</span>.2    <span class="m">1</span> <span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.2 <span class="m">0</span>.2 <span class="se">\</span>
-  --auto-tune-mtl <span class="se">\</span>
   --weight-decay<span class="o">=</span>1e-5 <span class="se">\</span>
   --update-batchnorm-runningstatistics <span class="se">\</span>
-  --checkpoint outputs/shufflenetv2k16w-200504-145520-cif-caf-caf25-d05e5520.pkl --extended-scale --orientation-invariant<span class="o">=</span><span class="m">0</span>.1
+  --checkpoint outputs/shufflenetv2k30w-200811-232815-cif-caf-caf25-659c5af6.pkl --extended-scale --orientation-invariant<span class="o">=</span><span class="m">0</span>.1
 </pre></div>
 </div>
 <p>You can refine an existing model with the <code class="docutils literal notranslate"><span class="pre">--checkpoint</span></code> option.</p>
-<p>For large models, reduce the batch size and learning rate by the same factor:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">time</span> <span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">0</span>,1 python3 -m openpifpaf.train <span class="se">\</span>
-  --lr<span class="o">=</span><span class="m">0</span>.025 <span class="se">\</span>
-  --epochs<span class="o">=</span><span class="m">200</span> <span class="se">\</span>
-  --lr-decay <span class="m">180</span> <span class="m">190</span> <span class="se">\</span>
-  --lr-decay-epochs<span class="o">=</span><span class="m">10</span> <span class="se">\</span>
-  --batch-size<span class="o">=</span><span class="m">16</span> <span class="se">\</span>
-  --square-edge<span class="o">=</span><span class="m">385</span> <span class="se">\</span>
-  --lambdas <span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.2   <span class="m">1</span> <span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.2 <span class="m">0</span>.2    <span class="m">1</span> <span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.2 <span class="m">0</span>.2 <span class="se">\</span>
-  --auto-tune-mtl <span class="se">\</span>
-  --weight-decay<span class="o">=</span>1e-5 <span class="se">\</span>
-  --update-batchnorm-runningstatistics <span class="se">\</span>
-  --checkpoint outputs/shufflenetv2k44w-200521-074105-cif-caf-caf25-a35c65dd.pkl --extended-scale --orientation-invariant<span class="o">=</span><span class="m">0</span>.1
-</pre></div>
-</div>
+<p>For large models, reduce the batch size and learning rate by the same factor.</p>
 </div>
 <div class="section" id="resnet">
 <h2>ResNet<a class="headerlink" href="#resnet" title="Permalink to this headline">¶</a></h2>
 <p>ResNet models are initialized with weights pre-trained on ImageNet.
 That makes their training characteristics different from ShuffleNet (i.e. they look great at the beginning of training).</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">time</span> <span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">0</span>,1 python3 -m openpifpaf.train <span class="se">\</span>
-  --lr<span class="o">=</span><span class="m">0</span>.05 <span class="se">\</span>
-  --epochs<span class="o">=</span><span class="m">150</span> <span class="se">\</span>
-  --lr-decay <span class="m">120</span> <span class="se">\</span>
-  --lr-decay-epochs<span class="o">=</span><span class="m">20</span> <span class="se">\</span>
-  --batch-size<span class="o">=</span><span class="m">16</span> <span class="se">\</span>
-  --square-edge<span class="o">=</span><span class="m">385</span> <span class="se">\</span>
-  --lambdas <span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.2   <span class="m">1</span> <span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.2 <span class="m">0</span>.2    <span class="m">1</span> <span class="m">1</span> <span class="m">1</span> <span class="m">0</span>.2 <span class="m">0</span>.2 <span class="se">\</span>
-  --auto-tune-mtl <span class="se">\</span>
-  --weight-decay<span class="o">=</span>1e-5 <span class="se">\</span>
-  --update-batchnorm-runningstatistics <span class="se">\</span>
-  --basenet<span class="o">=</span>resnet50 <span class="se">\</span>
-  --headnets cif caf caf25
-</pre></div>
-</div>
 </div>
 <div class="section" id="logs">
 <h2>Logs<a class="headerlink" href="#logs" title="Permalink to this headline">¶</a></h2>
@@ -314,6 +342,25 @@ checkpoints every 5 minutes:</p>
 </div>
 </div>
 
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
 
               </div>
               

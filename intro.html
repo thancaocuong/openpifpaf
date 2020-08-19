@@ -13,6 +13,7 @@
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/sphinx-book-theme.js"></script>
@@ -29,6 +30,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="shortcut icon" href="_static/favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -65,48 +73,97 @@
 </form>
 
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-  
-  <ul class="nav sidenav_l1">
-  <li class="">
-    <a href="datasets.html">Datasets</a>
-  </li>
-  <li class="">
-    <a href="train.html">Training</a>
-  </li>
-  <li class="">
-    <a href="predict_cli.html">Prediction</a>
-  </li>
-  <li class="">
-    <a href="cli_help.html">CLI --help</a>
-  </li>
-  <li class="">
-    <a href="examples.html">Examples</a>
-  </li>
-  <li class="">
-    <a href="faq.html">FAQ</a>
-  </li>
-<li class="navbar-special">
-<p class="margin-caption">API</p>
-</li>
-  <li class="">
-    <a href="predict_api.html">Prediction API</a>
-  </li>
-  <li class="">
-    <a href="moduledocs.html">Modules</a>
-  </li>
-<li class="navbar-special">
-<p class="margin-caption">Development</p>
-</li>
-  <li class="">
-    <a href="dev.html">Contribute</a>
-  </li>
-  <li class="">
-    <a href="https://github.com/vita-epfl/openpifpaf/blob/master/HISTORY.md">History<i class="fas fa-external-link-alt"></i></a>
-  </li>
-  <li class="">
-    <a href="https://github.com/vita-epfl/openpifpaf">GitHub<i class="fas fa-external-link-alt"></i></a>
-  </li>
+  <p class="caption">
+ <span class="caption-text">
+  Getting Started
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="datasets.html">
+   Datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="train.html">
+   Training
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="predict_cli.html">
+   Prediction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cli_help.html">
+   CLI
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     --help
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="examples.html">
+   Examples
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="faq.html">
+   FAQ
+  </a>
+ </li>
 </ul>
+<p class="caption">
+ <span class="caption-text">
+  API
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="predict_api.html">
+   Prediction API
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="moduledocs.html">
+   Modules
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Development
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="dev.html">
+   Contribute
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="profile.html">
+   Profile
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/vita-epfl/openpifpaf/blob/master/HISTORY.md">
+   History
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/vita-epfl/openpifpaf">
+   GitHub
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+</ul>
+
 </nav>
 
  <!-- To handle the deprecated key -->
@@ -163,46 +220,54 @@
         <!-- Launch buttons -->
 
     </div>
+
+    <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
-<div class="tocsection onthispage pt-5 pb-3">
-    <i class="fas fa-list"></i> On this page
-</div>
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#demo">
+   Demo
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#install">
+   Install
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#about-this-guide">
+   About this Guide
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pre-trained-models">
+   Pre-trained Models
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#related-projects">
+   Related Projects
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#citation">
+   Citation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#commercial-license">
+   Commercial License
+  </a>
+  <ul class="nav section-nav flex-column">
+  </ul>
+ </li>
+</ul>
 
-<nav id="bd-toc-nav">
-    <ul class="nav section-nav flex-column">
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#demo" class="nav-link">Demo</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#install" class="nav-link">Install</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#about-this-guide" class="nav-link">About this Guide</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#pre-trained-models" class="nav-link">Pre-trained Models</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#related-projects" class="nav-link">Related Projects</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#citation" class="nav-link">Citation</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#commercial-license" class="nav-link">Commercial License</a>
-        </li>
-    
-    </ul>
-</nav>
-
-
+        </nav>
     </div>
 </div>
     <div id="main-content" class="row">
@@ -212,10 +277,6 @@
                 
   <div class="section" id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Under construction.</p>
-</div>
 <p>Continuously tested on Linux, MacOS and Windows: <a class="reference external" href="https://travis-ci.org/vita-epfl/openpifpaf"><img alt="Build Status" src="https://travis-ci.org/vita-epfl/openpifpaf.svg?branch=master" /></a><br />
 <a class="reference external" href="http://openaccess.thecvf.com/content_CVPR_2019/html/Kreiss_PifPaf_Composite_Fields_for_Human_Pose_Estimation_CVPR_2019_paper.html">CVPR 2019 paper</a></p>
 <!-- [arxiv.org/abs/1903.06593](https://arxiv.org/abs/1903.06593) -->
@@ -260,6 +321,7 @@ and make sure there is no folder named <code class="docutils literal notranslate
 </pre></div>
 </div>
 <p>You need to install <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> to produce visual outputs.</p>
+<p>To modify openpifpaf itself, please follow <a class="reference internal" href="dev.html#modify-code"><span class="std std-ref">Modify Code</span></a>.</p>
 <p>For a live demo, we recommend to try the
 <a class="reference external" href="https://github.com/vita-epfl/openpifpafwebdemo">openpifpafwebdemo</a> project.
 Alternatively, <code class="docutils literal notranslate"><span class="pre">openpifpaf.video</span></code> (requires OpenCV) provides a live demo as well.</p>
@@ -399,6 +461,25 @@ Office (https://tto.epfl.ch/, info.tto&#64;epfl.ch).</p>
 </div>
 </div>
 
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
 
               </div>
               
