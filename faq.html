@@ -24,12 +24,12 @@
     <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/mystnb.js"></script>
     <script src="_static/sphinx-book-theme.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -256,6 +256,11 @@
    Predict is slow
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python-h-is-missing">
+   Python.h is missing
+  </a>
+ </li>
 </ul>
 
         </nav>
@@ -282,17 +287,21 @@ The models that OpenPifPaf uses have an intermediate layer with stride 16. There
 If the output of the command below is False, then PyTorch cannot make use of your GPU and OpenPifPaf falls back to CPU processing.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!python -c &quot;import torch; print(torch.cuda.is_available())&quot;
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>python -c <span class="s2">&quot;import torch; print(torch.cuda.is_available())&quot;</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>False
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
 </pre></div>
 </div>
 </div>
 </div>
 <p>You can also run <code class="docutils literal notranslate"><span class="pre">predict</span></code> with the <code class="docutils literal notranslate"><span class="pre">--debug</span></code> option. Compare your output with the output in <a class="reference internal" href="predict_cli.html"><span class="doc">Prediction</span></a> to understand which part of the process is slow for you. For a fair comparison, also use <code class="docutils literal notranslate"><span class="pre">--disable-cuda</span></code> because the reference in this documentation is created without CUDA.</p>
+</div>
+<div class="section" id="python-h-is-missing">
+<h2>Python.h is missing<a class="headerlink" href="#python-h-is-missing" title="Permalink to this headline">¶</a></h2>
+<p>Installation fails with an exception complaining about a missing <code class="docutils literal notranslate"><span class="pre">Python.h</span></code> file. This means that you need the development files for Python itself. On Ubuntu systems, you can get this with <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">python3-dev</span></code>. For more operating systems, there is a good <a class="reference external" href="https://stackoverflow.com/questions/21530577/fatal-error-python-h-no-such-file-or-directory">StackOverflow post</a> on the topic.</p>
 </div>
 </div>
 

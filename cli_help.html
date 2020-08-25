@@ -24,12 +24,12 @@
     <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/mystnb.js"></script>
     <script src="_static/sphinx-book-theme.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -299,18 +299,12 @@
 <span id="cli-help-predict"></span><h2>predict<a class="headerlink" href="#predict" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!python3 -m openpifpaf.predict --help
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>python3 -m openpifpaf.predict --help
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/visualizer/base.py:12: MatplotlibDeprecationWarning: You are modifying the state of a globally registered colormap. In future versions, you will not be able to modify a registered colormap in-place. To remove this warning, you can make a copy of the colormap first. cmap = copy.copy(mpl.cm.get_cmap(&quot;Oranges&quot;))
-  matplotlib.cm.get_cmap(&#39;Oranges&#39;).set_bad(&#39;white&#39;, alpha=0.5)
-/opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/visualizer/base.py:13: MatplotlibDeprecationWarning: You are modifying the state of a globally registered colormap. In future versions, you will not be able to modify a registered colormap in-place. To remove this warning, you can make a copy of the colormap first. cmap = copy.copy(mpl.cm.get_cmap(&quot;Blues&quot;))
-  matplotlib.cm.get_cmap(&#39;Blues&#39;).set_bad(&#39;white&#39;, alpha=0.5)
-/opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/visualizer/base.py:14: MatplotlibDeprecationWarning: You are modifying the state of a globally registered colormap. In future versions, you will not be able to modify a registered colormap in-place. To remove this warning, you can make a copy of the colormap first. cmap = copy.copy(mpl.cm.get_cmap(&quot;Greens&quot;))
-  matplotlib.cm.get_cmap(&#39;Greens&#39;).set_bad(&#39;white&#39;, alpha=0.5)
-usage: python3 -m openpifpaf.predict [-h] [--version]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>usage: python3 -m openpifpaf.predict [-h] [--version]
                                      [--checkpoint CHECKPOINT]
                                      [--basenet BASENET]
                                      [--headnets HEADNETS [HEADNETS ...]]
@@ -473,20 +467,12 @@ logging:
 <span id="cli-help-video"></span><h2>video<a class="headerlink" href="#video" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!python3 -m openpifpaf.video --help
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>python3 -m openpifpaf.video --help
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/visualizer/base.py:12: MatplotlibDeprecationWarning: You are modifying the state of a globally registered colormap. In future versions, you will not be able to modify a registered colormap in-place. To remove this warning, you can make a copy of the colormap first. cmap = copy.copy(mpl.cm.get_cmap(&quot;Oranges&quot;))
-  matplotlib.cm.get_cmap(&#39;Oranges&#39;).set_bad(&#39;white&#39;, alpha=0.5)
-/opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/visualizer/base.py:13: MatplotlibDeprecationWarning: You are modifying the state of a globally registered colormap. In future versions, you will not be able to modify a registered colormap in-place. To remove this warning, you can make a copy of the colormap first. cmap = copy.copy(mpl.cm.get_cmap(&quot;Blues&quot;))
-  matplotlib.cm.get_cmap(&#39;Blues&#39;).set_bad(&#39;white&#39;, alpha=0.5)
-/opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/visualizer/base.py:14: MatplotlibDeprecationWarning: You are modifying the state of a globally registered colormap. In future versions, you will not be able to modify a registered colormap in-place. To remove this warning, you can make a copy of the colormap first. cmap = copy.copy(mpl.cm.get_cmap(&quot;Greens&quot;))
-  matplotlib.cm.get_cmap(&#39;Greens&#39;).set_bad(&#39;white&#39;, alpha=0.5)
-</pre></div>
-</div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>usage: python3 -m openpifpaf.video [-h] [--version] [--checkpoint CHECKPOINT]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>usage: python3 -m openpifpaf.video [-h] [--version] [--checkpoint CHECKPOINT]
                                    [--basenet BASENET]
                                    [--headnets HEADNETS [HEADNETS ...]]
                                    [--no-pretrain] [--two-scale]
@@ -651,20 +637,12 @@ logging:
 <h2>train<a class="headerlink" href="#train" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!python3 -m openpifpaf.train --help
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>python3 -m openpifpaf.train --help
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/visualizer/base.py:12: MatplotlibDeprecationWarning: You are modifying the state of a globally registered colormap. In future versions, you will not be able to modify a registered colormap in-place. To remove this warning, you can make a copy of the colormap first. cmap = copy.copy(mpl.cm.get_cmap(&quot;Oranges&quot;))
-  matplotlib.cm.get_cmap(&#39;Oranges&#39;).set_bad(&#39;white&#39;, alpha=0.5)
-/opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/visualizer/base.py:13: MatplotlibDeprecationWarning: You are modifying the state of a globally registered colormap. In future versions, you will not be able to modify a registered colormap in-place. To remove this warning, you can make a copy of the colormap first. cmap = copy.copy(mpl.cm.get_cmap(&quot;Blues&quot;))
-  matplotlib.cm.get_cmap(&#39;Blues&#39;).set_bad(&#39;white&#39;, alpha=0.5)
-/opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/visualizer/base.py:14: MatplotlibDeprecationWarning: You are modifying the state of a globally registered colormap. In future versions, you will not be able to modify a registered colormap in-place. To remove this warning, you can make a copy of the colormap first. cmap = copy.copy(mpl.cm.get_cmap(&quot;Greens&quot;))
-  matplotlib.cm.get_cmap(&#39;Greens&#39;).set_bad(&#39;white&#39;, alpha=0.5)
-</pre></div>
-</div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>usage: python3 -m openpifpaf.train [-h] [--version] [--debug]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>usage: python3 -m openpifpaf.train [-h] [--version] [--debug]
                                    [--checkpoint CHECKPOINT]
                                    [--basenet BASENET]
                                    [--headnets HEADNETS [HEADNETS ...]]
@@ -706,7 +684,6 @@ logging:
                                    [--coco-train-image-dir COCO_TRAIN_IMAGE_DIR]
                                    [--coco-val-image-dir COCO_VAL_IMAGE_DIR]
                                    [--dataset DATASET] [--n-images N_IMAGES]
-                                   [--duplicate-data DUPLICATE_DATA]
                                    [--loader-workers LOADER_WORKERS]
                                    [--batch-size BATCH_SIZE]
                                    [--square-edge SQUARE_EDGE]
@@ -725,6 +702,7 @@ logging:
                                    [--debug-indices DEBUG_INDICES [DEBUG_INDICES ...]]
                                    [-o OUTPUT] [--stride-apply STRIDE_APPLY]
                                    [--epochs EPOCHS]
+                                   [--val-interval VAL_INTERVAL]
                                    [--rescale-images RESCALE_IMAGES]
                                    [--update-batchnorm-runningstatistics]
                                    [--ema EMA]
@@ -743,6 +721,8 @@ optional arguments:
   --stride-apply STRIDE_APPLY
                         apply and reset gradients every n batches (default: 1)
   --epochs EPOCHS       number of epochs to train (default: 75)
+  --val-interval VAL_INTERVAL
+                        validation run every n epochs (default: 1)
   --rescale-images RESCALE_IMAGES
                         overall image rescale factor (default: 1.0)
   --update-batchnorm-runningstatistics
@@ -860,8 +840,6 @@ dataset and loader:
   --coco-val-image-dir COCO_VAL_IMAGE_DIR
   --dataset DATASET
   --n-images N_IMAGES   number of images to sample (default: None)
-  --duplicate-data DUPLICATE_DATA
-                        duplicate data (default: None)
   --loader-workers LOADER_WORKERS
                         number of workers for data loading (default: None)
   --batch-size BATCH_SIZE
@@ -910,20 +888,12 @@ debug:
 <h2>eval_coco<a class="headerlink" href="#eval-coco" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!python3 -m openpifpaf.eval_coco --help
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>python3 -m openpifpaf.eval_coco --help
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/visualizer/base.py:12: MatplotlibDeprecationWarning: You are modifying the state of a globally registered colormap. In future versions, you will not be able to modify a registered colormap in-place. To remove this warning, you can make a copy of the colormap first. cmap = copy.copy(mpl.cm.get_cmap(&quot;Oranges&quot;))
-  matplotlib.cm.get_cmap(&#39;Oranges&#39;).set_bad(&#39;white&#39;, alpha=0.5)
-/opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/visualizer/base.py:13: MatplotlibDeprecationWarning: You are modifying the state of a globally registered colormap. In future versions, you will not be able to modify a registered colormap in-place. To remove this warning, you can make a copy of the colormap first. cmap = copy.copy(mpl.cm.get_cmap(&quot;Blues&quot;))
-  matplotlib.cm.get_cmap(&#39;Blues&#39;).set_bad(&#39;white&#39;, alpha=0.5)
-/opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/visualizer/base.py:14: MatplotlibDeprecationWarning: You are modifying the state of a globally registered colormap. In future versions, you will not be able to modify a registered colormap in-place. To remove this warning, you can make a copy of the colormap first. cmap = copy.copy(mpl.cm.get_cmap(&quot;Greens&quot;))
-  matplotlib.cm.get_cmap(&#39;Greens&#39;).set_bad(&#39;white&#39;, alpha=0.5)
-</pre></div>
-</div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>usage: python3 -m openpifpaf.eval_coco [-h] [--version]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>usage: python3 -m openpifpaf.eval_coco [-h] [--version]
                                        [--checkpoint CHECKPOINT]
                                        [--basenet BASENET]
                                        [--headnets HEADNETS [HEADNETS ...]]
@@ -1086,20 +1056,12 @@ logging:
 <h2>export_onnx<a class="headerlink" href="#export-onnx" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!python3 -m openpifpaf.export_onnx --help
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>python3 -m openpifpaf.export_onnx --help
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/visualizer/base.py:12: MatplotlibDeprecationWarning: You are modifying the state of a globally registered colormap. In future versions, you will not be able to modify a registered colormap in-place. To remove this warning, you can make a copy of the colormap first. cmap = copy.copy(mpl.cm.get_cmap(&quot;Oranges&quot;))
-  matplotlib.cm.get_cmap(&#39;Oranges&#39;).set_bad(&#39;white&#39;, alpha=0.5)
-/opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/visualizer/base.py:13: MatplotlibDeprecationWarning: You are modifying the state of a globally registered colormap. In future versions, you will not be able to modify a registered colormap in-place. To remove this warning, you can make a copy of the colormap first. cmap = copy.copy(mpl.cm.get_cmap(&quot;Blues&quot;))
-  matplotlib.cm.get_cmap(&#39;Blues&#39;).set_bad(&#39;white&#39;, alpha=0.5)
-/opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/visualizer/base.py:14: MatplotlibDeprecationWarning: You are modifying the state of a globally registered colormap. In future versions, you will not be able to modify a registered colormap in-place. To remove this warning, you can make a copy of the colormap first. cmap = copy.copy(mpl.cm.get_cmap(&quot;Greens&quot;))
-  matplotlib.cm.get_cmap(&#39;Greens&#39;).set_bad(&#39;white&#39;, alpha=0.5)
-</pre></div>
-</div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>usage: python3 -m openpifpaf.export_onnx [-h] [--version]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>usage: python3 -m openpifpaf.export_onnx [-h] [--version]
                                          [--checkpoint CHECKPOINT]
                                          [--outfile OUTFILE] [--simplify]
                                          [--polish] [--optimize] [--check]
@@ -1131,20 +1093,12 @@ optional arguments:
 <h2>benchmark<a class="headerlink" href="#benchmark" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!python3 -m openpifpaf.benchmark --help
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>python3 -m openpifpaf.benchmark --help
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/visualizer/base.py:12: MatplotlibDeprecationWarning: You are modifying the state of a globally registered colormap. In future versions, you will not be able to modify a registered colormap in-place. To remove this warning, you can make a copy of the colormap first. cmap = copy.copy(mpl.cm.get_cmap(&quot;Oranges&quot;))
-  matplotlib.cm.get_cmap(&#39;Oranges&#39;).set_bad(&#39;white&#39;, alpha=0.5)
-/opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/visualizer/base.py:13: MatplotlibDeprecationWarning: You are modifying the state of a globally registered colormap. In future versions, you will not be able to modify a registered colormap in-place. To remove this warning, you can make a copy of the colormap first. cmap = copy.copy(mpl.cm.get_cmap(&quot;Blues&quot;))
-  matplotlib.cm.get_cmap(&#39;Blues&#39;).set_bad(&#39;white&#39;, alpha=0.5)
-/opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/visualizer/base.py:14: MatplotlibDeprecationWarning: You are modifying the state of a globally registered colormap. In future versions, you will not be able to modify a registered colormap in-place. To remove this warning, you can make a copy of the colormap first. cmap = copy.copy(mpl.cm.get_cmap(&quot;Greens&quot;))
-  matplotlib.cm.get_cmap(&#39;Greens&#39;).set_bad(&#39;white&#39;, alpha=0.5)
-</pre></div>
-</div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>usage: python3 -m openpifpaf.benchmark [-h] [--version] [--output OUTPUT]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>usage: python3 -m openpifpaf.benchmark [-h] [--version] [--output OUTPUT]
                                        [--backbones BACKBONES [BACKBONES ...]]
                                        [--iccv2019-ablation]
                                        [--dense-ablation] [--debug]
@@ -1172,20 +1126,12 @@ logging:
 <h2>logs<a class="headerlink" href="#logs" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!python3 -m openpifpaf.logs --help
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>python3 -m openpifpaf.logs --help
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/visualizer/base.py:12: MatplotlibDeprecationWarning: You are modifying the state of a globally registered colormap. In future versions, you will not be able to modify a registered colormap in-place. To remove this warning, you can make a copy of the colormap first. cmap = copy.copy(mpl.cm.get_cmap(&quot;Oranges&quot;))
-  matplotlib.cm.get_cmap(&#39;Oranges&#39;).set_bad(&#39;white&#39;, alpha=0.5)
-/opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/visualizer/base.py:13: MatplotlibDeprecationWarning: You are modifying the state of a globally registered colormap. In future versions, you will not be able to modify a registered colormap in-place. To remove this warning, you can make a copy of the colormap first. cmap = copy.copy(mpl.cm.get_cmap(&quot;Blues&quot;))
-  matplotlib.cm.get_cmap(&#39;Blues&#39;).set_bad(&#39;white&#39;, alpha=0.5)
-/opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/openpifpaf/visualizer/base.py:14: MatplotlibDeprecationWarning: You are modifying the state of a globally registered colormap. In future versions, you will not be able to modify a registered colormap in-place. To remove this warning, you can make a copy of the colormap first. cmap = copy.copy(mpl.cm.get_cmap(&quot;Greens&quot;))
-  matplotlib.cm.get_cmap(&#39;Greens&#39;).set_bad(&#39;white&#39;, alpha=0.5)
-</pre></div>
-</div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>usage: python3 -m openpifpaf.logs [-h] [--version] [--label LABEL [LABEL ...]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>usage: python3 -m openpifpaf.logs [-h] [--version] [--label LABEL [LABEL ...]]
                                   [--eval-edge EVAL_EDGE]
                                   [--first-epoch FIRST_EPOCH] [--no-share-y]
                                   [-o OUTPUT] [--show-mtl-sigmas]
@@ -1204,6 +1150,8 @@ optional arguments:
   --eval-edge EVAL_EDGE
                         side length during eval (default: 641)
   --first-epoch FIRST_EPOCH
+                        epoch (can be float) of first data point to plot
+                        (default: 1e-06)
   --no-share-y          dont share y access (default: True)
   -o OUTPUT, --output OUTPUT
                         output prefix (default is log_file + .) (default:
