@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Profile &#8212; OpenPifPaf Guide DEV</title>
+    <title>Cifar10 &#8212; OpenPifPaf Guide DEV</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="_static/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
@@ -39,7 +39,8 @@
     <link rel="shortcut icon" href="_static/favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Contribute" href="dev.html" />
+    <link rel="next" title="Contribute" href="dev.html" />
+    <link rel="prev" title="Overview" href="plugins_overview.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -143,14 +144,14 @@
   Plugins
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="plugins_overview.html">
    Overview
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="plugins_cifar10.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Cifar10
   </a>
  </li>
@@ -160,14 +161,14 @@
   Development
  </span>
 </p>
-<ul class="current nav sidenav_l1">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="dev.html">
    Contribute
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="profile.html">
    Profile
   </a>
  </li>
@@ -227,7 +228,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/profile.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="_sources/plugins_cifar10.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -251,7 +252,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/vita-epfl/openpifpaf/dev?urlpath=tree/guide/profile.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/vita-epfl/openpifpaf/dev?urlpath=tree/guide/plugins_cifar10.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="_static/images/logo_binder.svg"
@@ -259,7 +260,7 @@
         
         
         
-        <a class="colab-button" href="https://colab.research.google.com/github/vita-epfl/openpifpaf/blob/dev/guide/profile.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+        <a class="colab-button" href="https://colab.research.google.com/github/vita-epfl/openpifpaf/blob/dev/guide/plugins_cifar10.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
                 title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
                     src="_static/images/logo_colab.png"
                     alt="Interact on Colab">Colab</button></a>
@@ -276,14 +277,7 @@
             <i class="fas fa-list"></i> Contents
         </div>
         <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#profile-decoder">
-   Profile Decoder
-  </a>
- </li>
-</ul>
-
+            
         </nav>
     </div>
 </div>
@@ -292,78 +286,9 @@
         
               <div>
                 
-  <p><a class="reference external" href="https://www.svenkreiss.com/">Sven Kreiss</a>, 2020</p>
-<div class="section" id="profile">
-<h1>Profile<a class="headerlink" href="#profile" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="profile-decoder">
-<h2>Profile Decoder<a class="headerlink" href="#profile-decoder" title="Permalink to this headline">¶</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>python -m openpifpaf.predict coco/000000081988.jpg --no-download-progress --debug --profile-decoder
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:__main__:neural network device: cpu
-Traceback (most recent call last):
-  File &quot;/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/runpy.py&quot;, line 193, in _run_module_as_main
-    &quot;__main__&quot;, mod_spec)
-  File &quot;/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/runpy.py&quot;, line 85, in _run_code
-    exec(code, run_globals)
-  File &quot;/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/predict.py&quot;, line 214, in &lt;module&gt;
-    main()
-  File &quot;/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/predict.py&quot;, line 160, in main
-    processor, model = processor_factory(args)
-  File &quot;/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/predict.py&quot;, line 106, in processor_factory
-    model_cpu, _ = network.factory_from_args(args)
-  File &quot;/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/network/factory.py&quot;, line 64, in factory_from_args
-    download_progress=args.download_progress,
-  File &quot;/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/network/factory.py&quot;, line 130, in factory
-    progress=download_progress)
-  File &quot;/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/torch/hub.py&quot;, line 495, in load_state_dict_from_url
-    return torch.load(cached_file, map_location=map_location)
-  File &quot;/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/torch/serialization.py&quot;, line 585, in load
-    return _legacy_load(opened_file, map_location, pickle_module, **pickle_load_args)
-  File &quot;/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/torch/serialization.py&quot;, line 765, in _legacy_load
-    result = unpickler.load()
-AttributeError: Can&#39;t get attribute &#39;CompositeFieldFused&#39; on &lt;module &#39;openpifpaf.network.heads&#39; from &#39;/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/network/heads.py&#39;&gt;
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>flameprof profile_decoder.prof &gt; profile_decoder_flame.svg
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
-  File &quot;/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/runpy.py&quot;, line 193, in _run_module_as_main
-    &quot;__main__&quot;, mod_spec)
-  File &quot;/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/runpy.py&quot;, line 85, in _run_code
-    exec(code, run_globals)
-  File &quot;/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/flameprof.py&quot;, line 402, in &lt;module&gt;
-    s = pstats.Stats(args.stats)
-  File &quot;/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/pstats.py&quot;, line 96, in __init__
-    self.init(arg)
-  File &quot;/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/pstats.py&quot;, line 110, in init
-    self.load_stats(arg)
-  File &quot;/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/pstats.py&quot;, line 123, in load_stats
-    with open(arg, &#39;rb&#39;) as f:
-FileNotFoundError: [Errno 2] No such file or directory: &#39;profile_decoder.prof&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<p><img alt="decoder flame graph" src="_images/profile_decoder_flame.svg" /></p>
-<p>There is a second output that is generated from the Autograd Profiler. This can only be viewed in the Chrome browser:</p>
-<ul class="simple">
-<li><p>open <code class="docutils literal notranslate"><span class="pre">chrome://tracing</span></code></p></li>
-<li><p>click “Load” in the top left corner</p></li>
-<li><p>select <code class="docutils literal notranslate"><span class="pre">decoder_profile.1.json</span></code></p></li>
-</ul>
-</div>
+  <div class="section" id="cifar10">
+<h1>Cifar10<a class="headerlink" href="#cifar10" title="Permalink to this headline">¶</a></h1>
+<p>This plugin is part of <code class="docutils literal notranslate"><span class="pre">openpifpaf.contrib</span></code>. It demonstrates the plugin architecture.</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -394,7 +319,8 @@ FileNotFoundError: [Errno 2] No such file or directory: &#39;profile_decoder.pro
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="dev.html" title="previous page">Contribute</a>
+    <a class='left-prev' id="prev-link" href="plugins_overview.html" title="previous page">Overview</a>
+    <a class='right-next' id="next-link" href="dev.html" title="next page">Contribute</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
