@@ -316,7 +316,7 @@ line of the training log file. Below are a few examples for various backbones.</
 <div class="section" id="shufflenet">
 <h2>ShuffleNet<a class="headerlink" href="#shufflenet" title="Permalink to this headline">¶</a></h2>
 <p>ShuffleNet models are trained without ImageNet pretraining:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">time</span> <span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">0</span>,1 python3 -m openpifpaf.train <span class="se">\ </span> enaccluster001
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">time</span> <span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">0</span>,1 python3 -m openpifpaf.train <span class="se">\</span>
   --lr<span class="o">=</span><span class="m">0</span>.0001 --momentum<span class="o">=</span><span class="m">0</span>.98 --b-scale<span class="o">=</span><span class="m">10</span>.0 <span class="se">\</span>
   --epochs<span class="o">=</span><span class="m">150</span> <span class="se">\</span>
   --lr-decay <span class="m">130</span> <span class="m">140</span> <span class="se">\</span>
@@ -331,7 +331,7 @@ line of the training log file. Below are a few examples for various backbones.</
 </div>
 <p>For improved performance, take the epoch150 checkpoint and train with
 extended-scale and 10% orientation invariance:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">time</span> <span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">0</span>,1 python3 -m openpifpaf.train <span class="se">\ </span> enaccluster001
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">time</span> <span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">0</span>,1 python3 -m openpifpaf.train <span class="se">\</span>
   --lr<span class="o">=</span><span class="m">0</span>.00005 --momentum<span class="o">=</span><span class="m">0</span>.98 --b-scale<span class="o">=</span><span class="m">10</span>.0 <span class="se">\</span>
   --epochs<span class="o">=</span><span class="m">250</span> <span class="se">\</span>
   --lr-warm-up-start-epoch<span class="o">=</span><span class="m">150</span> <span class="se">\</span>
