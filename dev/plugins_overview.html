@@ -452,6 +452,8 @@ class DataModule(builtins.object)
  |  Overwrite cli() and configure() to make your data module configureable
  |  from the command line.
  |  
+ |  Set `head_metas` in constructor.
+ |  
  |  Methods defined here:
  |  
  |  test_loader(self)
@@ -463,9 +465,9 @@ class DataModule(builtins.object)
  |  ----------------------------------------------------------------------
  |  Class methods defined here:
  |  
- |  cli(parser) from builtins.type
+ |  cli(parser: argparse.ArgumentParser) from builtins.type
  |  
- |  configure(args) from builtins.type
+ |  configure(args: argparse.Namespace) from builtins.type
  |  
  |  ----------------------------------------------------------------------
  |  Data descriptors defined here:
@@ -478,6 +480,8 @@ class DataModule(builtins.object)
  |  
  |  ----------------------------------------------------------------------
  |  Data and other attributes defined here:
+ |  
+ |  __annotations__ = {&#39;head_metas&#39;: typing.List[openpifpaf.headmeta.Base]...
  |  
  |  batch_size = 8
  |  

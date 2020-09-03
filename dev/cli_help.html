@@ -340,6 +340,7 @@
                                      [--resnet-pool0-stride RESNET_POOL0_STRIDE]
                                      [--resnet-input-conv-stride RESNET_INPUT_CONV_STRIDE]
                                      [--resnet-input-conv2-stride RESNET_INPUT_CONV2_STRIDE]
+                                     [--resnet-block5-dilation RESNET_BLOCK5_DILATION]
                                      [--resnet-remove-last-block]
                                      [--shufflenetv2-no-pretrain]
                                      [--shufflenetv2k-input-conv2-stride SHUFFLENETV2K_INPUT_CONV2_STRIDE]
@@ -427,6 +428,8 @@ ResNet:
   --resnet-input-conv2-stride RESNET_INPUT_CONV2_STRIDE
                         stride of the optional 2nd input convolution (default:
                         0)
+  --resnet-block5-dilation RESNET_BLOCK5_DILATION
+                        use dilated convs in block5 (default: 1)
   --resnet-remove-last-block
                         create a network without the last block (default:
                         False)
@@ -536,6 +539,7 @@ logging:
                                    [--resnet-pool0-stride RESNET_POOL0_STRIDE]
                                    [--resnet-input-conv-stride RESNET_INPUT_CONV_STRIDE]
                                    [--resnet-input-conv2-stride RESNET_INPUT_CONV2_STRIDE]
+                                   [--resnet-block5-dilation RESNET_BLOCK5_DILATION]
                                    [--resnet-remove-last-block]
                                    [--shufflenetv2-no-pretrain]
                                    [--shufflenetv2k-input-conv2-stride SHUFFLENETV2K_INPUT_CONV2_STRIDE]
@@ -628,6 +632,8 @@ ResNet:
   --resnet-input-conv2-stride RESNET_INPUT_CONV2_STRIDE
                         stride of the optional 2nd input convolution (default:
                         0)
+  --resnet-block5-dilation RESNET_BLOCK5_DILATION
+                        use dilated convs in block5 (default: 1)
   --resnet-remove-last-block
                         create a network without the last block (default:
                         False)
@@ -736,6 +742,7 @@ logging:
                                    [--resnet-pool0-stride RESNET_POOL0_STRIDE]
                                    [--resnet-input-conv-stride RESNET_INPUT_CONV_STRIDE]
                                    [--resnet-input-conv2-stride RESNET_INPUT_CONV2_STRIDE]
+                                   [--resnet-block5-dilation RESNET_BLOCK5_DILATION]
                                    [--resnet-remove-last-block]
                                    [--shufflenetv2-no-pretrain]
                                    [--shufflenetv2k-input-conv2-stride SHUFFLENETV2K_INPUT_CONV2_STRIDE]
@@ -859,6 +866,8 @@ ResNet:
   --resnet-input-conv2-stride RESNET_INPUT_CONV2_STRIDE
                         stride of the optional 2nd input convolution (default:
                         0)
+  --resnet-block5-dilation RESNET_BLOCK5_DILATION
+                        use dilated convs in block5 (default: 1)
   --resnet-remove-last-block
                         create a network without the last block (default:
                         False)
@@ -1067,6 +1076,7 @@ debug:
                                        [--resnet-pool0-stride RESNET_POOL0_STRIDE]
                                        [--resnet-input-conv-stride RESNET_INPUT_CONV_STRIDE]
                                        [--resnet-input-conv2-stride RESNET_INPUT_CONV2_STRIDE]
+                                       [--resnet-block5-dilation RESNET_BLOCK5_DILATION]
                                        [--resnet-remove-last-block]
                                        [--shufflenetv2-no-pretrain]
                                        [--shufflenetv2k-input-conv2-stride SHUFFLENETV2K_INPUT_CONV2_STRIDE]
@@ -1156,6 +1166,8 @@ ResNet:
   --resnet-input-conv2-stride RESNET_INPUT_CONV2_STRIDE
                         stride of the optional 2nd input convolution (default:
                         0)
+  --resnet-block5-dilation RESNET_BLOCK5_DILATION
+                        use dilated convs in block5 (default: 1)
   --resnet-remove-last-block
                         create a network without the last block (default:
                         False)
