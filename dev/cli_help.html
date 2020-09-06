@@ -536,6 +536,7 @@ logging:
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>usage: python3 -m openpifpaf.video [-h] [--version]
+                                   [--shufflenetv2-no-pretrain]
                                    [--shufflenetv2k-input-conv2-stride SHUFFLENETV2K_INPUT_CONV2_STRIDE]
                                    [--shufflenetv2k-input-conv2-outchannels SHUFFLENETV2K_INPUT_CONV2_OUTCHANNELS]
                                    [--shufflenetv2k-stage4-dilation SHUFFLENETV2K_STAGE4_DILATION]
@@ -546,7 +547,6 @@ logging:
                                    [--resnet-input-conv2-stride RESNET_INPUT_CONV2_STRIDE]
                                    [--resnet-block5-dilation RESNET_BLOCK5_DILATION]
                                    [--resnet-remove-last-block]
-                                   [--shufflenetv2-no-pretrain]
                                    [--cf3-dropout CF3_DROPOUT]
                                    [--cf3-no-inplace-ops]
                                    [--checkpoint CHECKPOINT]
@@ -624,6 +624,10 @@ optional arguments:
   --json-output [JSON_OUTPUT]
                         json output file (default: None)
 
+ShuffleNetv2:
+  --shufflenetv2-no-pretrain
+                        use randomly initialized models (default: True)
+
 shufflenetv2k:
   --shufflenetv2k-input-conv2-stride SHUFFLENETV2K_INPUT_CONV2_STRIDE
                         stride of the optional 2nd input convolution (default:
@@ -650,10 +654,6 @@ ResNet:
   --resnet-remove-last-block
                         create a network without the last block (default:
                         False)
-
-ShuffleNetv2:
-  --shufflenetv2-no-pretrain
-                        use randomly initialized models (default: True)
 
 CompositeField3:
   --cf3-dropout CF3_DROPOUT
@@ -739,17 +739,17 @@ logging:
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>usage: python3 -m openpifpaf.train [-h] [--version] [--debug]
-                                   [--shufflenetv2-no-pretrain]
-                                   [--shufflenetv2k-input-conv2-stride SHUFFLENETV2K_INPUT_CONV2_STRIDE]
-                                   [--shufflenetv2k-input-conv2-outchannels SHUFFLENETV2K_INPUT_CONV2_OUTCHANNELS]
-                                   [--shufflenetv2k-stage4-dilation SHUFFLENETV2K_STAGE4_DILATION]
-                                   [--shufflenetv2k-instance-norm | --shufflenetv2k-group-norm]
                                    [--resnet-no-pretrain]
                                    [--resnet-pool0-stride RESNET_POOL0_STRIDE]
                                    [--resnet-input-conv-stride RESNET_INPUT_CONV_STRIDE]
                                    [--resnet-input-conv2-stride RESNET_INPUT_CONV2_STRIDE]
                                    [--resnet-block5-dilation RESNET_BLOCK5_DILATION]
                                    [--resnet-remove-last-block]
+                                   [--shufflenetv2-no-pretrain]
+                                   [--shufflenetv2k-input-conv2-stride SHUFFLENETV2K_INPUT_CONV2_STRIDE]
+                                   [--shufflenetv2k-input-conv2-outchannels SHUFFLENETV2K_INPUT_CONV2_OUTCHANNELS]
+                                   [--shufflenetv2k-stage4-dilation SHUFFLENETV2K_STAGE4_DILATION]
+                                   [--shufflenetv2k-instance-norm | --shufflenetv2k-group-norm]
                                    [--cf3-dropout CF3_DROPOUT]
                                    [--cf3-no-inplace-ops]
                                    [--checkpoint CHECKPOINT]
@@ -808,6 +808,11 @@ logging:
                                    [--cocokp-no-augmentation]
                                    [--cocokp-rescale-images COCOKP_RESCALE_IMAGES]
                                    [--cocokp-upsample COCOKP_UPSAMPLE]
+                                   [--cocokp-min-kp-anns COCOKP_MIN_KP_ANNS]
+                                   [--cocokp-eval-test2017 | --cocokp-eval-testdev2017]
+                                   [--coco-eval-long-edge COCO_EVAL_LONG_EDGE]
+                                   [--coco-eval-extended-scale]
+                                   [--coco-eval-orientation-invariant COCO_EVAL_ORIENTATION_INVARIANT]
                                    [--cifar10-root-dir CIFAR10_ROOT_DIR]
                                    [--cifar10-download]
                                    [--cifar10-n-images CIFAR10_N_IMAGES]
@@ -858,6 +863,21 @@ optional arguments:
 logging:
   --debug               print debug messages (default: False)
 
+ResNet:
+  --resnet-no-pretrain  use randomly initialized models (default: True)
+  --resnet-pool0-stride RESNET_POOL0_STRIDE
+                        stride of zero removes the pooling op (default: 0)
+  --resnet-input-conv-stride RESNET_INPUT_CONV_STRIDE
+                        stride of the input convolution (default: 2)
+  --resnet-input-conv2-stride RESNET_INPUT_CONV2_STRIDE
+                        stride of the optional 2nd input convolution (default:
+                        0)
+  --resnet-block5-dilation RESNET_BLOCK5_DILATION
+                        use dilated convs in block5 (default: 1)
+  --resnet-remove-last-block
+                        create a network without the last block (default:
+                        False)
+
 ShuffleNetv2:
   --shufflenetv2-no-pretrain
                         use randomly initialized models (default: True)
@@ -873,21 +893,6 @@ shufflenetv2k:
                         dilation factor of stage 4 (default: 1)
   --shufflenetv2k-instance-norm
   --shufflenetv2k-group-norm
-
-ResNet:
-  --resnet-no-pretrain  use randomly initialized models (default: True)
-  --resnet-pool0-stride RESNET_POOL0_STRIDE
-                        stride of zero removes the pooling op (default: 0)
-  --resnet-input-conv-stride RESNET_INPUT_CONV_STRIDE
-                        stride of the input convolution (default: 2)
-  --resnet-input-conv2-stride RESNET_INPUT_CONV2_STRIDE
-                        stride of the optional 2nd input convolution (default:
-                        0)
-  --resnet-block5-dilation RESNET_BLOCK5_DILATION
-                        use dilated convs in block5 (default: 1)
-  --resnet-remove-last-block
-                        create a network without the last block (default:
-                        False)
 
 CompositeField3:
   --cf3-dropout CF3_DROPOUT
@@ -1024,6 +1029,14 @@ data module CocoKp:
                         overall rescale factor for images (default: 1.0)
   --cocokp-upsample COCOKP_UPSAMPLE
                         head upsample stride (default: 1)
+  --cocokp-min-kp-anns COCOKP_MIN_KP_ANNS
+                        filter images with fewer keypoint annotations
+                        (default: 1)
+  --cocokp-eval-test2017
+  --cocokp-eval-testdev2017
+  --coco-eval-long-edge COCO_EVAL_LONG_EDGE
+  --coco-eval-extended-scale
+  --coco-eval-orientation-invariant COCO_EVAL_ORIENTATION_INVARIANT
 
 data module Cifar10:
   --cifar10-root-dir CIFAR10_ROOT_DIR
@@ -1073,194 +1086,7 @@ debug:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>usage: python3 -m openpifpaf.eval_coco [-h] [--version]
-                                       [--shufflenetv2-no-pretrain]
-                                       [--shufflenetv2k-input-conv2-stride SHUFFLENETV2K_INPUT_CONV2_STRIDE]
-                                       [--shufflenetv2k-input-conv2-outchannels SHUFFLENETV2K_INPUT_CONV2_OUTCHANNELS]
-                                       [--shufflenetv2k-stage4-dilation SHUFFLENETV2K_STAGE4_DILATION]
-                                       [--shufflenetv2k-instance-norm | --shufflenetv2k-group-norm]
-                                       [--resnet-no-pretrain]
-                                       [--resnet-pool0-stride RESNET_POOL0_STRIDE]
-                                       [--resnet-input-conv-stride RESNET_INPUT_CONV_STRIDE]
-                                       [--resnet-input-conv2-stride RESNET_INPUT_CONV2_STRIDE]
-                                       [--resnet-block5-dilation RESNET_BLOCK5_DILATION]
-                                       [--resnet-remove-last-block]
-                                       [--cf3-dropout CF3_DROPOUT]
-                                       [--cf3-no-inplace-ops]
-                                       [--checkpoint CHECKPOINT]
-                                       [--basenet BASENET] [--two-scale]
-                                       [--multi-scale]
-                                       [--no-multi-scale-hflip]
-                                       [--cross-talk CROSS_TALK]
-                                       [--no-download-progress]
-                                       [--dense-coupling DENSE_COUPLING]
-                                       [--seed-threshold SEED_THRESHOLD]
-                                       [--instance-threshold INSTANCE_THRESHOLD]
-                                       [--keypoint-threshold KEYPOINT_THRESHOLD]
-                                       [--decoder-workers DECODER_WORKERS]
-                                       [--caf-seeds]
-                                       [--no-force-complete-pose]
-                                       [--profile-decoder [PROFILE_DECODER]]
-                                       [--cif-th CIF_TH] [--caf-th CAF_TH]
-                                       [--connection-method {max,blend}]
-                                       [--greedy] [--show-box]
-                                       [--show-joint-scales]
-                                       [--show-joint-confidences]
-                                       [--show-decoding-order]
-                                       [--show-frontier-order]
-                                       [--show-only-decoded-connections]
-                                       [--debug-cifhr] [--debug-cif-c]
-                                       [--debug-cif-v] [--debug-cifdet-c]
-                                       [--debug-cifdet-v] [--debug-caf-c]
-                                       [--debug-caf-v]
-                                       [--debug-indices DEBUG_INDICES [DEBUG_INDICES ...]]
-                                       [--output OUTPUT]
-                                       [--detection-annotations] [-n N]
-                                       [--skip-n SKIP_N]
-                                       [--dataset {val,test,test-dev}]
-                                       [--min-ann MIN_ANN]
-                                       [--batch-size BATCH_SIZE]
-                                       [--long-edge LONG_EDGE]
-                                       [--loader-workers LOADER_WORKERS]
-                                       [--orientation-invariant]
-                                       [--extended-scale] [--skip-existing]
-                                       [--no-skip-epoch0] [--disable-cuda]
-                                       [--write-predictions] [--all-images]
-                                       [--debug] [--debug-images]
-                                       [--log-stats]
-
-Evaluation on COCO data.
-
-optional arguments:
-  -h, --help            show this help message and exit
-  --version             show program&#39;s version number and exit
-  --output OUTPUT       output filename without file extension (default: None)
-  --detection-annotations
-  -n N                  number of batches (default: 0)
-  --skip-n SKIP_N       skip n batches (default: 0)
-  --dataset {val,test,test-dev}
-                        dataset to evaluate (default: val)
-  --min-ann MIN_ANN     minimum number of truth annotations (default: 0)
-  --batch-size BATCH_SIZE
-                        batch size (default: 1)
-  --long-edge LONG_EDGE
-                        long edge of input images. Setting to zero deactivates
-                        scaling. (default: 641)
-  --loader-workers LOADER_WORKERS
-                        number of workers for data loading (default: None)
-  --orientation-invariant
-  --extended-scale
-  --skip-existing       skip if output eval file exists already (default:
-                        False)
-  --no-skip-epoch0      do not skip eval for epoch 0 (default: True)
-  --disable-cuda        disable CUDA (default: False)
-  --write-predictions   write a json and a zip file of the predictions
-                        (default: False)
-  --all-images          run over all images irrespective of catIds (default:
-                        False)
-
-ShuffleNetv2:
-  --shufflenetv2-no-pretrain
-                        use randomly initialized models (default: True)
-
-shufflenetv2k:
-  --shufflenetv2k-input-conv2-stride SHUFFLENETV2K_INPUT_CONV2_STRIDE
-                        stride of the optional 2nd input convolution (default:
-                        0)
-  --shufflenetv2k-input-conv2-outchannels SHUFFLENETV2K_INPUT_CONV2_OUTCHANNELS
-                        out channels of the optional 2nd input convolution
-                        (default: None)
-  --shufflenetv2k-stage4-dilation SHUFFLENETV2K_STAGE4_DILATION
-                        dilation factor of stage 4 (default: 1)
-  --shufflenetv2k-instance-norm
-  --shufflenetv2k-group-norm
-
-ResNet:
-  --resnet-no-pretrain  use randomly initialized models (default: True)
-  --resnet-pool0-stride RESNET_POOL0_STRIDE
-                        stride of zero removes the pooling op (default: 0)
-  --resnet-input-conv-stride RESNET_INPUT_CONV_STRIDE
-                        stride of the input convolution (default: 2)
-  --resnet-input-conv2-stride RESNET_INPUT_CONV2_STRIDE
-                        stride of the optional 2nd input convolution (default:
-                        0)
-  --resnet-block5-dilation RESNET_BLOCK5_DILATION
-                        use dilated convs in block5 (default: 1)
-  --resnet-remove-last-block
-                        create a network without the last block (default:
-                        False)
-
-CompositeField3:
-  --cf3-dropout CF3_DROPOUT
-                        [experimental] zeroing probability of feature in head
-                        input (default: 0.0)
-  --cf3-no-inplace-ops  alternative graph without inplace ops (default: True)
-
-network configuration:
-  --checkpoint CHECKPOINT
-                        Load a model from a checkpoint. Use &quot;resnet50&quot;,
-                        &quot;shufflenetv2k16w&quot; or &quot;shufflenetv2k30w&quot; for
-                        pretrained OpenPifPaf models. (default: None)
-  --basenet BASENET     base network, e.g. resnet50 (default: None)
-  --two-scale           [experimental] (default: False)
-  --multi-scale         [experimental] (default: False)
-  --no-multi-scale-hflip
-                        [experimental] (default: True)
-  --cross-talk CROSS_TALK
-                        [experimental] (default: 0.0)
-  --no-download-progress
-                        suppress model download progress bar (default: True)
-  --dense-coupling DENSE_COUPLING
-                        dense coupling (default: 0.0)
-
-decoder configuration:
-  --seed-threshold SEED_THRESHOLD
-                        minimum threshold for seeds (default: 0.2)
-  --instance-threshold INSTANCE_THRESHOLD
-                        filter instances by score (default: 0.0)
-  --keypoint-threshold KEYPOINT_THRESHOLD
-                        filter keypoints by score (default: None)
-  --decoder-workers DECODER_WORKERS
-                        number of workers for pose decoding (default: None)
-  --caf-seeds           [experimental] (default: False)
-  --no-force-complete-pose
-  --profile-decoder [PROFILE_DECODER]
-                        specify out .prof file or nothing for default file
-                        name (default: None)
-
-CifCaf decoders:
-  --cif-th CIF_TH       cif threshold (default: 0.1)
-  --caf-th CAF_TH       caf threshold (default: 0.1)
-  --connection-method {max,blend}
-                        connection method to use, max is faster (default:
-                        blend)
-  --greedy              greedy decoding (default: False)
-
-show:
-  --show-box
-  --show-joint-scales
-  --show-joint-confidences
-  --show-decoding-order
-  --show-frontier-order
-  --show-only-decoded-connections
-
-pose visualizer:
-  --debug-cifhr
-  --debug-cif-c
-  --debug-cif-v
-  --debug-cifdet-c
-  --debug-cifdet-v
-  --debug-caf-c
-  --debug-caf-v
-  --debug-indices DEBUG_INDICES [DEBUG_INDICES ...]
-                        indices of fields to create debug plots for of the
-                        form headname:fieldindex, e.g. cif:5 (default: [])
-
-logging:
-  --debug               print debug messages (default: False)
-  --debug-images        print debug messages and enable all debug images
-                        (default: False)
-  --log-stats           enable stats logging (default: False)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.9/x64/bin/python3: No module named openpifpaf.eval_coco
 </pre></div>
 </div>
 </div>

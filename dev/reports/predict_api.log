@@ -27,7 +27,7 @@ processor = openpifpaf.decoder.factory_decode(net.head_nets, basenet_stride=net.
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mAttributeError[0m                            Traceback (most recent call last)
+[0;31mException[0m                                 Traceback (most recent call last)
 [0;32m<ipython-input-3-5a37fe349fde>[0m in [0;36m<module>[0;34m[0m
 [0;32m----> 1[0;31m [0mnet_cpu[0m[0;34m,[0m [0m_[0m [0;34m=[0m [0mopenpifpaf[0m[0;34m.[0m[0mnetwork[0m[0;34m.[0m[0mfactory[0m[0;34m([0m[0mcheckpoint[0m[0;34m=[0m[0;34m'shufflenetv2k16w'[0m[0;34m,[0m [0mdownload_progress[0m[0;34m=[0m[0;32mFalse[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [0m[1;32m      2[0m [0mnet[0m [0;34m=[0m [0mnet_cpu[0m[0;34m.[0m[0mto[0m[0;34m([0m[0mdevice[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
@@ -36,31 +36,12 @@ processor = openpifpaf.decoder.factory_decode(net.head_nets, basenet_stride=net.
 [1;32m      5[0m [0mopenpifpaf[0m[0;34m.[0m[0mdecoder[0m[0;34m.[0m[0mnms[0m[0;34m.[0m[0mKeypoints[0m[0;34m.[0m[0mkeypoint_threshold[0m [0;34m=[0m [0;36m0.2[0m[0;34m[0m[0;34m[0m[0m
 
 [0;32m/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/network/factory.py[0m in [0;36mfactory[0;34m(checkpoint, base_name, head_metas, dense_coupling, cross_talk, two_scale, multi_scale, multi_scale_hflip, download_progress)[0m
-[1;32m    128[0m                 [0mcheckpoint[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
-[1;32m    129[0m                 [0mcheck_hash[0m[0;34m=[0m[0;32mnot[0m [0mcheckpoint[0m[0;34m.[0m[0mstartswith[0m[0;34m([0m[0;34m'https'[0m[0;34m)[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
-[0;32m--> 130[0;31m                 progress=download_progress)
-[0m[1;32m    131[0m         [0;32melse[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[1;32m    132[0m             [0mcheckpoint[0m [0;34m=[0m [0mtorch[0m[0;34m.[0m[0mload[0m[0;34m([0m[0mcheckpoint[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    125[0m         [0;32mif[0m [0mCHECKPOINT_URLS[0m[0;34m.[0m[0mget[0m[0;34m([0m[0mcheckpoint[0m[0;34m,[0m [0;32mNone[0m[0;34m)[0m [0;32mis[0m [0mPRETRAINED_UNAVAILABLE[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    126[0m             raise Exception('the pretrained model for {} is not available yet '
+[0;32m--> 127[0;31m                             'in this release cycle'.format(checkpoint))
+[0m[1;32m    128[0m         [0mcheckpoint[0m [0;34m=[0m [0mCHECKPOINT_URLS[0m[0;34m.[0m[0mget[0m[0;34m([0m[0mcheckpoint[0m[0;34m,[0m [0mcheckpoint[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    129[0m [0;34m[0m[0m
 
-[0;32m/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/torch/hub.py[0m in [0;36mload_state_dict_from_url[0;34m(url, model_dir, map_location, progress, check_hash, file_name)[0m
-[1;32m    493[0m             [0mcached_file[0m [0;34m=[0m [0mos[0m[0;34m.[0m[0mpath[0m[0;34m.[0m[0mjoin[0m[0;34m([0m[0mmodel_dir[0m[0;34m,[0m [0mextraced_name[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m    494[0m [0;34m[0m[0m
-[0;32m--> 495[0;31m     [0;32mreturn[0m [0mtorch[0m[0;34m.[0m[0mload[0m[0;34m([0m[0mcached_file[0m[0;34m,[0m [0mmap_location[0m[0;34m=[0m[0mmap_location[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m
-[0;32m/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/torch/serialization.py[0m in [0;36mload[0;34m(f, map_location, pickle_module, **pickle_load_args)[0m
-[1;32m    583[0m                     [0;32mreturn[0m [0mtorch[0m[0;34m.[0m[0mjit[0m[0;34m.[0m[0mload[0m[0;34m([0m[0mopened_file[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m    584[0m                 [0;32mreturn[0m [0m_load[0m[0;34m([0m[0mopened_zipfile[0m[0;34m,[0m [0mmap_location[0m[0;34m,[0m [0mpickle_module[0m[0;34m,[0m [0;34m**[0m[0mpickle_load_args[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0;32m--> 585[0;31m         [0;32mreturn[0m [0m_legacy_load[0m[0;34m([0m[0mopened_file[0m[0;34m,[0m [0mmap_location[0m[0;34m,[0m [0mpickle_module[0m[0;34m,[0m [0;34m**[0m[0mpickle_load_args[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m    586[0m [0;34m[0m[0m
-[1;32m    587[0m [0;34m[0m[0m
-
-[0;32m/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/torch/serialization.py[0m in [0;36m_legacy_load[0;34m(f, map_location, pickle_module, **pickle_load_args)[0m
-[1;32m    763[0m     [0munpickler[0m [0;34m=[0m [0mpickle_module[0m[0;34m.[0m[0mUnpickler[0m[0;34m([0m[0mf[0m[0;34m,[0m [0;34m**[0m[0mpickle_load_args[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m    764[0m     [0munpickler[0m[0;34m.[0m[0mpersistent_load[0m [0;34m=[0m [0mpersistent_load[0m[0;34m[0m[0;34m[0m[0m
-[0;32m--> 765[0;31m     [0mresult[0m [0;34m=[0m [0munpickler[0m[0;34m.[0m[0mload[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m    766[0m [0;34m[0m[0m
-[1;32m    767[0m     [0mdeserialized_storage_keys[0m [0;34m=[0m [0mpickle_module[0m[0;34m.[0m[0mload[0m[0;34m([0m[0mf[0m[0;34m,[0m [0;34m**[0m[0mpickle_load_args[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-
-[0;31mAttributeError[0m: Can't get attribute 'CompositeFieldFused' on <module 'openpifpaf.network.heads' from '/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/network/heads.py'>
-AttributeError: Can't get attribute 'CompositeFieldFused' on <module 'openpifpaf.network.heads' from '/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/network/heads.py'>
+[0;31mException[0m: the pretrained model for shufflenetv2k16w is not available yet in this release cycle
+Exception: the pretrained model for shufflenetv2k16w is not available yet in this release cycle
 

@@ -316,17 +316,11 @@ Traceback (most recent call last):
     processor, model = processor_factory(args)
   File &quot;/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/predict.py&quot;, line 106, in processor_factory
     model_cpu, _ = network.factory_from_args(args)
-  File &quot;/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/network/factory.py&quot;, line 64, in factory_from_args
+  File &quot;/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/network/factory.py&quot;, line 69, in factory_from_args
     download_progress=args.download_progress,
-  File &quot;/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/network/factory.py&quot;, line 130, in factory
-    progress=download_progress)
-  File &quot;/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/torch/hub.py&quot;, line 495, in load_state_dict_from_url
-    return torch.load(cached_file, map_location=map_location)
-  File &quot;/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/torch/serialization.py&quot;, line 585, in load
-    return _legacy_load(opened_file, map_location, pickle_module, **pickle_load_args)
-  File &quot;/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/torch/serialization.py&quot;, line 765, in _legacy_load
-    result = unpickler.load()
-AttributeError: Can&#39;t get attribute &#39;CompositeFieldFused&#39; on &lt;module &#39;openpifpaf.network.heads&#39; from &#39;/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/network/heads.py&#39;&gt;
+  File &quot;/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/network/factory.py&quot;, line 127, in factory
+    &#39;in this release cycle&#39;.format(checkpoint))
+Exception: the pretrained model for shufflenetv2k16w is not available yet in this release cycle
 </pre></div>
 </div>
 </div>
