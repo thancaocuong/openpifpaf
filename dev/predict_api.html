@@ -378,7 +378,7 @@ The API is for more advanced use cases. Please read <a class="reference internal
 <span class="n">openpifpaf</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">CifSeeds</span><span class="o">.</span><span class="n">threshold</span> <span class="o">=</span> <span class="mf">0.5</span>
 <span class="n">openpifpaf</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">nms</span><span class="o">.</span><span class="n">Keypoints</span><span class="o">.</span><span class="n">keypoint_threshold</span> <span class="o">=</span> <span class="mf">0.2</span>
 <span class="n">openpifpaf</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">nms</span><span class="o">.</span><span class="n">Keypoints</span><span class="o">.</span><span class="n">instance_threshold</span> <span class="o">=</span> <span class="mf">0.2</span>
-<span class="n">processor</span> <span class="o">=</span> <span class="n">openpifpaf</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">factory_decode</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">head_nets</span><span class="p">,</span> <span class="n">basenet_stride</span><span class="o">=</span><span class="n">net</span><span class="o">.</span><span class="n">base_net</span><span class="o">.</span><span class="n">stride</span><span class="p">)</span>
+<span class="n">processor</span> <span class="o">=</span> <span class="n">openpifpaf</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">factory</span><span class="p">([</span><span class="n">hn</span><span class="o">.</span><span class="n">meta</span> <span class="k">for</span> <span class="n">hn</span> <span class="ow">in</span> <span class="n">net_cpu</span><span class="o">.</span><span class="n">head_nets</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -399,16 +399,6 @@ The API is for more advanced use cases. Please read <a class="reference internal
   warnings.warn(msg, SourceChangeWarning)
 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/torch/serialization.py:649: SourceChangeWarning: source code of class &#39;torch.nn.modules.pixelshuffle.PixelShuffle&#39; has changed. you can retrieve the original source code by accessing the object&#39;s source attribute or set `torch.nn.Module.dump_patches = True` and use the patch tool to revert the changes.
   warnings.warn(msg, SourceChangeWarning)
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">3</span><span class="o">-</span><span class="mi">5</span><span class="n">a37fe349fde</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">openpifpaf</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">nms</span><span class="o">.</span><span class="n">Keypoints</span><span class="o">.</span><span class="n">keypoint_threshold</span> <span class="o">=</span> <span class="mf">0.2</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">openpifpaf</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">nms</span><span class="o">.</span><span class="n">Keypoints</span><span class="o">.</span><span class="n">instance_threshold</span> <span class="o">=</span> <span class="mf">0.2</span>
-<span class="ne">----&gt; </span><span class="mi">7</span> <span class="n">processor</span> <span class="o">=</span> <span class="n">openpifpaf</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">factory_decode</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">head_nets</span><span class="p">,</span> <span class="n">basenet_stride</span><span class="o">=</span><span class="n">net</span><span class="o">.</span><span class="n">base_net</span><span class="o">.</span><span class="n">stride</span><span class="p">)</span>
-
-<span class="ne">AttributeError</span>: module &#39;openpifpaf.decoder&#39; has no attribute &#39;factory_decode&#39;
 </pre></div>
 </div>
 </div>
@@ -455,6 +445,9 @@ The API is for more advanced use cases. Please read <a class="reference internal
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/predict_api_11_0.png" src="_images/predict_api_11_0.png" />
+</div>
 </div>
 </div>
 <div class="section" id="fields">
@@ -473,6 +466,10 @@ Then, the index for every field to visualize must be specified. In the example b
   <span class="n">predictions</span> <span class="o">=</span> <span class="n">processor</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">images_batch</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/predict_api_13_0.png" src="_images/predict_api_13_0.png" />
+<img alt="_images/predict_api_13_1.png" src="_images/predict_api_13_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -497,6 +494,10 @@ This is also the basis for the seeds. Both are shown below.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/predict_api_16_0.png" src="_images/predict_api_16_0.png" />
+<img alt="_images/predict_api_16_1.png" src="_images/predict_api_16_1.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -517,6 +518,9 @@ This is also the basis for the seeds. Both are shown below.</p>
   <span class="n">predictions</span> <span class="o">=</span> <span class="n">processor</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">images_batch</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/predict_api_19_0.png" src="_images/predict_api_19_0.png" />
 </div>
 </div>
 </div>

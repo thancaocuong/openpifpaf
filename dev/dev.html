@@ -335,7 +335,15 @@ testing. If you modify <code class="docutils literal notranslate"><span class="p
 recompiles the static code.</p>
 <p>Develop your features in separate feature branches.
 Create a pull request with your suggested changes. Make sure your code passes
-<code class="docutils literal notranslate"><span class="pre">pytest</span></code> and <code class="docutils literal notranslate"><span class="pre">pylint</span></code> checks.</p>
+<code class="docutils literal notranslate"><span class="pre">pytest</span></code> and <code class="docutils literal notranslate"><span class="pre">pylint</span></code> checks:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pylint openpifpaf
+pytest
+
+<span class="nb">cd</span> guide
+python download_data.py
+pytest --nbval-lax --current-env *.ipynb
+</pre></div>
+</div>
 </div>
 <div class="section" id="things-to-contribute">
 <h2>Things to Contribute<a class="headerlink" href="#things-to-contribute" title="Permalink to this headline">¶</a></h2>
@@ -444,7 +452,7 @@ onnx==1.7.0
 onnx-simplifier==0.2.16
 onnxruntime==1.4.0
 opencv-python==4.4.0.42
-openpifpaf==0+untagged.1.g5e7e249
+openpifpaf==0+untagged.1.g6adc4ea
 oset==0.1.3
 packaging==20.4
 pandocfilters==1.4.2
