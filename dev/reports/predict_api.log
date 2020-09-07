@@ -27,21 +27,12 @@ processor = openpifpaf.decoder.factory_decode(net.head_nets, basenet_stride=net.
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mException[0m                                 Traceback (most recent call last)
+[0;31mAttributeError[0m                            Traceback (most recent call last)
 [0;32m<ipython-input-3-5a37fe349fde>[0m in [0;36m<module>[0;34m[0m
-[0;32m----> 1[0;31m [0mnet_cpu[0m[0;34m,[0m [0m_[0m [0;34m=[0m [0mopenpifpaf[0m[0;34m.[0m[0mnetwork[0m[0;34m.[0m[0mfactory[0m[0;34m([0m[0mcheckpoint[0m[0;34m=[0m[0;34m'shufflenetv2k16w'[0m[0;34m,[0m [0mdownload_progress[0m[0;34m=[0m[0;32mFalse[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m      2[0m [0mnet[0m [0;34m=[0m [0mnet_cpu[0m[0;34m.[0m[0mto[0m[0;34m([0m[0mdevice[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      3[0m [0;34m[0m[0m
-[1;32m      4[0m [0mopenpifpaf[0m[0;34m.[0m[0mdecoder[0m[0;34m.[0m[0mCifSeeds[0m[0;34m.[0m[0mthreshold[0m [0;34m=[0m [0;36m0.5[0m[0;34m[0m[0;34m[0m[0m
 [1;32m      5[0m [0mopenpifpaf[0m[0;34m.[0m[0mdecoder[0m[0;34m.[0m[0mnms[0m[0;34m.[0m[0mKeypoints[0m[0;34m.[0m[0mkeypoint_threshold[0m [0;34m=[0m [0;36m0.2[0m[0;34m[0m[0;34m[0m[0m
-
-[0;32m/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/network/factory.py[0m in [0;36mfactory[0;34m(checkpoint, base_name, head_metas, dense_coupling, cross_talk, two_scale, multi_scale, multi_scale_hflip, download_progress)[0m
-[1;32m    125[0m         [0;32mif[0m [0mCHECKPOINT_URLS[0m[0;34m.[0m[0mget[0m[0;34m([0m[0mcheckpoint[0m[0;34m,[0m [0;32mNone[0m[0;34m)[0m [0;32mis[0m [0mPRETRAINED_UNAVAILABLE[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[1;32m    126[0m             raise Exception('the pretrained model for {} is not available yet '
-[0;32m--> 127[0;31m                             'in this release cycle'.format(checkpoint))
-[0m[1;32m    128[0m         [0mcheckpoint[0m [0;34m=[0m [0mCHECKPOINT_URLS[0m[0;34m.[0m[0mget[0m[0;34m([0m[0mcheckpoint[0m[0;34m,[0m [0mcheckpoint[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m    129[0m [0;34m[0m[0m
-
-[0;31mException[0m: the pretrained model for shufflenetv2k16w is not available yet in this release cycle
-Exception: the pretrained model for shufflenetv2k16w is not available yet in this release cycle
+[1;32m      6[0m [0mopenpifpaf[0m[0;34m.[0m[0mdecoder[0m[0;34m.[0m[0mnms[0m[0;34m.[0m[0mKeypoints[0m[0;34m.[0m[0minstance_threshold[0m [0;34m=[0m [0;36m0.2[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 7[0;31m [0mprocessor[0m [0;34m=[0m [0mopenpifpaf[0m[0;34m.[0m[0mdecoder[0m[0;34m.[0m[0mfactory_decode[0m[0;34m([0m[0mnet[0m[0;34m.[0m[0mhead_nets[0m[0;34m,[0m [0mbasenet_stride[0m[0;34m=[0m[0mnet[0m[0;34m.[0m[0mbase_net[0m[0;34m.[0m[0mstride[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m
+[0;31mAttributeError[0m: module 'openpifpaf.decoder' has no attribute 'factory_decode'
+AttributeError: module 'openpifpaf.decoder' has no attribute 'factory_decode'
 
