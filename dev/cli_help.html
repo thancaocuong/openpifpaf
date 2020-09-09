@@ -17,7 +17,6 @@
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-dropdown.css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script src="_static/sphinx-book-theme.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
@@ -336,9 +335,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>usage: python3 -m openpifpaf.predict [-h] [--version]
-                                     [--shufflenetv2-no-pretrain]
-                                     [--resnet-no-pretrain]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>usage: python3 -m openpifpaf.predict [-h] [--version] [--resnet-no-pretrain]
                                      [--resnet-pool0-stride RESNET_POOL0_STRIDE]
                                      [--resnet-input-conv-stride RESNET_INPUT_CONV_STRIDE]
                                      [--resnet-input-conv2-stride RESNET_INPUT_CONV2_STRIDE]
@@ -348,6 +345,7 @@
                                      [--shufflenetv2k-input-conv2-outchannels SHUFFLENETV2K_INPUT_CONV2_OUTCHANNELS]
                                      [--shufflenetv2k-stage4-dilation SHUFFLENETV2K_STAGE4_DILATION]
                                      [--shufflenetv2k-instance-norm | --shufflenetv2k-group-norm]
+                                     [--shufflenetv2-no-pretrain]
                                      [--cf3-dropout CF3_DROPOUT]
                                      [--cf3-no-inplace-ops]
                                      [--checkpoint CHECKPOINT]
@@ -420,10 +418,6 @@ optional arguments:
                         increase dpi of output image by this factor (default:
                         1.0)
 
-ShuffleNetv2:
-  --shufflenetv2-no-pretrain
-                        use randomly initialized models (default: True)
-
 ResNet:
   --resnet-no-pretrain  use randomly initialized models (default: True)
   --resnet-pool0-stride RESNET_POOL0_STRIDE
@@ -450,6 +444,10 @@ shufflenetv2k:
                         dilation factor of stage 4 (default: 1)
   --shufflenetv2k-instance-norm
   --shufflenetv2k-group-norm
+
+ShuffleNetv2:
+  --shufflenetv2-no-pretrain
+                        use randomly initialized models (default: True)
 
 CompositeField3:
   --cf3-dropout CF3_DROPOUT
@@ -536,9 +534,7 @@ logging:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>usage: python3 -m openpifpaf.video [-h] [--version]
-                                   [--shufflenetv2-no-pretrain]
-                                   [--resnet-no-pretrain]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>usage: python3 -m openpifpaf.video [-h] [--version] [--resnet-no-pretrain]
                                    [--resnet-pool0-stride RESNET_POOL0_STRIDE]
                                    [--resnet-input-conv-stride RESNET_INPUT_CONV_STRIDE]
                                    [--resnet-input-conv2-stride RESNET_INPUT_CONV2_STRIDE]
@@ -548,6 +544,7 @@ logging:
                                    [--shufflenetv2k-input-conv2-outchannels SHUFFLENETV2K_INPUT_CONV2_OUTCHANNELS]
                                    [--shufflenetv2k-stage4-dilation SHUFFLENETV2K_STAGE4_DILATION]
                                    [--shufflenetv2k-instance-norm | --shufflenetv2k-group-norm]
+                                   [--shufflenetv2-no-pretrain]
                                    [--cf3-dropout CF3_DROPOUT]
                                    [--cf3-no-inplace-ops]
                                    [--checkpoint CHECKPOINT]
@@ -625,10 +622,6 @@ optional arguments:
   --json-output [JSON_OUTPUT]
                         json output file (default: None)
 
-ShuffleNetv2:
-  --shufflenetv2-no-pretrain
-                        use randomly initialized models (default: True)
-
 ResNet:
   --resnet-no-pretrain  use randomly initialized models (default: True)
   --resnet-pool0-stride RESNET_POOL0_STRIDE
@@ -655,6 +648,10 @@ shufflenetv2k:
                         dilation factor of stage 4 (default: 1)
   --shufflenetv2k-instance-norm
   --shufflenetv2k-group-norm
+
+ShuffleNetv2:
+  --shufflenetv2-no-pretrain
+                        use randomly initialized models (default: True)
 
 CompositeField3:
   --cf3-dropout CF3_DROPOUT
@@ -740,7 +737,6 @@ logging:
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>usage: python3 -m openpifpaf.train [-h] [--version] [--debug]
-                                   [--shufflenetv2-no-pretrain]
                                    [--resnet-no-pretrain]
                                    [--resnet-pool0-stride RESNET_POOL0_STRIDE]
                                    [--resnet-input-conv-stride RESNET_INPUT_CONV_STRIDE]
@@ -751,6 +747,7 @@ logging:
                                    [--shufflenetv2k-input-conv2-outchannels SHUFFLENETV2K_INPUT_CONV2_OUTCHANNELS]
                                    [--shufflenetv2k-stage4-dilation SHUFFLENETV2K_STAGE4_DILATION]
                                    [--shufflenetv2k-instance-norm | --shufflenetv2k-group-norm]
+                                   [--shufflenetv2-no-pretrain]
                                    [--cf3-dropout CF3_DROPOUT]
                                    [--cf3-no-inplace-ops]
                                    [--checkpoint CHECKPOINT]
@@ -864,10 +861,6 @@ optional arguments:
 logging:
   --debug               print debug messages (default: False)
 
-ShuffleNetv2:
-  --shufflenetv2-no-pretrain
-                        use randomly initialized models (default: True)
-
 ResNet:
   --resnet-no-pretrain  use randomly initialized models (default: True)
   --resnet-pool0-stride RESNET_POOL0_STRIDE
@@ -894,6 +887,10 @@ shufflenetv2k:
                         dilation factor of stage 4 (default: 1)
   --shufflenetv2k-instance-norm
   --shufflenetv2k-group-norm
+
+ShuffleNetv2:
+  --shufflenetv2-no-pretrain
+                        use randomly initialized models (default: True)
 
 CompositeField3:
   --cf3-dropout CF3_DROPOUT
