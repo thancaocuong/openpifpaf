@@ -322,9 +322,7 @@ Below is a short intro to running prediction on videos.</p>
   warnings.warn(msg, SourceChangeWarning)
 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/torch/serialization.py:649: SourceChangeWarning: source code of class &#39;torch.nn.modules.activation.ReLU&#39; has changed. you can retrieve the original source code by accessing the object&#39;s source attribute or set `torch.nn.Module.dump_patches = True` and use the patch tool to revert the changes.
   warnings.warn(msg, SourceChangeWarning)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/torch/serialization.py:649: SourceChangeWarning: source code of class &#39;torch.nn.modules.container.ModuleList&#39; has changed. you can retrieve the original source code by accessing the object&#39;s source attribute or set `torch.nn.Module.dump_patches = True` and use the patch tool to revert the changes.
+/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/torch/serialization.py:649: SourceChangeWarning: source code of class &#39;torch.nn.modules.container.ModuleList&#39; has changed. you can retrieve the original source code by accessing the object&#39;s source attribute or set `torch.nn.Module.dump_patches = True` and use the patch tool to revert the changes.
   warnings.warn(msg, SourceChangeWarning)
 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/torch/serialization.py:649: SourceChangeWarning: source code of class &#39;torch.nn.modules.dropout.Dropout2d&#39; has changed. you can retrieve the original source code by accessing the object&#39;s source attribute or set `torch.nn.Module.dump_patches = True` and use the patch tool to revert the changes.
   warnings.warn(msg, SourceChangeWarning)
@@ -339,13 +337,15 @@ DEBUG:openpifpaf.visualizer.base:caf: indices = []
 DEBUG:openpifpaf.show.painters:color connections = False, lw = 2, marker = 6
 DEBUG:openpifpaf.decoder.factory:matched 1 decoders
 DEBUG:openpifpaf.show.painters:color connections = True, lw = 6, marker = 3
-DEBUG:openpifpaf.transforms.pad:valid area before pad: [  0.   0. 639. 426.], image size = (640, 427)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.transforms.pad:valid area before pad: [  0.   0. 639. 426.], image size = (640, 427)
 DEBUG:openpifpaf.transforms.pad:pad with (0, 3, 1, 3)
 DEBUG:openpifpaf.transforms.pad:valid area after pad: [  0.   3. 639. 426.], image size = (641, 433)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.decoder.generator.generator:nn processing time: 0.986s
-DEBUG:openpifpaf.decoder.generator.generator:parallel execution with worker &lt;openpifpaf.decoder.generator.generator.DummyPool object at 0x7f0670b56a10&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.decoder.generator.generator:nn processing time: 0.816s
+DEBUG:openpifpaf.decoder.generator.generator:parallel execution with worker &lt;openpifpaf.decoder.generator.generator.DummyPool object at 0x7f3c0b92f7d0&gt;
 DEBUG:openpifpaf.decoder.generator.cifcaf:initial annotations = 0
 DEBUG:openpifpaf.decoder.cif_hr:target_intensities 0.006s
 DEBUG:openpifpaf.decoder.cif_seeds:seeds 681, 0.002s (C++ 0.001s)
@@ -355,9 +355,9 @@ DEBUG:openpifpaf.decoder.occupancy:shape = (17, 216, 320), min_scale = 2
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.decoder.generator.cifcaf:annotations 5, 0.024s
 DEBUG:openpifpaf.decoder.occupancy:shape = (17, 194, 281), min_scale = 2
-DEBUG:openpifpaf.decoder.nms:nms = 0.004s
+DEBUG:openpifpaf.decoder.nms:nms = 0.003s
 INFO:openpifpaf.decoder.generator.cifcaf:5 annotations: [13, 16, 17, 15, 14]
-DEBUG:openpifpaf.decoder.generator.generator:time: nn = 0.987s, dec = 0.032s
+DEBUG:openpifpaf.decoder.generator.generator:time: nn = 0.816s, dec = 0.031s
 INFO:__main__:batch 0: coco/000000081988.jpg
 DEBUG:__main__:json output = coco/000000081988.jpg.predictions.json
 DEBUG:__main__:image output = coco/000000081988.jpg.predictions.png

@@ -438,7 +438,10 @@ ShuffleNetv2:
 ResNet:
   --resnet-no-pretrain  use randomly initialized models (default: True)
   --resnet-pool0-stride RESNET_POOL0_STRIDE
-                        stride of zero removes the pooling op (default: 0)
+                        stride of zero removes the pool
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ing op (default: 0)
   --resnet-input-conv-stride RESNET_INPUT_CONV_STRIDE
                         stride of the input convolution (default: 2)
   --resnet-input-conv2-stride RESNET_INPUT_CONV2_STRIDE
@@ -535,18 +538,17 @@ logging:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>usage: python3 -m openpifpaf.video [-h] [--version]
-                                   [--shufflenetv2-no-pretrain]
-                                   [--shufflenetv2k-input-conv2-stride SHUFFLENETV2K_INPUT_CONV2_STRIDE]
-                                   [--shufflenetv2k-input-conv2-outchannels SHUFFLENETV2K_INPUT_CONV2_OUTCHANNELS]
-                                   [--shufflenetv2k-stage4-dilation SHUFFLENETV2K_STAGE4_DILATION]
-                                   [--shufflenetv2k-instance-norm | --shufflenetv2k-group-norm]
-                                   [--resnet-no-pretrain]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>usage: python3 -m openpifpaf.video [-h] [--version] [--resnet-no-pretrain]
                                    [--resnet-pool0-stride RESNET_POOL0_STRIDE]
                                    [--resnet-input-conv-stride RESNET_INPUT_CONV_STRIDE]
                                    [--resnet-input-conv2-stride RESNET_INPUT_CONV2_STRIDE]
                                    [--resnet-block5-dilation RESNET_BLOCK5_DILATION]
                                    [--resnet-remove-last-block]
+                                   [--shufflenetv2-no-pretrain]
+                                   [--shufflenetv2k-input-conv2-stride SHUFFLENETV2K_INPUT_CONV2_STRIDE]
+                                   [--shufflenetv2k-input-conv2-outchannels SHUFFLENETV2K_INPUT_CONV2_OUTCHANNELS]
+                                   [--shufflenetv2k-stage4-dilation SHUFFLENETV2K_STAGE4_DILATION]
+                                   [--shufflenetv2k-instance-norm | --shufflenetv2k-group-norm]
                                    [--cf3-dropout CF3_DROPOUT]
                                    [--cf3-no-inplace-ops]
                                    [--checkpoint CHECKPOINT]
@@ -624,6 +626,21 @@ optional arguments:
   --json-output [JSON_OUTPUT]
                         json output file (default: None)
 
+ResNet:
+  --resnet-no-pretrain  use randomly initialized models (default: True)
+  --resnet-pool0-stride RESNET_POOL0_STRIDE
+                        stride of zero removes the pooling op (default: 0)
+  --resnet-input-conv-stride RESNET_INPUT_CONV_STRIDE
+                        stride of the input convolution (default: 2)
+  --resnet-input-conv2-stride RESNET_INPUT_CONV2_STRIDE
+                        stride of the optional 2nd input convolution (default:
+                        0)
+  --resnet-block5-dilation RESNET_BLOCK5_DILATION
+                        use dilated convs in block5 (default: 1)
+  --resnet-remove-last-block
+                        create a network without the last block (default:
+                        False)
+
 ShuffleNetv2:
   --shufflenetv2-no-pretrain
                         use randomly initialized models (default: True)
@@ -639,21 +656,6 @@ shufflenetv2k:
                         dilation factor of stage 4 (default: 1)
   --shufflenetv2k-instance-norm
   --shufflenetv2k-group-norm
-
-ResNet:
-  --resnet-no-pretrain  use randomly initialized models (default: True)
-  --resnet-pool0-stride RESNET_POOL0_STRIDE
-                        stride of zero removes the pooling op (default: 0)
-  --resnet-input-conv-stride RESNET_INPUT_CONV_STRIDE
-                        stride of the input convolution (default: 2)
-  --resnet-input-conv2-stride RESNET_INPUT_CONV2_STRIDE
-                        stride of the optional 2nd input convolution (default:
-                        0)
-  --resnet-block5-dilation RESNET_BLOCK5_DILATION
-                        use dilated convs in block5 (default: 1)
-  --resnet-remove-last-block
-                        create a network without the last block (default:
-                        False)
 
 CompositeField3:
   --cf3-dropout CF3_DROPOUT
@@ -830,7 +832,6 @@ logging:
                                    [-o OUTPUT] [--stride-apply STRIDE_APPLY]
                                    [--epochs EPOCHS]
                                    [--val-interval VAL_INTERVAL]
-                                   [--rescale-images RESCALE_IMAGES]
                                    [--fix-batch-norm] [--ema EMA]
                                    [--clip-grad-norm CLIP_GRAD_NORM]
                                    [--log-interval LOG_INTERVAL]
@@ -849,8 +850,6 @@ optional arguments:
   --epochs EPOCHS       number of epochs to train (default: 75)
   --val-interval VAL_INTERVAL
                         validation run every n epochs (default: 1)
-  --rescale-images RESCALE_IMAGES
-                        overall image rescale factor (default: 1.0)
   --fix-batch-norm      fix batch norm running statistics (default: False)
   --ema EMA             ema decay constant (default: 0.01)
   --clip-grad-norm CLIP_GRAD_NORM
