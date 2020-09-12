@@ -293,6 +293,11 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#openpifpaf-metric">
+   openpifpaf.metric
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#openpifpaf-network">
    openpifpaf.network
   </a>
@@ -359,6 +364,89 @@
 </div>
 </div>
 </div>
+<dl class="py class">
+<dt id="openpifpaf.datasets.DataModule">
+<em class="property">class </em><code class="sig-prename descclassname">openpifpaf.datasets.</code><code class="sig-name descname">DataModule</code><a class="headerlink" href="#openpifpaf.datasets.DataModule" title="Permalink to this definition">¶</a></dt>
+<dd><p>Interface for custom data.</p>
+<p>This module handles datasets and is the class that you need to inherit
+from for your custom dataset. This class gives you all the handles so that
+you can train with a new <cite>–dataset=mydataset</cite>. The particular configuration
+of keypoints and skeleton is specified in the <cite>headmeta</cite> instances.</p>
+<dl class="py attribute">
+<dt id="openpifpaf.datasets.DataModule.batch_size">
+<code class="sig-name descname">batch_size</code><em class="property"> = 8</em><a class="headerlink" href="#openpifpaf.datasets.DataModule.batch_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Data loader batch size.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="openpifpaf.datasets.DataModule.loader_workers">
+<code class="sig-name descname">loader_workers</code><em class="property"> = 0</em><a class="headerlink" href="#openpifpaf.datasets.DataModule.loader_workers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Data loader number of workers.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="openpifpaf.datasets.DataModule.head_metas">
+<code class="sig-name descname">head_metas</code><em class="property">: List<span class="p">[</span>openpifpaf.headmeta.Base<span class="p">]</span></em><em class="property"> = None</em><a class="headerlink" href="#openpifpaf.datasets.DataModule.head_metas" title="Permalink to this definition">¶</a></dt>
+<dd><p>A list of head metas for this dataset.
+Set as instance variable (not class variable) in derived classes
+so that different instances of head metas are created for different
+instances of the data module. Head metas contain the base stride which
+might be different for different data module instances.
+When loading a checkpoint, entries in this list will be matched by
+name and dataset to entries in the checkpoint and overwritten here.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="openpifpaf.datasets.DataModule.cli">
+<em class="property">classmethod </em><code class="sig-name descname">cli</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">parser</span><span class="p">:</span> <span class="n">argparse.ArgumentParser</span></em><span class="sig-paren">)</span><a class="headerlink" href="#openpifpaf.datasets.DataModule.cli" title="Permalink to this definition">¶</a></dt>
+<dd><p>Commond line interface (CLI) to extend argument parser.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="openpifpaf.datasets.DataModule.configure">
+<em class="property">classmethod </em><code class="sig-name descname">configure</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">args</span><span class="p">:</span> <span class="n">argparse.Namespace</span></em><span class="sig-paren">)</span><a class="headerlink" href="#openpifpaf.datasets.DataModule.configure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Take the parsed argument parser output and configure class variables.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="openpifpaf.datasets.DataModule.metrics">
+<code class="sig-name descname">metrics</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>openpifpaf.metric.base.Base<span class="p">]</span><a class="headerlink" href="#openpifpaf.datasets.DataModule.metrics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Define a list of metrics to be used for eval.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="openpifpaf.datasets.DataModule.train_loader">
+<code class="sig-name descname">train_loader</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; torch.utils.data.dataloader.DataLoader<a class="headerlink" href="#openpifpaf.datasets.DataModule.train_loader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loader of the training dataset.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="openpifpaf.datasets.DataModule.val_loader">
+<code class="sig-name descname">val_loader</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; torch.utils.data.dataloader.DataLoader<a class="headerlink" href="#openpifpaf.datasets.DataModule.val_loader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loader of the validation dataset.</p>
+<p>The augmentation and preprocessing should be the same as for train_loader.
+The only difference is the set of data. This allows to inspect the
+train/val curves for overfitting.</p>
+<p>As in the train_loader, the annotations should be encoded fields
+so that the loss function can be computed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="openpifpaf.datasets.DataModule.eval_loader">
+<code class="sig-name descname">eval_loader</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; torch.utils.data.dataloader.DataLoader<a class="headerlink" href="#openpifpaf.datasets.DataModule.eval_loader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loader of the evluation dataset.</p>
+<p>For local runs, it is common that the validation dataset is also the
+evaluation dataset. This is then changed to test datasets (without
+ground truth) to produce predictions for submissions to a competition
+server that holds the private ground truth.</p>
+<p>This loader shouldn’t have any data augmentation. The images should be
+as close as possible to the real application.
+The annotations should be the groud truth annotations similarly to
+what the output of the decoder is expected to be.</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 <div class="section" id="openpifpaf-decoder">
 <h2>openpifpaf.decoder<a class="headerlink" href="#openpifpaf-decoder" title="Permalink to this headline">¶</a></h2>
@@ -392,6 +480,60 @@ ground truth for a field.
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="openpifpaf-metric">
+<h2>openpifpaf.metric<a class="headerlink" href="#openpifpaf-metric" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="openpifpaf.metric.Base">
+<em class="property">class </em><code class="sig-prename descclassname">openpifpaf.metric.</code><code class="sig-name descname">Base</code><a class="headerlink" href="#openpifpaf.metric.Base" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py attribute">
+<dt id="openpifpaf.metric.Base.nn_time">
+<code class="sig-name descname">nn_time</code><a class="headerlink" href="#openpifpaf.metric.Base.nn_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>accumulated time spent processing the neural network part</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="openpifpaf.metric.Base.decoder_time">
+<code class="sig-name descname">decoder_time</code><a class="headerlink" href="#openpifpaf.metric.Base.decoder_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>accumulated time spent in the decoder</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="openpifpaf.metric.Base.accumulate">
+<code class="sig-name descname">accumulate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">predictions</span></em>, <em class="sig-param"><span class="n">image_meta</span></em><span class="sig-paren">)</span><a class="headerlink" href="#openpifpaf.metric.Base.accumulate" title="Permalink to this definition">¶</a></dt>
+<dd><p>For every image, accumulate that image’s predictions into this metric.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>predictions</strong> – List of predictions for one image.</p></li>
+<li><p><strong>image_meta</strong> – Meta dictionary for this image as returned by the data loader.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="openpifpaf.metric.Base.stats">
+<code class="sig-name descname">stats</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#openpifpaf.metric.Base.stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a dictionary of summary statistics.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="openpifpaf.metric.Base.write_predictions">
+<code class="sig-name descname">write_predictions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em><span class="sig-paren">)</span><a class="headerlink" href="#openpifpaf.metric.Base.write_predictions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write predictions to a file.</p>
+<p>This is used to produce a metric-compatible output of predictions.
+It is used for test challenge submissions where a remote server
+holds the private test set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> – Output filename of prediction file.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 <div class="section" id="openpifpaf-network">
 <h2>openpifpaf.network<a class="headerlink" href="#openpifpaf-network" title="Permalink to this headline">¶</a></h2>

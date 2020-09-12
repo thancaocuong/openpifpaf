@@ -447,30 +447,10 @@ of keypoints and skeleton is specified in the <cite>headmeta</cite> instances.</
 <dd><p>Data loader batch size.</p>
 </dd></dl>
 
-<dl class="py method">
-<dt id="openpifpaf.datasets.DataModule.cli">
-<em class="property">classmethod </em><code class="sig-name descname">cli</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">parser</span><span class="p">:</span> <span class="n">argparse.ArgumentParser</span></em><span class="sig-paren">)</span><a class="headerlink" href="#openpifpaf.datasets.DataModule.cli" title="Permalink to this definition">¶</a></dt>
-<dd><p>Commond line interface (CLI) to extend argument parser.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="openpifpaf.datasets.DataModule.configure">
-<em class="property">classmethod </em><code class="sig-name descname">configure</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">args</span><span class="p">:</span> <span class="n">argparse.Namespace</span></em><span class="sig-paren">)</span><a class="headerlink" href="#openpifpaf.datasets.DataModule.configure" title="Permalink to this definition">¶</a></dt>
-<dd><p>Take the parsed argument parser output and configure class variables.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="openpifpaf.datasets.DataModule.eval_loader">
-<code class="sig-name descname">eval_loader</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; torch.utils.data.dataloader.DataLoader<a class="headerlink" href="#openpifpaf.datasets.DataModule.eval_loader" title="Permalink to this definition">¶</a></dt>
-<dd><p>Loader of the evluation dataset.</p>
-<p>For local runs, it is common that the validation dataset is also the
-evaluation dataset. This is then changed to test datasets (without
-ground truth) to produce predictions for submissions to a competition
-server that holds the private ground truth.</p>
-<p>This loader shouldn’t have any data augmentation. The images should be
-as close as possible to the real application.
-The annotations should be the groud truth annotations similarly to
-what the output of the decoder is expected to be.</p>
+<dl class="py attribute">
+<dt id="openpifpaf.datasets.DataModule.loader_workers">
+<code class="sig-name descname">loader_workers</code><em class="property"> = 0</em><a class="headerlink" href="#openpifpaf.datasets.DataModule.loader_workers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Data loader number of workers.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -485,10 +465,16 @@ When loading a checkpoint, entries in this list will be matched by
 name and dataset to entries in the checkpoint and overwritten here.</p>
 </dd></dl>
 
-<dl class="py attribute">
-<dt id="openpifpaf.datasets.DataModule.loader_workers">
-<code class="sig-name descname">loader_workers</code><em class="property"> = 0</em><a class="headerlink" href="#openpifpaf.datasets.DataModule.loader_workers" title="Permalink to this definition">¶</a></dt>
-<dd><p>Data loader number of workers.</p>
+<dl class="py method">
+<dt id="openpifpaf.datasets.DataModule.cli">
+<em class="property">classmethod </em><code class="sig-name descname">cli</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">parser</span><span class="p">:</span> <span class="n">argparse.ArgumentParser</span></em><span class="sig-paren">)</span><a class="headerlink" href="#openpifpaf.datasets.DataModule.cli" title="Permalink to this definition">¶</a></dt>
+<dd><p>Commond line interface (CLI) to extend argument parser.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="openpifpaf.datasets.DataModule.configure">
+<em class="property">classmethod </em><code class="sig-name descname">configure</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">args</span><span class="p">:</span> <span class="n">argparse.Namespace</span></em><span class="sig-paren">)</span><a class="headerlink" href="#openpifpaf.datasets.DataModule.configure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Take the parsed argument parser output and configure class variables.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -512,6 +498,20 @@ The only difference is the set of data. This allows to inspect the
 train/val curves for overfitting.</p>
 <p>As in the train_loader, the annotations should be encoded fields
 so that the loss function can be computed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="openpifpaf.datasets.DataModule.eval_loader">
+<code class="sig-name descname">eval_loader</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; torch.utils.data.dataloader.DataLoader<a class="headerlink" href="#openpifpaf.datasets.DataModule.eval_loader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loader of the evluation dataset.</p>
+<p>For local runs, it is common that the validation dataset is also the
+evaluation dataset. This is then changed to test datasets (without
+ground truth) to produce predictions for submissions to a competition
+server that holds the private ground truth.</p>
+<p>This loader shouldn’t have any data augmentation. The images should be
+as close as possible to the real application.
+The annotations should be the groud truth annotations similarly to
+what the output of the decoder is expected to be.</p>
 </dd></dl>
 
 </dd></dl>
