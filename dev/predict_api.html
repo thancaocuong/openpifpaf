@@ -400,6 +400,25 @@ The API is for more advanced use cases. Please read <a class="reference internal
   warnings.warn(msg, SourceChangeWarning)
 </pre></div>
 </div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">3</span><span class="o">-</span><span class="mf">6e58</span><span class="n">c5b38cec</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">net_cpu</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">openpifpaf</span><span class="o">.</span><span class="n">network</span><span class="o">.</span><span class="n">factory</span><span class="p">(</span><span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;shufflenetv2k16w&#39;</span><span class="p">,</span> <span class="n">download_progress</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">net</span> <span class="o">=</span> <span class="n">net_cpu</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">openpifpaf</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">CifSeeds</span><span class="o">.</span><span class="n">threshold</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">openpifpaf</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">nms</span><span class="o">.</span><span class="n">Keypoints</span><span class="o">.</span><span class="n">keypoint_threshold</span> <span class="o">=</span> <span class="mf">0.2</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/network/factory.py</span> in <span class="ni">factory</span><span class="nt">(checkpoint, base_name, head_metas, dense_coupling, cross_talk, two_scale, multi_scale, multi_scale_hflip, download_progress)</span>
+<span class="g g-Whitespace">    </span><span class="mi">143</span>         <span class="c1"># base_stride attributes set.</span>
+<span class="g g-Whitespace">    </span><span class="mi">144</span>         <span class="n">input_head_meta_indices</span> <span class="o">=</span> <span class="p">{(</span><span class="n">meta</span><span class="o">.</span><span class="n">dataset</span><span class="p">,</span> <span class="n">meta</span><span class="o">.</span><span class="n">name</span><span class="p">):</span> <span class="n">i</span>
+<span class="ne">--&gt; </span><span class="mi">145</span>                                    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">meta</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">head_metas</span><span class="p">)}</span>
+<span class="g g-Whitespace">    </span><span class="mi">146</span>         <span class="k">for</span> <span class="n">hn</span> <span class="ow">in</span> <span class="n">net_cpu</span><span class="o">.</span><span class="n">head_nets</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">147</span>             <span class="n">input_index</span> <span class="o">=</span> <span class="n">input_head_meta_indices</span><span class="o">.</span><span class="n">get</span><span class="p">((</span><span class="n">hn</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">dataset</span><span class="p">,</span> <span class="n">hn</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">name</span><span class="p">),</span> <span class="kc">None</span><span class="p">)</span>
+
+<span class="ne">TypeError</span>: &#39;NoneType&#39; object is not iterable
+</pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -444,9 +463,6 @@ The API is for more advanced use cases. Please read <a class="reference internal
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/predict_api_11_0.png" src="_images/predict_api_11_0.png" />
-</div>
 </div>
 </div>
 <div class="section" id="fields">
@@ -470,10 +486,6 @@ Then, the index for every field to visualize must be specified. In the example b
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/predict_api_13_0.png" src="_images/predict_api_13_0.png" />
-<img alt="_images/predict_api_13_1.png" src="_images/predict_api_13_1.png" />
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -489,10 +501,6 @@ Then, the index for every field to visualize must be specified. In the example b
 <span class="n">openpifpaf</span><span class="o">.</span><span class="n">visualizer</span><span class="o">.</span><span class="n">Caf</span><span class="o">.</span><span class="n">show_regressions</span> <span class="o">=</span> <span class="kc">False</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/predict_api_14_0.png" src="_images/predict_api_14_0.png" />
-<img alt="_images/predict_api_14_1.png" src="_images/predict_api_14_1.png" />
 </div>
 </div>
 <p>From the CIF field, a high resolution accumulation (in the code it’s called <code class="docutils literal notranslate"><span class="pre">CifHr</span></code>) is generated.
@@ -512,10 +520,6 @@ This is also the basis for the seeds. Both are shown below.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/predict_api_16_0.png" src="_images/predict_api_16_0.png" />
-<img alt="_images/predict_api_16_1.png" src="_images/predict_api_16_1.png" />
-</div>
 </div>
 <p>Starting from a seed, the poses are constructed. At every joint position, an occupancy map marks whether a previous pose was already constructed here. This reduces the number of poses that are constructed from multiple seeds for the same person. The final occupancy map is below:</p>
 <div class="cell docutils container">
@@ -530,9 +534,6 @@ This is also the basis for the seeds. Both are shown below.</p>
 <span class="n">openpifpaf</span><span class="o">.</span><span class="n">visualizer</span><span class="o">.</span><span class="n">Occupancy</span><span class="o">.</span><span class="n">show</span> <span class="o">=</span> <span class="kc">False</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/predict_api_18_0.png" src="_images/predict_api_18_0.png" />
 </div>
 </div>
 </div>

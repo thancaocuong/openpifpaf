@@ -480,7 +480,9 @@ what the output of the decoder is expected to be.</p>
 Set as instance variable (not class variable) in derived classes
 so that different instances of head metas are created for different
 instances of the data module. Head metas contain the base stride which
-might be different for different data module instances.</p>
+might be different for different data module instances.
+When loading a checkpoint, entries in this list will be matched by
+name and dataset to entries in the checkpoint and overwritten here.</p>
 </dd></dl>
 
 <dl class="py attribute">
