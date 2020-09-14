@@ -318,252 +318,204 @@
   warnings.warn(msg, SourceChangeWarning)
 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/torch/serialization.py:649: SourceChangeWarning: source code of class &#39;torch.nn.modules.dropout.Dropout2d&#39; has changed. you can retrieve the original source code by accessing the object&#39;s source attribute or set `torch.nn.Module.dump_patches = True` and use the patch tool to revert the changes.
   warnings.warn(msg, SourceChangeWarning)
-/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/torch/serialization.py:649: SourceChangeWarning: source code of class &#39;torch.nn.modules.pixelshuffle.PixelShuffle&#39; has changed. you can retrieve the original source code by accessing the object&#39;s source attribute or set `torch.nn.Module.dump_patches = True` and use the patch tool to revert the changes.
-  warnings.warn(msg, SourceChangeWarning)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.decoder.factory:head names = [&#39;cif&#39;, &#39;caf&#39;, &#39;caf25&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/torch/serialization.py:649: SourceChangeWarning: source code of class &#39;torch.nn.modules.pixelshuffle.PixelShuffle&#39; has changed. you can retrieve the original source code by accessing the object&#39;s source attribute or set `torch.nn.Module.dump_patches = True` and use the patch tool to revert the changes.
+  warnings.warn(msg, SourceChangeWarning)
+DEBUG:openpifpaf.decoder.factory:head names = [&#39;cif&#39;, &#39;caf&#39;, &#39;caf25&#39;]
 DEBUG:openpifpaf.visualizer.base:cif: indices = []
 DEBUG:openpifpaf.show.painters:color connections = False, lw = 2, marker = 6
 DEBUG:openpifpaf.visualizer.base:caf: indices = []
 DEBUG:openpifpaf.show.painters:color connections = False, lw = 2, marker = 6
 DEBUG:openpifpaf.decoder.factory:matched 1 decoders
 DEBUG:openpifpaf.show.painters:color connections = True, lw = 6, marker = 3
-DEBUG:openpifpaf.transforms.pad:valid area before pad: [  0.   0. 639. 426.], image size = (640, 427)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.transforms.pad:valid area before pad: [  0.   0. 639. 426.], image size = (640, 427)
 DEBUG:openpifpaf.transforms.pad:pad with (0, 3, 1, 3)
 DEBUG:openpifpaf.transforms.pad:valid area after pad: [  0.   3. 639. 426.], image size = (641, 433)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.decoder.generator.generator:nn processing time: 0.751s
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--------------------------  ---------------  ---------------  ---------------  ---------------  ---------------  ---------------  
-Name                        Self CPU total %  Self CPU total   CPU total %      CPU total        CPU time avg     Number of Calls  
---------------------------  ---------------  ---------------  ---------------  ---------------  ---------------  ---------------  
-to                          0.00%            6.400us          0.00%            6.400us          1.280us          5                
-model                       1.90%            14.282ms         99.99%           750.190ms        750.190ms        1                
-conv2d                      0.04%            308.000us        78.28%           587.274ms        9.954ms          59               
-convolution                 0.03%            195.401us        78.24%           586.966ms        9.949ms          59               
-_convolution                0.18%            1.329ms          78.21%           586.771ms        9.945ms          59               
-size                        0.04%            299.500us        0.04%            299.500us        0.367us          815              
-contiguous                  0.02%            154.701us        3.81%            28.551ms         208.401us        137              
-mkldnn_convolution          77.92%           584.604ms        78.01%           585.243ms        9.919ms          59               
-empty                       0.20%            1.475ms          0.20%            1.475ms          4.625us          319              
-as_strided_                 0.01%            112.000us        0.01%            112.000us        1.898us          59               
-batch_norm                  0.03%            250.502us        9.25%            69.372ms         1.239ms          56               
-_batch_norm_impl_index      0.04%            275.302us        9.21%            69.121ms         1.234ms          56               
-native_batch_norm           9.03%            67.781ms         9.14%            68.573ms         1.225ms          56               
-empty_like                  0.04%            307.801us        0.13%            944.303us        5.050us          187              
-relu_                       0.04%            274.500us        1.79%            13.442ms         363.309us        37               
-threshold_                  1.76%            13.168ms         1.76%            13.168ms         355.890us        37               
-cat                         0.02%            178.100us        3.83%            28.713ms         1.795ms          16               
-_cat                        3.75%            28.123ms         3.80%            28.535ms         1.783ms          16               
-resize_                     0.01%            91.300us         0.01%            91.300us         5.706us          16               
-narrow                      0.02%            146.801us        0.05%            373.801us        6.796us          55               
-slice                       0.04%            298.300us        0.06%            424.900us        4.249us          100              
-as_strided                  0.02%            166.000us        0.02%            166.000us        1.372us          121              
-stride                      0.00%            2.900us          0.00%            2.900us          0.967us          3                
-view                        0.04%            300.101us        0.04%            300.101us        7.320us          41               
-transpose                   0.02%            165.102us        0.03%            196.202us        12.263us         16               
-copy_                       4.49%            33.699ms         4.49%            33.699ms         1.774ms          19               
-chunk                       0.01%            51.000us         0.04%            307.200us        23.631us         13               
-split                       0.01%            73.600us         0.03%            245.100us        18.854us         13               
-feature_dropout             0.00%            4.600us          0.00%            4.600us          1.533us          3                
-pixel_shuffle               0.00%            35.600us         0.76%            5.692ms          1.897ms          3                
-reshape                     0.00%            32.500us         0.75%            5.611ms          935.086us        6                
-permute                     0.00%            35.200us         0.01%            40.900us         13.633us         3                
-clone                       0.00%            20.800us         0.74%            5.537ms          1.846ms          3                
-_unsafe_view                0.00%            9.500us          0.00%            15.200us         5.067us          3                
-sigmoid_                    0.00%            12.500us         0.05%            356.101us        118.700us        3                
-sigmoid_out                 0.05%            343.601us        0.05%            343.601us        114.534us        3                
-set_                        0.00%            2.400us          0.00%            2.400us          2.400us          1                
-unsqueeze                   0.00%            19.101us         0.00%            21.701us         10.851us         2                
-add_                        0.03%            245.400us        0.03%            245.400us        49.080us         5                
-exp_                        0.00%            19.900us         0.18%            1.315ms          438.268us        3                
-exp_out                     0.17%            1.295ms          0.17%            1.295ms          431.635us        3                
-tonumpy                     0.01%            63.700us         0.01%            66.200us         66.200us         1                
---------------------------  ---------------  ---------------  ---------------  ---------------  ---------------  ---------------  
-Self CPU time total: 750.258ms
-
-INFO:openpifpaf.decoder.profiler_autograd:writing trace file profile_decoder.1.json
-DEBUG:openpifpaf.decoder.generator.generator:parallel execution with worker &lt;openpifpaf.decoder.generator.generator.DummyPool object at 0x7f573ede4c10&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.decoder.generator.generator:nn processing time: 0.898s
+DEBUG:openpifpaf.decoder.generator.generator:parallel execution with worker &lt;openpifpaf.decoder.generator.generator.DummyPool object at 0x7f310d73e690&gt;
+DEBUG:openpifpaf.decoder.generator.multi:task 0
 DEBUG:openpifpaf.decoder.generator.cifcaf:initial annotations = 0
 DEBUG:openpifpaf.decoder.cif_hr:target_intensities 0.006s
 DEBUG:openpifpaf.decoder.cif_seeds:seeds 681, 0.002s (C++ 0.001s)
-DEBUG:openpifpaf.decoder.caf_scored:scored caf (1420, 1305) in 0.005s
+DEBUG:openpifpaf.decoder.caf_scored:scored caf (1420, 1305) in 0.006s
 DEBUG:openpifpaf.decoder.occupancy:shape = (17, 216, 320), min_scale = 2
-DEBUG:openpifpaf.decoder.generator.cifcaf:annotations 5, 0.023s
+DEBUG:openpifpaf.decoder.generator.cifcaf:annotations 5, 0.030s
 DEBUG:openpifpaf.decoder.occupancy:shape = (17, 194, 281), min_scale = 2
-DEBUG:openpifpaf.decoder.nms:nms = 0.003s
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.decoder.nms:nms = 0.005s
 INFO:openpifpaf.decoder.generator.cifcaf:5 annotations: [13, 16, 17, 15, 14]
 INFO:openpifpaf.decoder.profiler:writing profile file profile_decoder.prof
-         9859 function calls (9854 primitive calls) in 0.026 seconds
+         9857 function calls (9852 primitive calls) in 0.035 seconds
 
    Ordered by: internal time
 
    ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-       17    0.004    0.000    0.004    0.000 {built-in method openpifpaf.functional.scalar_square_add_gauss_with_max}
-        1    0.002    0.002    0.005    0.005 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/caf_scored.py:37(fill_single)
-      152    0.002    0.000    0.003    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/occupancy.py:31(set)
-       92    0.001    0.000    0.002    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/generator/cifcaf.py:139(connection_value)
-       13    0.001    0.000    0.001    0.000 {built-in method numpy.zeros}
-        1    0.001    0.001    0.002    0.002 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/cif_seeds.py:26(fill_single)
-      152    0.001    0.000    0.001    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/utils.py:61(scalar_square_add_single)
-       17    0.001    0.000    0.005    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/cif_hr.py:24(accumulate)
-       76    0.001    0.000    0.001    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/generator/cifcaf.py:200(add_to_frontier)
-       38    0.001    0.000    0.001    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/caf_scored.py:31(rescore)
-        5    0.001    0.000    0.005    0.001 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/generator/cifcaf.py:196(_grow)
+       13    0.004    0.000    0.004    0.000 {built-in method numpy.zeros}
+        1    0.003    0.003    0.006    0.006 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/caf_scored.py:37(fill_single)
+      152    0.002    0.000    0.006    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/occupancy.py:31(set)
+        1    0.002    0.002    0.003    0.003 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/cif_seeds.py:26(fill_single)
+       92    0.002    0.000    0.003    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/generator/cifcaf.py:137(connection_value)
+       17    0.002    0.000    0.002    0.000 {built-in method openpifpaf.functional.scalar_square_add_gauss_with_max}
+      152    0.001    0.000    0.002    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/utils.py:61(scalar_square_add_single)
+       17    0.001    0.000    0.003    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/cif_hr.py:24(accumulate)
+       38    0.001    0.000    0.002    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/caf_scored.py:31(rescore)
       456    0.001    0.000    0.001    0.000 {built-in method builtins.round}
-      757    0.001    0.000    0.001    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/occupancy.py:41(get)
+        5    0.001    0.000    0.007    0.001 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/generator/cifcaf.py:194(_grow)
+       76    0.001    0.000    0.002    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/generator/cifcaf.py:198(add_to_frontier)
+      757    0.001    0.000    0.002    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/occupancy.py:41(get)
       757    0.001    0.000    0.001    0.000 {built-in method openpifpaf.functional.scalar_nonzero_clipped_with_reduction}
-      224    0.000    0.000    0.000    0.000 {built-in method numpy.array}
-       85    0.000    0.000    0.003    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/generator/cifcaf.py:214(frontier_get)
-       78    0.000    0.000    0.000    0.000 {method &#39;reduce&#39; of &#39;numpy.ufunc&#39; objects}
-      172    0.000    0.000    0.000    0.000 {built-in method _heapq.heappush}
-      376    0.000    0.000    0.002    0.000 {built-in method numpy.core._multiarray_umath.implement_array_function}
-        1    0.000    0.000    0.003    0.003 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/nms.py:17(annotations)
-        1    0.000    0.000    0.026    0.026 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/generator/cifcaf.py:82(__call__)
-        3    0.000    0.000    0.001    0.000 {built-in method builtins.sorted}
-      934    0.000    0.000    0.000    0.000 {built-in method builtins.max}
-      172    0.000    0.000    0.000    0.000 {openpifpaf.functional.grow_connection_blend}
+        1    0.001    0.001    0.005    0.005 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/nms.py:17(annotations)
+      376    0.001    0.000    0.003    0.000 {built-in method numpy.core._multiarray_umath.implement_array_function}
+      224    0.001    0.000    0.001    0.000 {built-in method numpy.array}
+       78    0.001    0.000    0.001    0.000 {method &#39;reduce&#39; of &#39;numpy.ufunc&#39; objects}
+      172    0.001    0.000    0.001    0.000 {built-in method _heapq.heappush}
+      934    0.001    0.000    0.001    0.000 {built-in method builtins.max}
+       85    0.001    0.000    0.004    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/generator/cifcaf.py:212(frontier_get)
+        1    0.001    0.001    0.035    0.035 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/generator/cifcaf.py:82(__call__)
+      172    0.001    0.000    0.001    0.000 {openpifpaf.functional.grow_connection_blend}
        55    0.000    0.000    0.001    0.000 {openpifpaf.functional.scalar_values}
-        5    0.000    0.000    0.002    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/generator/cifcaf.py:102(mark_occupied)
-       19    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/numpy/linalg/linalg.py:2363(norm)
-       59    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/numpy/core/fromnumeric.py:70(_wrapreduction)
-        9    0.000    0.000    0.000    0.000 {method &#39;write&#39; of &#39;_io.TextIOWrapper&#39; objects}
-      180    0.000    0.000    0.001    0.000 &lt;__array_function__ internals&gt;:2(copy)
-        5    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/annotation.py:14(__init__)
+        5    0.000    0.000    0.003    0.001 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/generator/cifcaf.py:100(mark_occupied)
+        3    0.000    0.000    0.001    0.000 {built-in method builtins.sorted}
+       19    0.000    0.000    0.001    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/numpy/linalg/linalg.py:2363(norm)
       172    0.000    0.000    0.000    0.000 {built-in method _heapq.heappop}
+        9    0.000    0.000    0.000    0.000 {method &#39;write&#39; of &#39;_io.TextIOWrapper&#39; objects}
+        5    0.000    0.000    0.001    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/annotation.py:14(__init__)
+       59    0.000    0.000    0.001    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/numpy/core/fromnumeric.py:70(_wrapreduction)
 1029/1024    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+      180    0.000    0.000    0.001    0.000 &lt;__array_function__ internals&gt;:2(copy)
         9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/logging/__init__.py:282(__init__)
-        1    0.000    0.000    0.007    0.007 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/cif_hr.py:40(fill)
-       20    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/annotation.py:73(score)
-       55    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/numpy/core/numeric.py:268(full)
-       98    0.000    0.000    0.000    0.000 {built-in method numpy.empty}
       849    0.000    0.000    0.000    0.000 {method &#39;append&#39; of &#39;list&#39; objects}
-      180    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/numpy/lib/function_base.py:714(copy)
-      142    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/headmeta.py:22(stride)
+       20    0.000    0.000    0.001    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/annotation.py:73(score)
+       55    0.000    0.000    0.001    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/numpy/core/numeric.py:268(full)
+        1    0.000    0.000    0.007    0.007 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/cif_hr.py:40(fill)
+       98    0.000    0.000    0.000    0.000 {built-in method numpy.empty}
+      180    0.000    0.000    0.001    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/numpy/lib/function_base.py:714(copy)
       304    0.000    0.000    0.000    0.000 {built-in method builtins.min}
-       60    0.000    0.000    0.000    0.000 &lt;__array_function__ internals&gt;:2(copyto)
        30    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/numpy/core/fromnumeric.py:2105(sum)
        38    0.000    0.000    0.000    0.000 &lt;__array_function__ internals&gt;:2(concatenate)
+       60    0.000    0.000    0.000    0.000 &lt;__array_function__ internals&gt;:2(copyto)
+       92    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/caf_scored.py:25(directed)
+        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/logging/__init__.py:1446(findCaller)
         9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/logging/__init__.py:360(getMessage)
+      142    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/headmeta.py:22(stride)
+       19    0.000    0.000    0.000    0.000 &lt;__array_function__ internals&gt;:2(any)
+        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/logging/__init__.py:1614(isEnabledFor)
+       20    0.000    0.000    0.000    0.000 {method &#39;sort&#39; of &#39;numpy.ndarray&#39; objects}
+       19    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/numpy/core/fromnumeric.py:2249(any)
+       59    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/numpy/core/fromnumeric.py:71(&lt;dictcomp&gt;)
+       20    0.000    0.000    0.000    0.000 &lt;__array_function__ internals&gt;:2(sort)
+      160    0.000    0.000    0.000    0.000 {built-in method builtins.abs}
        19    0.000    0.000    0.001    0.000 &lt;__array_function__ internals&gt;:2(norm)
        20    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/numpy/core/fromnumeric.py:839(sort)
-        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/logging/__init__.py:1446(findCaller)
-       92    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/caf_scored.py:25(directed)
-       59    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/numpy/core/fromnumeric.py:71(&lt;dictcomp&gt;)
-       20    0.000    0.000    0.000    0.000 {method &#39;sort&#39; of &#39;numpy.ndarray&#39; objects}
-      180    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/numpy/lib/function_base.py:710(_copy_dispatcher)
-       19    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/numpy/core/fromnumeric.py:2249(any)
-        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/logging/__init__.py:1614(isEnabledFor)
        79    0.000    0.000    0.000    0.000 {built-in method builtins.isinstance}
-      160    0.000    0.000    0.000    0.000 {built-in method builtins.abs}
-        8    0.000    0.000    0.001    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/logging/__init__.py:1356(debug)
-        9    0.000    0.000    0.001    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/logging/__init__.py:1491(_log)
-        2    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/occupancy.py:11(__init__)
-        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/logging/__init__.py:1002(flush)
-      135    0.000    0.000    0.000    0.000 {method &#39;items&#39; of &#39;dict&#39; objects}
-       19    0.000    0.000    0.000    0.000 &lt;__array_function__ internals&gt;:2(any)
-       30    0.000    0.000    0.000    0.000 &lt;__array_function__ internals&gt;:2(sum)
        92    0.000    0.000    0.000    0.000 {method &#39;add&#39; of &#39;set&#39; objects}
-        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/logging/__init__.py:1570(callHandlers)
+      180    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/numpy/lib/function_base.py:710(_copy_dispatcher)
        20    0.000    0.000    0.000    0.000 {method &#39;copy&#39; of &#39;numpy.ndarray&#39; objects}
+       60    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/numpy/core/multiarray.py:1043(copyto)
+        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/posixpath.py:121(splitext)
+        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/caf_scored.py:43(&lt;listcomp&gt;)
         9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/logging/__init__.py:1013(emit)
-        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/logging/__init__.py:595(format)
-        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/generator/cifcaf.py:136(&lt;listcomp&gt;)
-        5    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/annotation.py:41(add)
+        8    0.000    0.000    0.001    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/logging/__init__.py:1356(debug)
+        9    0.000    0.000    0.001    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/logging/__init__.py:1570(callHandlers)
+      135    0.000    0.000    0.000    0.000 {method &#39;items&#39; of &#39;dict&#39; objects}
+        9    0.000    0.000    0.000    0.000 {method &#39;find&#39; of &#39;str&#39; objects}
+       30    0.000    0.000    0.001    0.000 &lt;__array_function__ internals&gt;:2(sum)
+       27    0.000    0.000    0.000    0.000 {method &#39;rfind&#39; of &#39;str&#39; objects}
+        2    0.000    0.000    0.001    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/occupancy.py:11(__init__)
+        9    0.000    0.000    0.001    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/logging/__init__.py:1491(_log)
+        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/nms.py:22(&lt;listcomp&gt;)
         9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/logging/__init__.py:421(format)
+        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/logging/__init__.py:579(formatMessage)
+        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/generator/cifcaf.py:134(&lt;listcomp&gt;)
         1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/visualizer/cif.py:42(predicted)
-        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/posixpath.py:52(normcase)
+        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/logging/__init__.py:1002(flush)
         9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/posixpath.py:144(basename)
+        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/cif_seeds.py:56(get)
+        5    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/annotation.py:41(add)
+       44    0.000    0.000    0.000    0.000 {built-in method time.perf_counter}
+        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/logging/__init__.py:595(format)
+       24    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/numpy/core/_asarray.py:14(asarray)
+        5    0.000    0.000    0.000    0.000 {method &#39;tolist&#39; of &#39;numpy.ndarray&#39; objects}
+        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/genericpath.py:121(_splitext)
+        9    0.000    0.000    0.001    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/logging/__init__.py:1516(handle)
+        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/logging/__init__.py:1476(makeRecord)
+        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/visualizer/caf.py:43(predicted)
        18    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/logging/__init__.py:838(acquire)
         9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/logging/__init__.py:881(handle)
-       24    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/numpy/core/_asarray.py:14(asarray)
-       20    0.000    0.000    0.000    0.000 &lt;__array_function__ internals&gt;:2(sort)
-        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/logging/__init__.py:1516(handle)
-       27    0.000    0.000    0.000    0.000 {method &#39;rfind&#39; of &#39;str&#39; objects}
-        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/genericpath.py:121(_splitext)
-        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/nms.py:22(&lt;listcomp&gt;)
-        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/caf_scored.py:17(__init__)
-        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/posixpath.py:121(splitext)
-       44    0.000    0.000    0.000    0.000 {built-in method time.perf_counter}
-        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/cif_seeds.py:55(get)
        10    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/numpy/core/fromnumeric.py:2589(amax)
-        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/logging/__init__.py:1476(makeRecord)
-       38    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/numpy/core/multiarray.py:143(concatenate)
-       60    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/numpy/core/multiarray.py:1043(copyto)
-        9    0.000    0.000    0.000    0.000 {built-in method posix.getpid}
-        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/caf_scored.py:41(&lt;listcomp&gt;)
-        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/cif_seeds.py:17(__init__)
-        7    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/logging/__init__.py:212(_acquireLock)
-        5    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/numpy/core/numeric.py:144(ones)
-        5    0.000    0.000    0.000    0.000 {method &#39;tolist&#39; of &#39;numpy.ndarray&#39; objects}
-        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/caf_scored.py:42(&lt;listcomp&gt;)
-       18    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/logging/__init__.py:736(filter)
-       20    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/numpy/core/_asarray.py:86(asanyarray)
-       19    0.000    0.000    0.000    0.000 {method &#39;conj&#39; of &#39;numpy.ndarray&#39; objects}
-        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/nms.py:53(&lt;listcomp&gt;)
-        1    0.000    0.000    0.005    0.005 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/caf_scored.py:78(fill)
+        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/posixpath.py:52(normcase)
         9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/logging/__init__.py:418(usesTime)
-        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/threading.py:1225(current_thread)
-       18    0.000    0.000    0.000    0.000 {method &#39;get&#39; of &#39;dict&#39; objects}
-        2    0.000    0.000    0.000    0.000 {built-in method builtins.sum}
-        6    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/nms.py:29(&lt;genexpr&gt;)
-        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/visualizer/caf.py:43(predicted)
-        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/cif_hr.py:18(__init__)
-       18    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/logging/__init__.py:845(release)
-       27    0.000    0.000    0.000    0.000 {built-in method builtins.hasattr}
-       19    0.000    0.000    0.000    0.000 {built-in method builtins.issubclass}
-        9    0.000    0.000    0.000    0.000 {built-in method sys._getframe}
-       25    0.000    0.000    0.000    0.000 {method &#39;acquire&#39; of &#39;_thread.RLock&#39; objects}
-        6    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/nms.py:30(&lt;genexpr&gt;)
-        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/logging/__init__.py:154(&lt;lambda&gt;)
-        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/logging/__init__.py:573(usesTime)
-        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/logging/__init__.py:858(format)
-       20    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/numpy/core/fromnumeric.py:835(_sort_dispatcher)
-       19    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/numpy/core/fromnumeric.py:2245(_any_dispatcher)
-        3    0.000    0.000    0.000    0.000 {built-in method _abc._abc_instancecheck}
-        5    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/nms.py:54(&lt;lambda&gt;)
-        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/logging/__init__.py:117(getLevelName)
-        7    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/logging/__init__.py:221(_releaseLock)
-        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/logging/__init__.py:579(formatMessage)
-       10    0.000    0.000    0.000    0.000 &lt;__array_function__ internals&gt;:2(amax)
-        7    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/logging/__init__.py:1600(getEffectiveLevel)
-        9    0.000    0.000    0.000    0.000 {method &#39;find&#39; of &#39;str&#39; objects}
-       27    0.000    0.000    0.000    0.000 {built-in method posix.fspath}
-       20    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/caf_scored.py:73(&lt;genexpr&gt;)
-       20    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/caf_scored.py:74(&lt;genexpr&gt;)
-        1    0.000    0.000    0.002    0.002 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/cif_seeds.py:21(fill)
        30    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/numpy/core/fromnumeric.py:2100(_sum_dispatcher)
-        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/posixpath.py:41(_get_sep)
+       19    0.000    0.000    0.000    0.000 {method &#39;conj&#39; of &#39;numpy.ndarray&#39; objects}
+       27    0.000    0.000    0.000    0.000 {built-in method builtins.hasattr}
+        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/caf_scored.py:42(&lt;listcomp&gt;)
+        9    0.000    0.000    0.000    0.000 {built-in method posix.getpid}
+       25    0.000    0.000    0.000    0.000 {method &#39;acquire&#39; of &#39;_thread.RLock&#39; objects}
+        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/cif_hr.py:18(__init__)
+        6    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/nms.py:29(&lt;genexpr&gt;)
+        5    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/numpy/core/numeric.py:144(ones)
+       19    0.000    0.000    0.000    0.000 {built-in method builtins.issubclass}
+        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/caf_scored.py:17(__init__)
+        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/logging/__init__.py:154(&lt;lambda&gt;)
+        2    0.000    0.000    0.000    0.000 {built-in method builtins.sum}
+        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/logging/__init__.py:117(getLevelName)
+       38    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/numpy/core/multiarray.py:143(concatenate)
+        7    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/logging/__init__.py:212(_acquireLock)
+       18    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/logging/__init__.py:736(filter)
+       18    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/logging/__init__.py:845(release)
+       20    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/numpy/core/_asarray.py:86(asanyarray)
+       10    0.000    0.000    0.000    0.000 &lt;__array_function__ internals&gt;:2(amax)
+        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/threading.py:1225(current_thread)
+        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/nms.py:53(&lt;listcomp&gt;)
+        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/logging/__init__.py:858(format)
+       19    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/numpy/core/fromnumeric.py:2245(_any_dispatcher)
+       18    0.000    0.000    0.000    0.000 {method &#39;get&#39; of &#39;dict&#39; objects}
+       27    0.000    0.000    0.000    0.000 {built-in method posix.fspath}
        25    0.000    0.000    0.000    0.000 {method &#39;release&#39; of &#39;_thread.RLock&#39; objects}
+        6    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/nms.py:30(&lt;genexpr&gt;)
+        5    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/nms.py:54(&lt;lambda&gt;)
         1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/visualizer/cif.py:49(_confidences)
-        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/logging/__init__.py:1368(info)
-        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/threading.py:1064(name)
-       18    0.000    0.000    0.000    0.000 {built-in method _thread.get_ident}
+       20    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/caf_scored.py:74(&lt;genexpr&gt;)
+        9    0.000    0.000    0.000    0.000 {built-in method sys._getframe}
+        3    0.000    0.000    0.000    0.000 {built-in method _abc._abc_instancecheck}
+        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/cif_seeds.py:17(__init__)
         5    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/nms.py:33(&lt;lambda&gt;)
-        5    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/occupancy.py:28(__len__)
-        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/visualizer/caf.py:64(_regressions)
-       10    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/numpy/core/fromnumeric.py:2584(_amax_dispatcher)
-        9    0.000    0.000    0.000    0.000 {built-in method time.time}
+        1    0.000    0.000    0.006    0.006 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/caf_scored.py:79(fill)
+        7    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/logging/__init__.py:221(_releaseLock)
+       19    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/numpy/linalg/linalg.py:2359(_norm_dispatcher)
+        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/logging/__init__.py:1368(info)
+        7    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/logging/__init__.py:1600(getEffectiveLevel)
         9    0.000    0.000    0.000    0.000 {method &#39;flush&#39; of &#39;_io.TextIOWrapper&#39; objects}
-        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/generator/cifcaf.py:96(&lt;listcomp&gt;)
+        1    0.000    0.000    0.003    0.003 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/cif_seeds.py:21(fill)
+       20    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/caf_scored.py:75(&lt;genexpr&gt;)
+        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/logging/__init__.py:573(usesTime)
+        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/threading.py:1064(name)
+        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/posixpath.py:41(_get_sep)
+        9    0.000    0.000    0.000    0.000 {built-in method time.time}
+       18    0.000    0.000    0.000    0.000 {built-in method _thread.get_ident}
+        5    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/occupancy.py:28(__len__)
+        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/multiprocessing/process.py:180(name)
+       10    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/numpy/core/fromnumeric.py:2584(_amax_dispatcher)
         1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/visualizer/cif.py:61(_regressions)
-        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/visualizer/cifhr.py:17(predicted)
-        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/visualizer/caf.py:50(_confidences)
         1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/visualizer/occupancy.py:15(predicted)
         1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/visualizer/seeds.py:17(predicted)
-        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/decoder/generator/cifcaf.py:93(&lt;listcomp&gt;)
         1    0.000    0.000    0.000    0.000 {method &#39;disable&#39; of &#39;_lsprof.Profiler&#39; objects}
-        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/multiprocessing/process.py:36(current_process)
-        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/multiprocessing/process.py:180(name)
-       19    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/numpy/linalg/linalg.py:2359(_norm_dispatcher)
+       20    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/numpy/core/fromnumeric.py:835(_sort_dispatcher)
         3    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/abc.py:137(__instancecheck__)
+        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/visualizer/cifhr.py:17(predicted)
+        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/visualizer/caf.py:50(_confidences)
+        1    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/visualizer/caf.py:64(_regressions)
+        9    0.000    0.000    0.000    0.000 /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/multiprocessing/process.py:36(current_process)
 
 
 
-DEBUG:openpifpaf.decoder.generator.generator:time: nn = 0.813s, dec = 0.034s
+DEBUG:openpifpaf.decoder.generator.generator:time: nn = 0.898s, dec = 0.044s
 INFO:__main__:batch 0: coco/000000081988.jpg
 </pre></div>
 </div>
