@@ -536,6 +536,7 @@ logging:
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>usage: python3 -m openpifpaf.video [-h] [--version]
+                                   [--shufflenetv2-no-pretrain]
                                    [--shufflenetv2k-input-conv2-stride SHUFFLENETV2K_INPUT_CONV2_STRIDE]
                                    [--shufflenetv2k-input-conv2-outchannels SHUFFLENETV2K_INPUT_CONV2_OUTCHANNELS]
                                    [--shufflenetv2k-stage4-dilation SHUFFLENETV2K_STAGE4_DILATION]
@@ -546,7 +547,6 @@ logging:
                                    [--resnet-input-conv2-stride RESNET_INPUT_CONV2_STRIDE]
                                    [--resnet-block5-dilation RESNET_BLOCK5_DILATION]
                                    [--resnet-remove-last-block]
-                                   [--shufflenetv2-no-pretrain]
                                    [--cf3-dropout CF3_DROPOUT]
                                    [--cf3-no-inplace-ops]
                                    [--checkpoint CHECKPOINT]
@@ -624,6 +624,10 @@ optional arguments:
   --json-output [JSON_OUTPUT]
                         json output file (default: None)
 
+ShuffleNetv2:
+  --shufflenetv2-no-pretrain
+                        use randomly initialized models (default: True)
+
 shufflenetv2k:
   --shufflenetv2k-input-conv2-stride SHUFFLENETV2K_INPUT_CONV2_STRIDE
                         stride of the optional 2nd input convolution (default:
@@ -650,10 +654,6 @@ ResNet:
   --resnet-remove-last-block
                         create a network without the last block (default:
                         False)
-
-ShuffleNetv2:
-  --shufflenetv2-no-pretrain
-                        use randomly initialized models (default: True)
 
 CompositeField3:
   --cf3-dropout CF3_DROPOUT
