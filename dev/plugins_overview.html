@@ -288,28 +288,6 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#base-classes">
-   Base Classes
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#datamodule">
-     DataModule
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#basenetwork">
-     BaseNetwork
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#headnetwork">
-     HeadNetwork
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#headmeta">
    Headmeta
   </a>
@@ -339,8 +317,10 @@
 <div class="section" id="discovery">
 <h2>Discovery<a class="headerlink" href="#discovery" title="Permalink to this headline">¶</a></h2>
 <p>Plugins are modules whose name starts with <code class="docutils literal notranslate"><span class="pre">openpifpaf_</span></code>. Some plugins are also included in <code class="docutils literal notranslate"><span class="pre">openpifpaf.contrib</span></code>. During the discovery process, every plugin’s <code class="docutils literal notranslate"><span class="pre">register()</span></code> function is called. A simple plugin that does nothing, the <code class="docutils literal notranslate"><span class="pre">nothingplugin</span></code> would have this file structure:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">|-</span> <span class="n">openpifpaf_nothingplugin</span>
-   <span class="o">|-</span> <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">|-</span> <span class="n">openpifpaf_nothingplugin</span>  <span class="c1"># project directory (root directory for version control)</span>
+  <span class="o">|-</span> <span class="n">Readme</span><span class="o">.</span><span class="n">md</span>
+  <span class="o">|-</span> <span class="n">openpifpaf_nothingplugin</span>  <span class="c1"># Python module</span>
+    <span class="o">|-</span> <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
 <p>where the <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file would contain an empty <code class="docutils literal notranslate"><span class="pre">register()</span></code> function:</p>
@@ -428,175 +408,11 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="base-classes">
-<h2>Base Classes<a class="headerlink" href="#base-classes" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="datamodule">
-<h3>DataModule<a class="headerlink" href="#datamodule" title="Permalink to this headline">¶</a></h3>
-<dl class="py class">
-<dt id="openpifpaf.datasets.DataModule">
-<em class="property">class </em><code class="sig-prename descclassname">openpifpaf.datasets.</code><code class="sig-name descname">DataModule</code><a class="headerlink" href="#openpifpaf.datasets.DataModule" title="Permalink to this definition">¶</a></dt>
-<dd><p>Interface for custom data.</p>
-<p>This module handles datasets and is the class that you need to inherit
-from for your custom dataset. This class gives you all the handles so that
-you can train with a new <cite>–dataset=mydataset</cite>. The particular configuration
-of keypoints and skeleton is specified in the <cite>headmeta</cite> instances.</p>
-<dl class="py attribute">
-<dt id="openpifpaf.datasets.DataModule.batch_size">
-<code class="sig-name descname">batch_size</code><em class="property"> = 8</em><a class="headerlink" href="#openpifpaf.datasets.DataModule.batch_size" title="Permalink to this definition">¶</a></dt>
-<dd><p>Data loader batch size.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt id="openpifpaf.datasets.DataModule.loader_workers">
-<code class="sig-name descname">loader_workers</code><em class="property"> = 0</em><a class="headerlink" href="#openpifpaf.datasets.DataModule.loader_workers" title="Permalink to this definition">¶</a></dt>
-<dd><p>Data loader number of workers.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt id="openpifpaf.datasets.DataModule.head_metas">
-<code class="sig-name descname">head_metas</code><em class="property">: List<span class="p">[</span>openpifpaf.headmeta.Base<span class="p">]</span></em><em class="property"> = None</em><a class="headerlink" href="#openpifpaf.datasets.DataModule.head_metas" title="Permalink to this definition">¶</a></dt>
-<dd><p>A list of head metas for this dataset.
-Set as instance variable (not class variable) in derived classes
-so that different instances of head metas are created for different
-instances of the data module. Head metas contain the base stride which
-might be different for different data module instances.
-When loading a checkpoint, entries in this list will be matched by
-name and dataset to entries in the checkpoint and overwritten here.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="openpifpaf.datasets.DataModule.cli">
-<em class="property">classmethod </em><code class="sig-name descname">cli</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">parser</span><span class="p">:</span> <span class="n">argparse.ArgumentParser</span></em><span class="sig-paren">)</span><a class="headerlink" href="#openpifpaf.datasets.DataModule.cli" title="Permalink to this definition">¶</a></dt>
-<dd><p>Commond line interface (CLI) to extend argument parser.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="openpifpaf.datasets.DataModule.configure">
-<em class="property">classmethod </em><code class="sig-name descname">configure</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">args</span><span class="p">:</span> <span class="n">argparse.Namespace</span></em><span class="sig-paren">)</span><a class="headerlink" href="#openpifpaf.datasets.DataModule.configure" title="Permalink to this definition">¶</a></dt>
-<dd><p>Take the parsed argument parser output and configure class variables.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="openpifpaf.datasets.DataModule.metrics">
-<code class="sig-name descname">metrics</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>openpifpaf.metric.base.Base<span class="p">]</span><a class="headerlink" href="#openpifpaf.datasets.DataModule.metrics" title="Permalink to this definition">¶</a></dt>
-<dd><p>Define a list of metrics to be used for eval.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="openpifpaf.datasets.DataModule.train_loader">
-<code class="sig-name descname">train_loader</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; torch.utils.data.dataloader.DataLoader<a class="headerlink" href="#openpifpaf.datasets.DataModule.train_loader" title="Permalink to this definition">¶</a></dt>
-<dd><p>Loader of the training dataset.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="openpifpaf.datasets.DataModule.val_loader">
-<code class="sig-name descname">val_loader</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; torch.utils.data.dataloader.DataLoader<a class="headerlink" href="#openpifpaf.datasets.DataModule.val_loader" title="Permalink to this definition">¶</a></dt>
-<dd><p>Loader of the validation dataset.</p>
-<p>The augmentation and preprocessing should be the same as for train_loader.
-The only difference is the set of data. This allows to inspect the
-train/val curves for overfitting.</p>
-<p>As in the train_loader, the annotations should be encoded fields
-so that the loss function can be computed.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="openpifpaf.datasets.DataModule.eval_loader">
-<code class="sig-name descname">eval_loader</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; torch.utils.data.dataloader.DataLoader<a class="headerlink" href="#openpifpaf.datasets.DataModule.eval_loader" title="Permalink to this definition">¶</a></dt>
-<dd><p>Loader of the evluation dataset.</p>
-<p>For local runs, it is common that the validation dataset is also the
-evaluation dataset. This is then changed to test datasets (without
-ground truth) to produce predictions for submissions to a competition
-server that holds the private ground truth.</p>
-<p>This loader shouldn’t have any data augmentation. The images should be
-as close as possible to the real application.
-The annotations should be the groud truth annotations similarly to
-what the output of the decoder is expected to be.</p>
-</dd></dl>
-
-</dd></dl>
-
-</div>
-<div class="section" id="basenetwork">
-<h3>BaseNetwork<a class="headerlink" href="#basenetwork" title="Permalink to this headline">¶</a></h3>
-<dl class="py class">
-<dt id="openpifpaf.network.BaseNetwork">
-<em class="property">class </em><code class="sig-prename descclassname">openpifpaf.network.</code><code class="sig-name descname">BaseNetwork</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">stride</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">out_features</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#openpifpaf.network.BaseNetwork" title="Permalink to this definition">¶</a></dt>
-<dd><p>Common base network.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>name</strong> – a short name for the base network, e.g. resnet50</p></li>
-<li><p><strong>stride</strong> – total stride from input to output</p></li>
-<li><p><strong>out_features</strong> – number of output features</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py method">
-<dt id="openpifpaf.network.BaseNetwork.cli">
-<em class="property">classmethod </em><code class="sig-name descname">cli</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">parser</span><span class="p">:</span> <span class="n">argparse.ArgumentParser</span></em><span class="sig-paren">)</span><a class="headerlink" href="#openpifpaf.network.BaseNetwork.cli" title="Permalink to this definition">¶</a></dt>
-<dd><p>Commond line interface (CLI) to extend argument parser.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="openpifpaf.network.BaseNetwork.configure">
-<em class="property">classmethod </em><code class="sig-name descname">configure</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">args</span><span class="p">:</span> <span class="n">argparse.Namespace</span></em><span class="sig-paren">)</span><a class="headerlink" href="#openpifpaf.network.BaseNetwork.configure" title="Permalink to this definition">¶</a></dt>
-<dd><p>Take the parsed argument parser output and configure class variables.</p>
-</dd></dl>
-
-</dd></dl>
-
-</div>
-<div class="section" id="headnetwork">
-<h3>HeadNetwork<a class="headerlink" href="#headnetwork" title="Permalink to this headline">¶</a></h3>
-<dl class="py class">
-<dt id="openpifpaf.network.HeadNetwork">
-<em class="property">class </em><code class="sig-prename descclassname">openpifpaf.network.</code><code class="sig-name descname">HeadNetwork</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">meta</span><span class="p">:</span> <span class="n">openpifpaf.headmeta.Base</span></em>, <em class="sig-param"><span class="n">in_features</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#openpifpaf.network.HeadNetwork" title="Permalink to this definition">¶</a></dt>
-<dd><p>Base class for head networks.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>meta</strong> – head meta instance to configure this head network</p></li>
-<li><p><strong>in_features</strong> – number of input features which should be equal to the
-base network’s output features</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py method">
-<dt id="openpifpaf.network.HeadNetwork.cli">
-<em class="property">classmethod </em><code class="sig-name descname">cli</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">parser</span><span class="p">:</span> <span class="n">argparse.ArgumentParser</span></em><span class="sig-paren">)</span><a class="headerlink" href="#openpifpaf.network.HeadNetwork.cli" title="Permalink to this definition">¶</a></dt>
-<dd><p>Commond line interface (CLI) to extend argument parser.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="openpifpaf.network.HeadNetwork.configure">
-<em class="property">classmethod </em><code class="sig-name descname">configure</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">args</span><span class="p">:</span> <span class="n">argparse.Namespace</span></em><span class="sig-paren">)</span><a class="headerlink" href="#openpifpaf.network.HeadNetwork.configure" title="Permalink to this definition">¶</a></dt>
-<dd><p>Take the parsed argument parser output and configure class variables.</p>
-</dd></dl>
-
-</dd></dl>
-
-</div>
+<p>The relevant base classes that must be derived from to extend the above lists are <code class="docutils literal notranslate"><span class="pre">DataModule</span></code> (in <a class="reference internal" href="moduledocs.html#api-datasets"><span class="std std-ref">openpifpaf.datasets</span></a>), <code class="docutils literal notranslate"><span class="pre">BaseNetwork</span></code> and <code class="docutils literal notranslate"><span class="pre">HeadNetwork</span></code> (both in <a class="reference internal" href="moduledocs.html#api-network"><span class="std std-ref">openpifpaf.network</span></a>).</p>
 </div>
 <div class="section" id="headmeta">
 <h2>Headmeta<a class="headerlink" href="#headmeta" title="Permalink to this headline">¶</a></h2>
-<p>Headmeta is a class that holds configuration data about a head network. It is instantiated in a DataModule (above) and used throughout OpenPifPaf to configure various other parts. The head metas are:</p>
-<dl class="py class">
-<dt id="openpifpaf.headmeta.Cif">
-<em class="property">class </em><code class="sig-prename descclassname">openpifpaf.headmeta.</code><code class="sig-name descname">Cif</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">dataset</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">keypoints</span><span class="p">:</span> <span class="n">List<span class="p">[</span>str<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">sigmas</span><span class="p">:</span> <span class="n">List<span class="p">[</span>float<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">pose</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="n">draw_skeleton</span><span class="p">:</span> <span class="n">List<span class="p">[</span>Tuple<span class="p">[</span>int<span class="p">, </span>int<span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">decoder_seed_mask</span><span class="p">:</span> <span class="n">List<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#openpifpaf.headmeta.Cif" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py class">
-<dt id="openpifpaf.headmeta.Caf">
-<em class="property">class </em><code class="sig-prename descclassname">openpifpaf.headmeta.</code><code class="sig-name descname">Caf</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">dataset</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">keypoints</span><span class="p">:</span> <span class="n">List<span class="p">[</span>str<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">sigmas</span><span class="p">:</span> <span class="n">List<span class="p">[</span>float<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">pose</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="n">skeleton</span><span class="p">:</span> <span class="n">List<span class="p">[</span>Tuple<span class="p">[</span>int<span class="p">, </span>int<span class="p">]</span><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">sparse_skeleton</span><span class="p">:</span> <span class="n">List<span class="p">[</span>Tuple<span class="p">[</span>int<span class="p">, </span>int<span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">dense_to_sparse_radius</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">2.0</span></em>, <em class="sig-param"><span class="n">only_in_field_of_view</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em>, <em class="sig-param"><span class="n">decoder_confidence_scales</span><span class="p">:</span> <span class="n">List<span class="p">[</span>float<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#openpifpaf.headmeta.Caf" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py class">
-<dt id="openpifpaf.headmeta.CifDet">
-<em class="property">class </em><code class="sig-prename descclassname">openpifpaf.headmeta.</code><code class="sig-name descname">CifDet</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">dataset</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">categories</span><span class="p">:</span> <span class="n">List<span class="p">[</span>str<span class="p">]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openpifpaf.headmeta.CifDet" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<p>For example, the <code class="docutils literal notranslate"><span class="pre">cocokp</span></code> head meta instances are:</p>
+<p>Headmeta (see <a class="reference internal" href="moduledocs.html#api-headmeta"><span class="std std-ref">openpifpaf.headmeta</span></a>) is a class that holds configuration data about a head network. It is instantiated in a DataModule (above) and used throughout OpenPifPaf to configure various other parts. For example, the <code class="docutils literal notranslate"><span class="pre">cocokp</span></code> head meta instances are:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">openpifpaf</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">CocoKp</span><span class="p">()</span><span class="o">.</span><span class="n">head_metas</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -654,7 +470,7 @@ base network’s output features</p></li>
 </div>
 </div>
 <p>When a new network is created, information from the head metas will be used to create the appropriate torch graph for the heads. It will use the type of the head meta (<code class="docutils literal notranslate"><span class="pre">openpifpaf.headmeta.Cif</span></code>, <code class="docutils literal notranslate"><span class="pre">openpifpaf.headmeta.Caf</span></code>, …) and information like the number of keypoints in Cif or the number of skeleton connections in Caf to know how many feature maps to create.</p>
-<p>Similarly, the decoder will look for heads that are of type Cif and Caf to instantiate the CifCaf decoder.</p>
+<p>Similarly, the decoder will look for heads that are of type <code class="docutils literal notranslate"><span class="pre">headmeta.Cif</span></code> and <code class="docutils literal notranslate"><span class="pre">headmeta.Caf</span></code> to instantiate the CifCaf decoder.</p>
 <p>To get started, have a look how the head metas are created in <code class="docutils literal notranslate"><span class="pre">CocoKp</span></code> for new pose datasets and in <code class="docutils literal notranslate"><span class="pre">CocoDet</span></code> for new detection datasets.</p>
 </div>
 </div>
