@@ -292,6 +292,11 @@
    Logs
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#detection-experimental">
+   Detection (experimental)
+  </a>
+ </li>
 </ul>
 
         </nav>
@@ -370,6 +375,21 @@ checkpoints every 5 minutes:</p>
 <span class="k">done</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="detection-experimental">
+<h2>Detection (experimental)<a class="headerlink" href="#detection-experimental" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">time</span> <span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">0</span>,1 python3 -m openpifpaf.train <span class="se">\</span>
+  --lr<span class="o">=</span><span class="m">0</span>.0003 --momentum<span class="o">=</span><span class="m">0</span>.98 --b-scale<span class="o">=</span><span class="m">10</span>.0 <span class="se">\</span>
+  --epochs<span class="o">=</span><span class="m">150</span> <span class="se">\</span>
+  --lr-decay <span class="m">130</span> <span class="m">140</span> <span class="se">\</span>
+  --lr-decay-epochs<span class="o">=</span><span class="m">10</span> <span class="se">\</span>
+  --batch-size<span class="o">=</span><span class="m">64</span> <span class="se">\</span>
+  --weight-decay<span class="o">=</span>1e-5 <span class="se">\</span>
+  --dataset<span class="o">=</span>cocodet <span class="se">\</span>
+  --basenet<span class="o">=</span>resnet18 --resnet-input-conv2-stride<span class="o">=</span><span class="m">2</span> --cocodet-upsample<span class="o">=</span><span class="m">2</span> --resnet-block5-dilation<span class="o">=</span><span class="m">2</span>
+</pre></div>
+</div>
+<p>COCO AP=24.3% at epoch 90.</p>
 </div>
 </div>
 
