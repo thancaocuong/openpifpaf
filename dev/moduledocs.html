@@ -511,13 +511,16 @@ ground truth for a field.
 <em class="property">class </em><code class="sig-prename descclassname">openpifpaf.metric.</code><code class="sig-name descname">Base</code><a class="headerlink" href="#openpifpaf.metric.Base" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="py method">
 <dt id="openpifpaf.metric.Base.accumulate">
-<code class="sig-name descname">accumulate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">predictions</span></em>, <em class="sig-param"><span class="n">image_meta</span></em><span class="sig-paren">)</span><a class="headerlink" href="#openpifpaf.metric.Base.accumulate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">accumulate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">predictions</span></em>, <em class="sig-param"><span class="n">image_meta</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">ground_truth</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#openpifpaf.metric.Base.accumulate" title="Permalink to this definition">¶</a></dt>
 <dd><p>For every image, accumulate that image’s predictions into this metric.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>predictions</strong> – List of predictions for one image.</p></li>
 <li><p><strong>image_meta</strong> – Meta dictionary for this image as returned by the data loader.</p></li>
+<li><p><strong>ground_truth</strong> – Ground truth information as produced by the eval
+loader. Optional because some metrics (i.e. pycocotools) read
+ground truth separately.</p></li>
 </ul>
 </dd>
 </dl>
