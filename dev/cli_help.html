@@ -336,16 +336,17 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>usage: python3 -m openpifpaf.predict [-h] [--version] [--resnet-no-pretrain]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>usage: python3 -m openpifpaf.predict [-h] [--version]
+                                     [--shufflenetv2k-input-conv2-stride SHUFFLENETV2K_INPUT_CONV2_STRIDE]
+                                     [--shufflenetv2k-input-conv2-outchannels SHUFFLENETV2K_INPUT_CONV2_OUTCHANNELS]
+                                     [--shufflenetv2k-stage4-dilation SHUFFLENETV2K_STAGE4_DILATION]
+                                     [--shufflenetv2k-instance-norm | --shufflenetv2k-group-norm]
+                                     [--resnet-no-pretrain]
                                      [--resnet-pool0-stride RESNET_POOL0_STRIDE]
                                      [--resnet-input-conv-stride RESNET_INPUT_CONV_STRIDE]
                                      [--resnet-input-conv2-stride RESNET_INPUT_CONV2_STRIDE]
                                      [--resnet-block5-dilation RESNET_BLOCK5_DILATION]
                                      [--resnet-remove-last-block]
-                                     [--shufflenetv2k-input-conv2-stride SHUFFLENETV2K_INPUT_CONV2_STRIDE]
-                                     [--shufflenetv2k-input-conv2-outchannels SHUFFLENETV2K_INPUT_CONV2_OUTCHANNELS]
-                                     [--shufflenetv2k-stage4-dilation SHUFFLENETV2K_STAGE4_DILATION]
-                                     [--shufflenetv2k-instance-norm | --shufflenetv2k-group-norm]
                                      [--shufflenetv2-no-pretrain]
                                      [--cf3-dropout CF3_DROPOUT]
                                      [--cf3-no-inplace-ops]
@@ -421,6 +422,18 @@ optional arguments:
                         increase dpi of output image by this factor (default:
                         1.0)
 
+shufflenetv2k:
+  --shufflenetv2k-input-conv2-stride SHUFFLENETV2K_INPUT_CONV2_STRIDE
+                        stride of the optional 2nd input convolution (default:
+                        0)
+  --shufflenetv2k-input-conv2-outchannels SHUFFLENETV2K_INPUT_CONV2_OUTCHANNELS
+                        out channels of the optional 2nd input convolution
+                        (default: None)
+  --shufflenetv2k-stage4-dilation SHUFFLENETV2K_STAGE4_DILATION
+                        dilation factor of stage 4 (default: 1)
+  --shufflenetv2k-instance-norm
+  --shufflenetv2k-group-norm
+
 ResNet:
   --resnet-no-pretrain  use randomly initialized models (default: True)
   --resnet-pool0-stride RESNET_POOL0_STRIDE
@@ -435,18 +448,6 @@ ResNet:
   --resnet-remove-last-block
                         create a network without the last block (default:
                         False)
-
-shufflenetv2k:
-  --shufflenetv2k-input-conv2-stride SHUFFLENETV2K_INPUT_CONV2_STRIDE
-                        stride of the optional 2nd input convolution (default:
-                        0)
-  --shufflenetv2k-input-conv2-outchannels SHUFFLENETV2K_INPUT_CONV2_OUTCHANNELS
-                        out channels of the optional 2nd input convolution
-                        (default: None)
-  --shufflenetv2k-stage4-dilation SHUFFLENETV2K_STAGE4_DILATION
-                        dilation factor of stage 4 (default: 1)
-  --shufflenetv2k-instance-norm
-  --shufflenetv2k-group-norm
 
 ShuffleNetv2:
   --shufflenetv2-no-pretrain
@@ -808,7 +809,6 @@ logging:
                                    [--cocodet-val-annotations COCODET_VAL_ANNOTATIONS]
                                    [--cocodet-train-image-dir COCODET_TRAIN_IMAGE_DIR]
                                    [--cocodet-val-image-dir COCODET_VAL_IMAGE_DIR]
-                                   [--cocodet-n-images COCODET_N_IMAGES]
                                    [--cocodet-square-edge COCODET_SQUARE_EDGE]
                                    [--cocodet-extended-scale]
                                    [--cocodet-orientation-invariant COCODET_ORIENTATION_INVARIANT]
@@ -819,7 +819,6 @@ logging:
                                    [--cocokp-val-annotations COCOKP_VAL_ANNOTATIONS]
                                    [--cocokp-train-image-dir COCOKP_TRAIN_IMAGE_DIR]
                                    [--cocokp-val-image-dir COCOKP_VAL_IMAGE_DIR]
-                                   [--cocokp-n-images COCOKP_N_IMAGES]
                                    [--cocokp-square-edge COCOKP_SQUARE_EDGE]
                                    [--cocokp-extended-scale]
                                    [--cocokp-orientation-invariant COCOKP_ORIENTATION_INVARIANT]
@@ -847,6 +846,8 @@ logging:
                                    [-o OUTPUT] [--stride-apply STRIDE_APPLY]
                                    [--epochs EPOCHS]
                                    [--val-interval VAL_INTERVAL]
+                                   [--train-batches TRAIN_BATCHES]
+                                   [--val-batches VAL_BATCHES]
                                    [--fix-batch-norm] [--ema EMA]
                                    [--clip-grad-norm CLIP_GRAD_NORM]
                                    [--log-interval LOG_INTERVAL]
@@ -865,6 +866,10 @@ optional arguments:
   --epochs EPOCHS       number of epochs to train (default: 75)
   --val-interval VAL_INTERVAL
                         validation run every n epochs (default: 1)
+  --train-batches TRAIN_BATCHES
+                        number of train batches (default: None)
+  --val-batches VAL_BATCHES
+                        number of val batches (default: None)
   --fix-batch-norm      fix batch norm running statistics (default: False)
   --ema EMA             ema decay constant (default: 0.01)
   --clip-grad-norm CLIP_GRAD_NORM
@@ -1015,8 +1020,6 @@ data module CocoDet:
   --cocodet-val-annotations COCODET_VAL_ANNOTATIONS
   --cocodet-train-image-dir COCODET_TRAIN_IMAGE_DIR
   --cocodet-val-image-dir COCODET_VAL_IMAGE_DIR
-  --cocodet-n-images COCODET_N_IMAGES
-                        number of images to sample (default: None)
   --cocodet-square-edge COCODET_SQUARE_EDGE
                         square edge of input images (default: 513)
   --cocodet-extended-scale
@@ -1035,8 +1038,6 @@ data module CocoKp:
   --cocokp-val-annotations COCOKP_VAL_ANNOTATIONS
   --cocokp-train-image-dir COCOKP_TRAIN_IMAGE_DIR
   --cocokp-val-image-dir COCOKP_VAL_IMAGE_DIR
-  --cocokp-n-images COCOKP_N_IMAGES
-                        number of images to sample (default: None)
   --cocokp-square-edge COCOKP_SQUARE_EDGE
                         square edge of input images (default: 385)
   --cocokp-extended-scale
