@@ -342,11 +342,11 @@
                                      [--resnet-input-conv2-stride RESNET_INPUT_CONV2_STRIDE]
                                      [--resnet-block5-dilation RESNET_BLOCK5_DILATION]
                                      [--resnet-remove-last-block]
-                                     [--shufflenetv2-no-pretrain]
                                      [--shufflenetv2k-input-conv2-stride SHUFFLENETV2K_INPUT_CONV2_STRIDE]
                                      [--shufflenetv2k-input-conv2-outchannels SHUFFLENETV2K_INPUT_CONV2_OUTCHANNELS]
                                      [--shufflenetv2k-stage4-dilation SHUFFLENETV2K_STAGE4_DILATION]
                                      [--shufflenetv2k-instance-norm | --shufflenetv2k-group-norm]
+                                     [--shufflenetv2-no-pretrain]
                                      [--cf3-dropout CF3_DROPOUT]
                                      [--cf3-no-inplace-ops]
                                      [--checkpoint CHECKPOINT]
@@ -358,14 +358,15 @@
                                      [--head-consolidation {keep,create,filter_and_extend}]
                                      [--seed-threshold SEED_THRESHOLD]
                                      [--instance-threshold INSTANCE_THRESHOLD]
-                                     [--keypoint-threshold KEYPOINT_THRESHOLD]
                                      [--decoder-workers DECODER_WORKERS]
-                                     [--caf-seeds] [--force-complete-pose]
+                                     [--caf-seeds]
                                      [--profile-decoder [PROFILE_DECODER]]
                                      [--cif-th CIF_TH] [--caf-th CAF_TH]
+                                     [--force-complete-pose]
+                                     [--keypoint-threshold KEYPOINT_THRESHOLD]
+                                     [--greedy]
                                      [--connection-method {max,blend}]
-                                     [--greedy] [--show-box]
-                                     [--show-joint-scales]
+                                     [--show-box] [--show-joint-scales]
                                      [--show-joint-confidences]
                                      [--show-decoding-order]
                                      [--show-frontier-order]
@@ -435,10 +436,6 @@ ResNet:
                         create a network without the last block (default:
                         False)
 
-ShuffleNetv2:
-  --shufflenetv2-no-pretrain
-                        use randomly initialized models (default: True)
-
 shufflenetv2k:
   --shufflenetv2k-input-conv2-stride SHUFFLENETV2K_INPUT_CONV2_STRIDE
                         stride of the optional 2nd input convolution (default:
@@ -450,6 +447,10 @@ shufflenetv2k:
                         dilation factor of stage 4 (default: 1)
   --shufflenetv2k-instance-norm
   --shufflenetv2k-group-norm
+
+ShuffleNetv2:
+  --shufflenetv2-no-pretrain
+                        use randomly initialized models (default: True)
 
 CompositeField3:
   --cf3-dropout CF3_DROPOUT
@@ -482,13 +483,10 @@ decoder configuration:
   --seed-threshold SEED_THRESHOLD
                         minimum threshold for seeds (default: 0.5)
   --instance-threshold INSTANCE_THRESHOLD
-                        filter instances by score (default: 0.1)
-  --keypoint-threshold KEYPOINT_THRESHOLD
-                        filter keypoints by score (default: None)
+                        filter instances by score (default: 0.0)
   --decoder-workers DECODER_WORKERS
                         number of workers for pose decoding (default: None)
   --caf-seeds           [experimental] (default: False)
-  --force-complete-pose
   --profile-decoder [PROFILE_DECODER]
                         specify out .prof file or nothing for default file
                         name (default: None)
@@ -496,10 +494,15 @@ decoder configuration:
 CifCaf decoders:
   --cif-th CIF_TH       cif threshold (default: 0.1)
   --caf-th CAF_TH       caf threshold (default: 0.1)
+
+CifCaf decoder:
+  --force-complete-pose
+  --keypoint-threshold KEYPOINT_THRESHOLD
+                        filter keypoints by score (default: 0.001)
+  --greedy              greedy decoding (default: False)
   --connection-method {max,blend}
                         connection method to use, max is faster (default:
                         blend)
-  --greedy              greedy decoding (default: False)
 
 show:
   --show-box
@@ -563,14 +566,15 @@ logging:
                                    [--head-consolidation {keep,create,filter_and_extend}]
                                    [--seed-threshold SEED_THRESHOLD]
                                    [--instance-threshold INSTANCE_THRESHOLD]
-                                   [--keypoint-threshold KEYPOINT_THRESHOLD]
                                    [--decoder-workers DECODER_WORKERS]
-                                   [--caf-seeds] [--force-complete-pose]
+                                   [--caf-seeds]
                                    [--profile-decoder [PROFILE_DECODER]]
                                    [--cif-th CIF_TH] [--caf-th CAF_TH]
+                                   [--force-complete-pose]
+                                   [--keypoint-threshold KEYPOINT_THRESHOLD]
+                                   [--greedy]
                                    [--connection-method {max,blend}]
-                                   [--greedy] [--show-box]
-                                   [--show-joint-scales]
+                                   [--show-box] [--show-joint-scales]
                                    [--show-joint-confidences]
                                    [--show-decoding-order]
                                    [--show-frontier-order]
@@ -692,13 +696,10 @@ decoder configuration:
   --seed-threshold SEED_THRESHOLD
                         minimum threshold for seeds (default: 0.5)
   --instance-threshold INSTANCE_THRESHOLD
-                        filter instances by score (default: 0.1)
-  --keypoint-threshold KEYPOINT_THRESHOLD
-                        filter keypoints by score (default: None)
+                        filter instances by score (default: 0.0)
   --decoder-workers DECODER_WORKERS
                         number of workers for pose decoding (default: None)
   --caf-seeds           [experimental] (default: False)
-  --force-complete-pose
   --profile-decoder [PROFILE_DECODER]
                         specify out .prof file or nothing for default file
                         name (default: None)
@@ -706,10 +707,15 @@ decoder configuration:
 CifCaf decoders:
   --cif-th CIF_TH       cif threshold (default: 0.1)
   --caf-th CAF_TH       caf threshold (default: 0.1)
+
+CifCaf decoder:
+  --force-complete-pose
+  --keypoint-threshold KEYPOINT_THRESHOLD
+                        filter keypoints by score (default: 0.001)
+  --greedy              greedy decoding (default: False)
   --connection-method {max,blend}
                         connection method to use, max is faster (default:
                         blend)
-  --greedy              greedy decoding (default: False)
 
 show:
   --show-box
@@ -749,7 +755,6 @@ logging:
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>usage: python3 -m openpifpaf.train [-h] [--version] [--debug]
-                                   [--shufflenetv2-no-pretrain]
                                    [--shufflenetv2k-input-conv2-stride SHUFFLENETV2K_INPUT_CONV2_STRIDE]
                                    [--shufflenetv2k-input-conv2-outchannels SHUFFLENETV2K_INPUT_CONV2_OUTCHANNELS]
                                    [--shufflenetv2k-stage4-dilation SHUFFLENETV2K_STAGE4_DILATION]
@@ -760,6 +765,7 @@ logging:
                                    [--resnet-input-conv2-stride RESNET_INPUT_CONV2_STRIDE]
                                    [--resnet-block5-dilation RESNET_BLOCK5_DILATION]
                                    [--resnet-remove-last-block]
+                                   [--shufflenetv2-no-pretrain]
                                    [--cf3-dropout CF3_DROPOUT]
                                    [--cf3-no-inplace-ops]
                                    [--checkpoint CHECKPOINT]
@@ -822,6 +828,7 @@ logging:
                                    [--cocokp-upsample COCOKP_UPSAMPLE]
                                    [--cocokp-min-kp-anns COCOKP_MIN_KP_ANNS]
                                    [--cocokp-eval-test2017 | --cocokp-eval-testdev2017]
+                                   [--coco-no-eval-annotation-filter]
                                    [--coco-eval-long-edge COCO_EVAL_LONG_EDGE]
                                    [--coco-eval-extended-scale]
                                    [--coco-eval-orientation-invariant COCO_EVAL_ORIENTATION_INVARIANT]
@@ -870,10 +877,6 @@ optional arguments:
 logging:
   --debug               print debug messages (default: False)
 
-ShuffleNetv2:
-  --shufflenetv2-no-pretrain
-                        use randomly initialized models (default: True)
-
 shufflenetv2k:
   --shufflenetv2k-input-conv2-stride SHUFFLENETV2K_INPUT_CONV2_STRIDE
                         stride of the optional 2nd input convolution (default:
@@ -900,6 +903,10 @@ ResNet:
   --resnet-remove-last-block
                         create a network without the last block (default:
                         False)
+
+ShuffleNetv2:
+  --shufflenetv2-no-pretrain
+                        use randomly initialized models (default: True)
 
 CompositeField3:
   --cf3-dropout CF3_DROPOUT
@@ -1047,7 +1054,9 @@ data module CocoKp:
                         (default: 1)
   --cocokp-eval-test2017
   --cocokp-eval-testdev2017
+  --coco-no-eval-annotation-filter
   --coco-eval-long-edge COCO_EVAL_LONG_EDGE
+                        set to zero to deactivate rescaling (default: 641)
   --coco-eval-extended-scale
   --coco-eval-orientation-invariant COCO_EVAL_ORIENTATION_INVARIANT
 
@@ -1152,7 +1161,7 @@ optional arguments:
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>usage: python3 -m openpifpaf.benchmark [-h] [--version] [--output OUTPUT]
-                                       [--backbones BACKBONES [BACKBONES ...]]
+                                       [--checkpoints CHECKPOINTS [CHECKPOINTS ...]]
                                        [--iccv2019-ablation]
                                        [--dense-ablation] [--debug]
 
@@ -1162,9 +1171,9 @@ optional arguments:
   -h, --help            show this help message and exit
   --version             show program&#39;s version number and exit
   --output OUTPUT       output file name (default: None)
-  --backbones BACKBONES [BACKBONES ...]
-                        backbones to evaluate (default: [&#39;shufflenetv2x2&#39;,
-                        &#39;resnet50&#39;, &#39;resnet101&#39;, &#39;resnet152&#39;])
+  --checkpoints CHECKPOINTS [CHECKPOINTS ...]
+                        checkpoints to evaluate (default: [&#39;resnet50&#39;,
+                        &#39;shufflenetv2k16&#39;, &#39;shufflenetv2k30&#39;])
   --iccv2019-ablation
   --dense-ablation
 
