@@ -15,8 +15,8 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/spanels-index--0afa1ebdab0bb23b98b56d34c23d9f57.css" />
-    <link rel="stylesheet" type="text/css" href="_static/spanels-variables--ffc7f74dcb1b9eecba2dbcbc22818714.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
@@ -293,6 +293,11 @@
    Headmeta
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#coordinate-system">
+   Coordinate System
+  </a>
+ </li>
 </ul>
 
         </nav>
@@ -487,6 +492,12 @@
 <p>When a new network is created, information from the head metas will be used to create the appropriate torch graph for the heads. It will use the type of the head meta (<code class="docutils literal notranslate"><span class="pre">openpifpaf.headmeta.Cif</span></code>, <code class="docutils literal notranslate"><span class="pre">openpifpaf.headmeta.Caf</span></code>, …) and information like the number of keypoints in Cif or the number of skeleton connections in Caf to know how many feature maps to create.</p>
 <p>Similarly, the decoder will look for heads that are of type <code class="docutils literal notranslate"><span class="pre">headmeta.Cif</span></code> and <code class="docutils literal notranslate"><span class="pre">headmeta.Caf</span></code> to instantiate the CifCaf decoder.</p>
 <p>To get started, have a look how the head metas are created in <code class="docutils literal notranslate"><span class="pre">CocoKp</span></code> for new pose datasets and in <code class="docutils literal notranslate"><span class="pre">CocoDet</span></code> for new detection datasets.</p>
+</div>
+<div class="section" id="coordinate-system">
+<span id="id1"></span><h2>Coordinate System<a class="headerlink" href="#coordinate-system" title="Permalink to this headline">¶</a></h2>
+<p>When adding your own datasets or transformations, it is good to keep in mind the coordinate system that OpenPifPaf assumes. The short summary is, everything is done in such a way that annotation coordinates only need to be multiplied by the image rescaling factor without offset. Therefore, the (0, 0) feature map needs to be aligned with the (0, 0) pixel.</p>
+<p><img alt="coordinate system" src="_images/coordinate_system.png" /></p>
+<p>This also shows that training image sizes must be a multiple of the network stride <em>plus one</em>, i.e., in the above image, an input image size of <span class="math notranslate nohighlight">\(5\times5\)</span> would be optimal for a feature map of size <span class="math notranslate nohighlight">\(2\times2\)</span> because the stride is 4.</p>
 </div>
 </div>
 
