@@ -1,0 +1,2 @@
+add_executable(hello_openpifpaf main.cpp)
+target_link_libraries(hello_openpifpaf openpifpaf)
