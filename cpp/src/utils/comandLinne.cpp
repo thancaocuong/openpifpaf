@@ -20,7 +20,7 @@
  * DEALINGS IN THE SOFTWARE.
  */
 
-#include "utils/comandLine.h"
+#include "utils/commandLine.h"
 #include "utils/logging.h"
 
 #include <string>

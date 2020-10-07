@@ -228,7 +228,7 @@ template<> struct imageFormatType<IMAGE_RGBA32F> { typedef float Base; typedef f
 ///@}
 
 // inline implementations
-#include "imageFormat.inl"
+#include "utils/imageFormat.inl"
 
 
 #endif

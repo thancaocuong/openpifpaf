@@ -24,7 +24,7 @@
 #include "randInt8Calibrator.h"
 #include "utils/cuda/cudaMappedMemory.h"
 #include "utils/cuda/cudaResize.h"
-#include "filesystem.h"
+#include "utils/filesystem.h"
 
 #include "NvCaffeParser.h"
 
