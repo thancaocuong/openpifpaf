@@ -24,8 +24,8 @@
 #define __CUDA_RESIZE_H__
 
 
-#include "cudaUtility.h"
-#include "imageFormat.h"
+#include "utils/cuda/cudaUtility.h"
+#include "utils/imageFormat.h"
 
 
 /**

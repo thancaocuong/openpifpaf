@@ -23,7 +23,7 @@
 #ifndef __LOGGING_UTILS_H_
 #define __LOGGING_UTILS_H_
 
-#include "commandLine.h"
+#include "utils/commandLine.h"
 
 #include <stdio.h>
 #include <string>

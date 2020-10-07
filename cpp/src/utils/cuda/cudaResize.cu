@@ -20,7 +20,7 @@
  * DEALINGS IN THE SOFTWARE.
  */
 
-#include "cudaResize.h"
+#include "utils/cuda/cudaResize.h"
 
 
 // gpuResize

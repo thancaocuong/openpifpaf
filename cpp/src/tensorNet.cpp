@@ -22,8 +22,8 @@
 
 #include "tensorNet.h"
 #include "randInt8Calibrator.h"
-#include "cudaMappedMemory.h"
-#include "cudaResize.h"
+#include "utils/cuda/cudaMappedMemory.h"
+#include "utils/cuda/cudaResize.h"
 #include "filesystem.h"
 
 #include "NvCaffeParser.h"

@@ -24,9 +24,9 @@
 #define __CUDA_MAPPED_MEMORY_H_
 
 
-#include "cudaUtility.h"
-#include "imageFormat.h"
-#include "logging.h"
+#include "utils/cuda/cudaUtility.h"
+#include "utils/imageFormat.h"
+#include "utils/logging.h"
 
 
 /**
