@@ -196,7 +196,6 @@ enum profilerDevice
 	PROFILER_CUDA,		/**< CUDA kernel time */ 
 };
 
-
 /**
  * Abstract class for loading a tensor network with TensorRT.
  * For example implementations, @see imageNet and @see detectNet
@@ -209,7 +208,7 @@ public:
 	 * Destory
 	 */
 	virtual ~tensorNet();
-	
+
 	/**
 	 * Load a new network instance
 	 * @param prototxt File path to the deployable network prototxt
@@ -329,7 +328,7 @@ public:
 	 * @param output_blobs List of names of the output blobs from the network.
 	 */
 	bool LoadEngine( nvinfer1::ICudaEngine* engine,
-				  const std::vector<std::string>& input_blobs, 
+				  const std::vector<std::string>& input_blobs,
 				  const std::vector<std::string>& output_blobs,
 				  deviceType device=DEVICE_GPU,
 				  cudaStream_t stream=NULL );
@@ -340,7 +339,7 @@ public:
 	bool LoadEngine( const char* filename, char** stream, size_t* size );
 
 	/**
-	 * Manually enable layer profiling times.	
+	 * Manually enable layer profiling times.
 	 */
 	void EnableLayerProfiler();
 

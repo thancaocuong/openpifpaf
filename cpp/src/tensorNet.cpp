@@ -280,7 +280,7 @@ tensorNet::tensorNet()
 	mStream   = NULL;
 	mBindings	= NULL;
 
-	mMaxBatchSize   = 0;	
+	mMaxBatchSize   = 0;
 	mEnableDebug    = false;
 	mEnableProfiler = false;
 
@@ -714,7 +714,7 @@ bool tensorNet::ConfigureBuilder( nvinfer1::IBuilder* builder, uint32_t maxBatch
 		return false;
 
 	LogVerbose(LOG_TRT "device %s, configuring network builder\n", deviceTypeToStr(device));
-		
+
 	builder->setMaxBatchSize(maxBatchSize);
 	builder->setMaxWorkspaceSize(workspaceSize);
 
@@ -724,7 +724,7 @@ bool tensorNet::ConfigureBuilder( nvinfer1::IBuilder* builder, uint32_t maxBatch
 	#if NV_TENSORRT_MAJOR >= 4
 		builder->setInt8Mode(true);
 		//builder->setFp16Mode(true);		// TODO:  experiment for benefits of both INT8/FP16
-		
+
 		if( !calibrator )
 		{
 			LogError(LOG_TRT "device %s, INT8 requested but calibrator is NULL\n", deviceTypeToStr(device));
@@ -1050,8 +1050,8 @@ bool tensorNet::LoadNetwork( const char* prototxt_path_, const char* model_path_
 		mMeanPath = mean_path;
 
 	LogInfo(LOG_TRT "\n");
-	LogSuccess(LOG_TRT "device %s, %s initialized.\n", deviceTypeToStr(device), mModelPath.c_str());	
-	
+	LogSuccess(LOG_TRT "device %s, %s initialized.\n", deviceTypeToStr(device), mModelPath.c_str());
+
 	return true;
 }
 
@@ -1106,7 +1106,7 @@ bool tensorNet::LoadEngine( char* engine_stream, size_t engine_size,
 	{
 		LogError(LOG_TRT "device %s, failed to create resources for CUDA engine\n", deviceTypeToStr(device));
 		return false;
-	}	
+	}
 
 	mInfer = infer;
 	return true;
@@ -1123,7 +1123,7 @@ bool tensorNet::LoadEngine( nvinfer1::ICudaEngine* engine,
 		return NULL;
 
 		nvinfer1::IExecutionContext* context = engine->createExecutionContext();
-	
+
 	if( !context )
 	{
 		LogError(LOG_TRT "device %s, failed to create execution context\n", deviceTypeToStr(device));
@@ -1146,7 +1146,7 @@ bool tensorNet::LoadEngine( nvinfer1::ICudaEngine* engine,
 	LogInfo(LOG_TRT "   -- layers       %i\n", engine->getNbLayers());
 	LogInfo(LOG_TRT "   -- maxBatchSize %u\n", mMaxBatchSize);
 	LogInfo(LOG_TRT "   -- workspace    %zu\n", engine->getWorkspaceSize());
-	
+
 #if NV_TENSORRT_MAJOR >= 4
 	LogInfo(LOG_TRT "   -- deviceMemory %zu\n", engine->getDeviceMemorySize());
 	LogInfo(LOG_TRT "   -- bindings     %i\n", engine->getNbBindings());
@@ -1155,7 +1155,7 @@ bool tensorNet::LoadEngine( nvinfer1::ICudaEngine* engine,
 	 * print out binding info
 	 */
 	const int numBindings = engine->getNbBindings();
-	
+
 	for( int n=0; n < numBindings; n++ )
 	{
 		LogInfo(LOG_TRT "   binding %i\n", n);
@@ -1170,7 +1170,7 @@ bool tensorNet::LoadEngine( nvinfer1::ICudaEngine* engine,
 		const nvinfer1::Dims bind_dims = engine->getBindingDimensions(n);
 
 		LogInfo("                -- # dims  %i\n", bind_dims.nbDims);
-		
+
 		for( int i=0; i < bind_dims.nbDims; i++ )
 			LogInfo("                -- dim #%i  %i (%s)\n", i, bind_dims.d[i], dimensionTypeToStr(bind_dims.type[i]));	
 	}
@@ -1182,11 +1182,11 @@ bool tensorNet::LoadEngine( nvinfer1::ICudaEngine* engine,
 	 * setup network input buffers
 	 */
 	const int numInputs = input_blobs.size();
-	
+
 	for( int n=0; n < numInputs; n++ )
 	{
-		const int inputIndex = engine->getBindingIndex(input_blobs[n].c_str());	
-		
+		const int inputIndex = engine->getBindingIndex(input_blobs[n].c_str());
+
 		if( inputIndex < 0 )
 		{
 			LogError(LOG_TRT "failed to find requested input layer %s in network\n", input_blobs[n].c_str());
@@ -1448,7 +1448,7 @@ void tensorNet::SetStream( cudaStream_t stream )
 
 	if( !mStream )
 		return;
-}	
+}
 
 
 // ProcessNetwork

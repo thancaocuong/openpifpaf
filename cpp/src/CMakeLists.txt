@@ -10,8 +10,10 @@ set(CUDA_INSTALL_DIR /usr/local/cuda)
 set(TARGET_NAME openpifpaf)
 
 file(GLOB HEADER_LIST
-        "${OpenPifPaf_SOURCE_DIR}/include//*.h"
+        "${OpenPifPaf_SOURCE_DIR}/include/*.h"
         "${OpenPifPaf_SOURCE_DIR}/include/utils/*.h"
+        "${OpenPifPaf_SOURCE_DIR}/include/utils/threads/*"
+        "${OpenPifPaf_SOURCE_DIR}/include/utils/codec/*"
         "${OpenPifPaf_SOURCE_DIR}/include/utils/cuda/*.h")
 
 file(GLOB SOURCE_LIST
@@ -19,8 +21,11 @@ file(GLOB SOURCE_LIST
         "${OpenPifPaf_SOURCE_DIR}/src/utils/*.inl"
         "${OpenPifPaf_SOURCE_DIR}/src/utils/cuda/*.cu"
         "${OpenPifPaf_SOURCE_DIR}/src/calibration/*"
-        "${OpenPifPaf_SOURCE_DIR}/src/*.cpp")
-
+        "${OpenPifPaf_SOURCE_DIR}/src/codec/*"
+        "${OpenPifPaf_SOURCE_DIR}/src/camera/*"
+        "${OpenPifPaf_SOURCE_DIR}/src/threads/*"
+        "${OpenPifPaf_SOURCE_DIR}/src/*.cpp"
+        "${OpenPifPaf_SOURCE_DIR}/src/*.cu")
 
 
 cuda_add_library(${TARGET_NAME} STATIC ${SOURCE_LIST} ${HEADER_LIST})
