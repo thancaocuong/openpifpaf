@@ -28,6 +28,14 @@
 #include "utils/filesystem.h"
 #include "utils/logging.h"
 
+#define STB_IMAGE_IMPLEMENTATION
+#include "utils/stb/stb_image.h"
+
+#define STB_IMAGE_WRITE_IMPLEMENTATION
+#include "utils/stb/stb_image_write.h"
+
+#define STB_IMAGE_RESIZE_IMPLEMENTATION
+#include "utils/stb/stb_image_resize.h"
 
 // loadImageIO (internal)
 static unsigned char* loadImageIO( const char* filename, int* width, int* height, int* channels )

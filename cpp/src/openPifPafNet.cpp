@@ -94,44 +94,16 @@ bool PifpafNet::PreProcess( void* image, uint32_t width, uint32_t height, imageF
 	}
 
 	PROFILER_BEGIN(PROFILER_PREPROCESS);
-
-	if( mNetworkType == PifpafNet::INCEPTION_V4 )
+	// downsample, convert to band-sequential RGB, and apply pixel normalization, mean pixel subtraction and standard deviation
+	if( CUDA_FAILED(cudaTensorNormMeanRGB(image, format, width, height, 
+									mInputs[0].CUDA, GetInputWidth(), GetInputHeight(), 
+									make_float2(0.0f, 1.0f), 
+									make_float3(0.485f, 0.456f, 0.406f),
+									make_float3(0.229f, 0.224f, 0.225f), 
+									GetStream())) )
 	{
-		// downsample, convert to band-sequential RGB, and apply pixel normalization
-		if( CUDA_FAILED(cudaTensorNormRGB(image, format, width, height,
-								    mInputs[0].CUDA, GetInputWidth(), GetInputHeight(), 
-								    make_float2(-1.0f, 1.0f), 
-								    GetStream())) )
-		{
-			LogError(LOG_TRT "PifpafNet::PreProcess() -- cudaTensorNormRGB() failed\n");
-			return false;
-		}
-	}
-	else if( IsModelType(MODEL_ONNX) )
-	{
-		// downsample, convert to band-sequential RGB, and apply pixel normalization, mean pixel subtraction and standard deviation
-		if( CUDA_FAILED(cudaTensorNormMeanRGB(image, format, width, height, 
-									   mInputs[0].CUDA, GetInputWidth(), GetInputHeight(), 
-									   make_float2(0.0f, 1.0f), 
-									   make_float3(0.485f, 0.456f, 0.406f),
-									   make_float3(0.229f, 0.224f, 0.225f), 
-									   GetStream())) )
-		{
-			LogError(LOG_TRT "PifpafNet::PreProcess() -- cudaTensorNormMeanRGB() failed\n");
-			return false;
-		}
-	}
-	else
-	{
-		// downsample, convert to band-sequential BGR, and apply mean pixel subtraction 
-		if( CUDA_FAILED(cudaTensorMeanBGR(image, format, width, height, 
-								    mInputs[0].CUDA, GetInputWidth(), GetInputHeight(),
-								    make_float3(104.0069879317889f, 116.66876761696767f, 122.6789143406786f),
-								    GetStream())) )
-		{
-			LogError(LOG_TRT "PifpafNet::PreProcess() -- cudaTensorMeanBGR() failed\n");
-			return false;
-		}
+		LogError(LOG_TRT "PifpafNet::PreProcess() -- cudaTensorNormMeanRGB() failed\n");
+		return false;
 	}
 
 	PROFILER_END(PROFILER_PREPROCESS);
