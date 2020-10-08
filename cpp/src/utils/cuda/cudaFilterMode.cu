@@ -21,7 +21,7 @@
  */
 
 
-#include "cudaFilterMode.h"
+#include "utils/cuda/cudaFilterMode.h"
 #include <strings.h>
 
 
