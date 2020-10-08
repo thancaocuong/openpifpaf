@@ -19,7 +19,7 @@ file(GLOB HEADER_LIST
 file(GLOB SOURCE_LIST
         "${OpenPifPaf_SOURCE_DIR}/src/utils/*.cpp"
         "${OpenPifPaf_SOURCE_DIR}/src/utils/*.inl"
-        "${OpenPifPaf_SOURCE_DIR}/src/utils/cuda/*.cu"
+        "${OpenPifPaf_SOURCE_DIR}/src/utils/cuda/*"
         "${OpenPifPaf_SOURCE_DIR}/src/calibration/*"
         "${OpenPifPaf_SOURCE_DIR}/src/codec/*"
         "${OpenPifPaf_SOURCE_DIR}/src/camera/*"

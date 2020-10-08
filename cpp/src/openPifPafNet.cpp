@@ -46,44 +46,44 @@ PifpafNet::~PifpafNet()
 
 
 // NetworkTypeFromStr
-imageNet::NetworkType imageNet::NetworkTypeFromStr( const char* modelName )
+PifpafNet::NetworkType PifpafNet::NetworkTypeFromStr( const char* modelName )
 {
 	if( !modelName )
-		return imageNet::CUSTOM;
+		return PifpafNet::CUSTOM;
 
-	imageNet::NetworkType type = imageNet::CUSTOM;
+	PifpafNet::NetworkType type = PifpafNet::CUSTOM;
 
 	if( strcasecmp(modelName, "resnet-50") == 0 || strcasecmp(modelName, "resnet_50") == 0 || strcasecmp(modelName, "resnet50") == 0 )
-		type = imageNet::RESNET_50;
+		type = PifpafNet::RESNET_50;
 
 	return type;
 }
 
 
 // NetworkTypeToStr
-const char* imageNet::NetworkTypeToStr( imageNet::NetworkType network )
+const char* PifpafNet::NetworkTypeToStr( PifpafNet::NetworkType network )
 {
 	switch(network)
 	{
-		case imageNet::RESNET_50:	return "ResNet-50";
+		case PifpafNet::RESNET_50:	return "ResNet-50";
 	}
 
 	return "Custom";
 }
 
 // PreProcess
-bool imageNet::PreProcess( void* image, uint32_t width, uint32_t height, imageFormat format )
+bool PifpafNet::PreProcess( void* image, uint32_t width, uint32_t height, imageFormat format )
 {
 	// verify parameters
 	if( !image || width == 0 || height == 0 )
 	{
-		LogError(LOG_TRT "imageNet::PreProcess( 0x%p, %u, %u ) -> invalid parameters\n", image, width, height);
+		LogError(LOG_TRT "PifpafNet::PreProcess( 0x%p, %u, %u ) -> invalid parameters\n", image, width, height);
 		return false;
 	}
 
 	if( !imageFormatIsRGB(format) )
 	{
-		LogError(LOG_TRT "imageNet::Classify() -- unsupported image format (%s)\n", imageFormatToStr(format));
+		LogError(LOG_TRT "PifpafNet::Classify() -- unsupported image format (%s)\n", imageFormatToStr(format));
 		LogError(LOG_TRT "                        supported formats are:\n");
 		LogError(LOG_TRT "                           * rgb8\n");
 		LogError(LOG_TRT "                           * rgba8\n");
@@ -95,7 +95,7 @@ bool imageNet::PreProcess( void* image, uint32_t width, uint32_t height, imageFo
 
 	PROFILER_BEGIN(PROFILER_PREPROCESS);
 
-	if( mNetworkType == imageNet::INCEPTION_V4 )
+	if( mNetworkType == PifpafNet::INCEPTION_V4 )
 	{
 		// downsample, convert to band-sequential RGB, and apply pixel normalization
 		if( CUDA_FAILED(cudaTensorNormRGB(image, format, width, height,
@@ -103,7 +103,7 @@ bool imageNet::PreProcess( void* image, uint32_t width, uint32_t height, imageFo
 								    make_float2(-1.0f, 1.0f), 
 								    GetStream())) )
 		{
-			LogError(LOG_TRT "imageNet::PreProcess() -- cudaTensorNormRGB() failed\n");
+			LogError(LOG_TRT "PifpafNet::PreProcess() -- cudaTensorNormRGB() failed\n");
 			return false;
 		}
 	}
@@ -117,7 +117,7 @@ bool imageNet::PreProcess( void* image, uint32_t width, uint32_t height, imageFo
 									   make_float3(0.229f, 0.224f, 0.225f), 
 									   GetStream())) )
 		{
-			LogError(LOG_TRT "imageNet::PreProcess() -- cudaTensorNormMeanRGB() failed\n");
+			LogError(LOG_TRT "PifpafNet::PreProcess() -- cudaTensorNormMeanRGB() failed\n");
 			return false;
 		}
 	}
@@ -129,7 +129,7 @@ bool imageNet::PreProcess( void* image, uint32_t width, uint32_t height, imageFo
 								    make_float3(104.0069879317889f, 116.66876761696767f, 122.6789143406786f),
 								    GetStream())) )
 		{
-			LogError(LOG_TRT "imageNet::PreProcess() -- cudaTensorMeanBGR() failed\n");
+			LogError(LOG_TRT "PifpafNet::PreProcess() -- cudaTensorMeanBGR() failed\n");
 			return false;
 		}
 	}
@@ -140,7 +140,7 @@ bool imageNet::PreProcess( void* image, uint32_t width, uint32_t height, imageFo
 
 
 // Process
-bool imageNet::Process()
+bool PifpafNet::Process()
 {
 	PROFILER_BEGIN(PROFILER_NETWORK);
 

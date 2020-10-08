@@ -198,7 +198,7 @@ enum profilerDevice
 
 /**
  * Abstract class for loading a tensor network with TensorRT.
- * For example implementations, @see imageNet and @see detectNet
+ * For example implementations, @see PifPafNet
  * @ingroup tensorNet
  */
 class tensorNet

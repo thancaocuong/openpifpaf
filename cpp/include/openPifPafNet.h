@@ -102,7 +102,7 @@ public:
 	/**
 	 * Usage string for command line arguments to Create()
 	 */
-	static inline const char* Usage() 		{ return IMAGENET_USAGE_STRING; }
+	static inline const char* Usage() 		{ return PIFPAFNET_USAGE_STRING; }
 
 	/**
 	 * Destroy
