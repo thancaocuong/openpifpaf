@@ -31,8 +31,13 @@ class Cif(Base):
         assert self.meta.draw_skeleton is not None
 
         annotations = [
-            Annotation(keypoints=self.meta.keypoints, skeleton=self.meta.draw_skeleton).set(
-                ann['keypoints'], fixed_score=None, fixed_bbox=ann['bbox'])
+            Annotation(
+                keypoints=self.meta.keypoints,
+                skeleton=self.meta.draw_skeleton,
+                sigmas=self.meta.sigmas,
+                score_weights=self.meta.score_weights
+            ).set(
+                ann['keypoints'], fixed_score='', fixed_bbox=ann['bbox'])
             for ann in annotation_dicts
         ]
 

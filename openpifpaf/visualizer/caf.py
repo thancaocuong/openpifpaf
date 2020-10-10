@@ -24,18 +24,19 @@ class Caf(Base):
     def __init__(self, meta: headmeta.Caf):
         super().__init__(meta.name)
         self.meta = meta
-        self.keypoint_painter = show.KeypointPainter()
+        self.annotation_painter = show.AnnotationPainter()
 
     def targets(self, field, *, annotation_dicts):
         assert self.meta.keypoints is not None
-        skeleton = getattr(self.meta, 'skeleton', None)
-        if skeleton is None:
-            skeleton = getattr(self.meta, 'draw_skeleton', None)
-        assert skeleton is not None
+        assert self.meta.skeleton is not None
 
         annotations = [
-            Annotation(keypoints=self.meta.keypoints, skeleton=skeleton).set(
-                ann['keypoints'], fixed_score=None, fixed_bbox=ann['bbox'])
+            Annotation(
+                keypoints=self.meta.keypoints,
+                skeleton=self.meta.skeleton,
+                sigmas=self.meta.sigmas,
+            ).set(
+                ann['keypoints'], fixed_score='', fixed_bbox=ann['bbox'])
             for ann in annotation_dicts
         ]
 
@@ -79,7 +80,7 @@ class Caf(Base):
             with self.image_canvas(self._processed_image, margin=[0.0, 0.01, 0.05, 0.01]) as ax:
                 show.white_screen(ax, alpha=0.5)
                 if annotations:
-                    self.keypoint_painter.annotations(ax, annotations, color='lightgray')
+                    self.annotation_painter.annotations(ax, annotations, color='lightgray')
                 q1 = show.quiver(ax,
                                  regression_fields1[f, :2],
                                  confidence_field=confidence_field,
