@@ -1,4 +1,2 @@
 add_executable(hello_openpifpaf main.cpp)
-add_executable(video_viewer video_viewer.cpp)
 target_link_libraries(hello_openpifpaf openpifpaf)
-target_link_libraries(video_viewer openpifpaf)
