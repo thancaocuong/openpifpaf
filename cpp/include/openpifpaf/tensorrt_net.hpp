@@ -2,14 +2,15 @@
 #ifndef _BASE_TENSORRT_NET_HPP_
 #define _BASE_TENSORRT_NET_HPP_
 
-#include "openpifpaf/trt_utils.hpp"
-#include "NvInfer.h"
-#include "openpifpaf/output_parser.hpp"
-#include "openpifpaf/human.hpp"
-#include "openpifpaf/json.hpp"
 #include <vector>
 #include <iostream>
 #include <fstream>
+
+#include "NvInfer.h"
+
+#include "openpifpaf/trt_utils.hpp"
+#include "openpifpaf/human.hpp"
+#include "openpifpaf/json.hpp"
 #include "openpifpaf/npp_preprocess.hpp"
 
 
@@ -45,7 +46,7 @@ protected:
     int mOutputW;
     uint64_t mInputSize;
     bool mPrintPerfInfo;
-    cudaStreamt mStream;
+    cudaStream_t mStream;
     Logger mLogger;
     // TRT specific members
     uint mBatchSize;

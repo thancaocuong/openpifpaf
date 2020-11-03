@@ -1,8 +1,6 @@
 #include "openpifpaf/tensorrt_net.hpp"
 #include "openpifpaf/trt_utils.hpp"
 #include "openpifpaf/upsample.hpp"
-#include <torch/torch.h>
-namespace F = torch::nn::functional;
 
 inline void* safeCudaMalloc(size_t memSize)
 {
@@ -41,14 +39,6 @@ TensorRTNet::TensorRTNet(const uint batchSize, const NetworkInfo& networkInfo):
     mInputW(0),
     mInputC(0),
     mInputSize(0),
-    mUpscaleHeatmapFactor(2),
-    mCmapChannels(0),
-    mPafChannels(0),
-    mMaxPerson(0),
-    mCmapThreshold(0.1),
-    mLinkThreshold(0.05),
-    mWindowSize(9),
-    mTopology(nullptr),
     mPrintPerfInfo(true),
     mLogger(Logger()),
     mBatchSize(batchSize),
@@ -58,19 +48,12 @@ TensorRTNet::TensorRTNet(const uint batchSize, const NetworkInfo& networkInfo):
     mTrtRunTime(nullptr)
 {
     this->parseConfigFile();
-    int outHeight = mUpscaleHeatmapFactor*mOutputH;
-    int outWidth = mUpscaleHeatmapFactor*mOutputW;
-    mKeypointParser = new KeypointParser(outHeight, outWidth, mBatchSize,mTopology,
-                                          mCmapChannels, mPafChannels, mMaxPerson,
-                                          mCmapThreshold, mLinkThreshold, mWindowSize,
-                                          mNumLinesIntegral, mUpscaleHeatmapFactor);
-
     this->loadEngine();
     assert(mEngine != nullptr);
     mContext = mEngine->createExecutionContext();
     assert(mContext != nullptr);
     assert(mBatchSize <= static_cast<uint>(mEngine->getMaxBatchSize()));
-    getBindingIdxs();
+    getBindingIndxes();
     allocateBuffers();
     NV_CUDA_CHECK(cudaStreamCreate(&mStream));
 
@@ -104,31 +87,17 @@ void TensorRTNet::loadEngine(){
 
 void TensorRTNet::doInference()
 {
-    int volumindex[2] = {mCmapChannels, mPafChannels};
     mContext->enqueue(mBatchSize, mDeviceBuffers.data(), mStream, nullptr);
 
     for (auto& tensor : mOutputTensors)
     {
         int binding_index = tensor.bindingIndex;
-        if(mUpscaleHeatmapFactor == 1)
-        {
-            NV_CUDA_CHECK(cudaMemcpyAsync(tensor.hostBuffer, mDeviceBuffers.at(binding_index),
-                                      mBatchSize * tensor.volume * sizeof(float),
-                                      cudaMemcpyDeviceToHost, mStream));
-        }
-        else
-        {
-            auto options = torch::TensorOptions().dtype(torch::kFloat32).device(torch::kCUDA, 0).requires_grad(false);
-            std::vector<int64_t> sizes = {mBatchSize, volumindex[binding_index-1], mOutputH, mOutputW};
-            auto out_tensor = torch::fromblob(mDeviceBuffers.at(binding_index), at::IntList(sizes), options=options);
-            auto upsample_tensor = F::interpolate(out_tensor, F::InterpolateFuncOptions()
-                                                                .size(std::vector<int64_t>{mUpscaleHeatmapFactor*mOutputH, mUpscaleHeatmapFactor*mOutputW})
-                                                                .mode(torch::kBicubic).align_corners(false));
+
             NV_CUDA_CHECK(cudaMemcpyAsync(tensor.hostBuffer,
-                                          upsample_tensor.data_ptr(),
-                                          mBatchSize * tensor.volume * sizeof(float),
-                                          cudaMemcpyDeviceToHost, mStream));
-        }
+                                          mDeviceBuffers.at(binding_index),
+                                          tensor.volume,
+                                          cudaMemcpyDeviceToHost,
+                                          mStream));
     }
     cudaStreamSynchronize(mStream);
 }
@@ -137,7 +106,7 @@ void TensorRTNet::allocateBuffers()
 {
 
     mDeviceBuffers.resize(mEngine->getNbBindings(), nullptr);
-    mOutputTensors.resize(mEngine->getNbBindings() - mNumberInput, nullptr);
+    mOutputTensors.resize(mEngine->getNbBindings() - mNumberInput);
 
     assert(mInputBindingIndex != -1 && "Invalid input binding index");
 
@@ -158,7 +127,7 @@ void TensorRTNet::allocateBuffers()
         mOutputTensors[hostOutputIdx].volume = totalSize;
         mOutputTensors[hostOutputIdx].bindingIndex = output_idx;
         NV_CUDA_CHECK(cudaMallocHost(&(mOutputTensors[hostOutputIdx].hostBuffer),
-                                        totalSize * mBatchSize));
+                                        totalSize));
     }
 }
 

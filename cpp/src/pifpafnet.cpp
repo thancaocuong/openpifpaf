@@ -33,8 +33,8 @@ void PifPafNet::nvPreprocess(const std::vector<cv::Mat>& cvmats, int processingW
 std::vector<InferResult> PifPafNet::decodeBatchOfFrames(const int imageH,const int imageW)
 {
 
-    auto pif = m_OutputTensors.at(0).hostBuffer;
-    auto paf = m_OutputTensors.at(1).hostBuffer;
+    auto pif = mOutputTensors.at(0).hostBuffer;
+    auto paf = mOutputTensors.at(1).hostBuffer;
     // TODO decode pif and paf
     std::vector<InferResult> result;
     return result;
