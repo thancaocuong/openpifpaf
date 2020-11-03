@@ -1,4 +1,4 @@
-#include "tensorNet.h"
+#include "openpifpaf/tensorrt_net.hpp"
 #include <iostream>
 
 int main(int argc, char** argv)

@@ -114,8 +114,7 @@ void TensorRTNet::allocateBuffers()
     nvinfer1::Dims input_dims = mEngine->getBindingDimensions(mInputBindingIndex);
     nvinfer1::DataType input_dtype = mEngine->getBindingDataType(mInputBindingIndex);
     int64_t input_totalSize = volume(input_dims) * mBatchSize * getElementSize(input_dtype);
-    safeCudaMalloc(&mDeviceBuffers.at(mInputBindingIndex), input_totalSize);
-
+    NV_CUDA_CHECK(cudaMalloc(&mDeviceBuffers.at(mInputBindingIndex), input_totalSize));
     // allocate Buffers for device outputs and host outputs
     for (auto output_idx: mOutputBindingIndexes)
     {
@@ -123,8 +122,8 @@ void TensorRTNet::allocateBuffers()
         nvinfer1::Dims dim = mEngine->getBindingDimensions(output_idx);
         nvinfer1::DataType dtype = mEngine->getBindingDataType(output_idx);
         int64_t totalSize = volume(dim) * mBatchSize * getElementSize(dtype);
-        safeCudaMalloc(&mDeviceBuffers.at(output_idx), totalSize);
-        mOutputTensors[hostOutputIdx].volume = totalSize;
+        NV_CUDA_CHECK(cudaMalloc(&mDeviceBuffers.at(output_idx), totalSize));
+	mOutputTensors[hostOutputIdx].volume = totalSize;
         mOutputTensors[hostOutputIdx].bindingIndex = output_idx;
         NV_CUDA_CHECK(cudaMallocHost(&(mOutputTensors[hostOutputIdx].hostBuffer),
                                         totalSize));
